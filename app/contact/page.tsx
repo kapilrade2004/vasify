@@ -1,0 +1,258 @@
+"use client"
+
+import { ArrowRight, MessageCircle, Phone, Mail, MapPin, Clock, CheckCircle } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import WhatsAppButton from "@/components/whatsapp-button"
+import ContactForm from "@/components/contact-form"
+
+export default function ContactPage() {
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: "Phone",
+      details: "+91 9769754446",
+      description: "Mon-Fri from 9am to 6pm EST",
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      details: "Sushil@vasifytech.com sudhanshu@vasifytech.com",
+      description: "We'll respond within 2 hours",
+    },
+    {
+      icon: MapPin,
+      title: "Office",
+      details: "601, 6th floor, Kohinoor CHS, Dattamandir road, dahanukarwadi, kandivali west, Mumbai - 400067",
+      description: "Available for meetings",
+    },
+    {
+      icon: Clock,
+      title: "Response Time",
+      details: "< 2 Hours",
+      description: "Average response time",
+    },
+  ]
+
+  const benefits = [
+    "Free consultation & strategy session",
+    "30-day money-back guarantee",
+    "24/7 dedicated support",
+    "Proven track record with 500+ clients",
+    "Custom solutions for your business",
+    "No long-term contracts required",
+  ]
+
+  const handlePhoneClick = () => {
+    window.location.href = "tel:+919769754446"
+  }
+
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "919769754446" // Replace with actual WhatsApp number
+    const message = "Hi! I'm interested in VasifyTech's services. Can you help me get started?"
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, "_blank")
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-green-100 z-50">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+              <MessageCircle className="h-6 w-6 text-white" />
+            </div>
+            <span className="text-2xl font-bold text-gray-900">VasifyTech</span>
+          </Link>
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/features" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+              Features
+            </Link>
+            <Link href="/how-it-works" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+              How it Works
+            </Link>
+            <Link href="/services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+              Services
+            </Link>
+            <Link href="/testimonials" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+              Testimonials
+            </Link>
+            <Link href="/faq" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+              FAQ
+            </Link>
+            <Link href="/contact">
+              <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium">
+                Get Started
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-6">
+        <div className="container mx-auto text-center">
+          <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            Let's <span className="text-green-500">Transform</span> Your Business Together
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            Ready to revolutionize your WhatsApp business communication? Get your free consultation and discover how
+            VasifyTech can help you achieve your goals.
+          </p>
+        </div>
+      </section>
+
+      {/* Contact Info Cards */}
+      <section className="py-20 px-6 bg-white">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-16">
+            {contactInfo.map((info, index) => (
+              <Card
+                key={index}
+                className="bg-white border-0 shadow-sm hover:shadow-lg transition-shadow duration-300 text-center"
+              >
+                <CardHeader>
+                  <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-2xl flex items-center justify-center">
+                    <info.icon className="h-8 w-8 text-green-600" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-gray-900">{info.title}</CardTitle>
+                  <div className="text-xl font-bold text-green-600">{info.details}</div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 text-sm">{info.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Main Contact Form */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="container mx-auto">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12">
+              {/* Left Column - Benefits */}
+              <div>
+                <h2 className="text-4xl font-bold text-gray-900 mb-6">Why Choose VasifyTech?</h2>
+                <p className="text-xl text-gray-600 mb-8">
+                  We're not just another agency. We're your growth partners committed to delivering exceptional results
+                  and outstanding service.
+                </p>
+
+                <div className="space-y-4 mb-8">
+                  {benefits.map((benefit, index) => (
+                    <div key={index} className="flex items-center">
+                      <CheckCircle className="h-6 w-6 text-green-500 mr-4 flex-shrink-0" />
+                      <span className="text-lg text-gray-700">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="bg-green-500 p-6 rounded-2xl text-white">
+                  <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
+                  <p className="mb-4 text-green-100">
+                    Book a free 30-minute strategy call to discuss your business goals and how we can help you achieve
+                    them.
+                  </p>
+                  <Button className="bg-white text-green-600 hover:bg-gray-100 font-semibold">
+                    Schedule Free Call
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Right Column - Contact Form */}
+              <ContactForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 px-6 bg-white">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+              <p className="text-xl text-gray-600">Get answers to common questions about our services</p>
+            </div>
+
+            <div className="space-y-6">
+              {[
+                {
+                  question: "How quickly can you start working on my project?",
+                  answer:
+                    "We can typically start within 24-48 hours after our initial consultation and agreement. For WhatsApp automation, we can often have you up and running within a week.",
+                },
+                {
+                  question: "Do you work with businesses of all sizes?",
+                  answer:
+                    "Yes! We work with startups, small businesses, and large enterprises. Our solutions are scalable and can be customized to fit any business size and budget.",
+                },
+                {
+                  question: "What makes your WhatsApp solutions different?",
+                  answer:
+                    "Our WhatsApp solutions are built with advanced AI, proven automation workflows, and focus on compliance and deliverability. We're Meta Business Partners with a track record of 500+ successful implementations.",
+                },
+                {
+                  question: "Do you provide ongoing support?",
+                  answer:
+                    "All our packages include ongoing support, and we offer 24/7 support for our premium clients. We're here to ensure your continued success and growth.",
+                },
+                {
+                  question: "Can you integrate with existing systems?",
+                  answer:
+                    "Yes, we can integrate with your existing CRM, e-commerce platform, or any other business system through APIs and custom integrations.",
+                },
+              ].map((faq, index) => (
+                <Card key={index} className="border-0 shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-bold text-gray-900 text-left">{faq.question}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">{faq.answer}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 px-6 bg-green-500">
+        <div className="container mx-auto text-center text-white">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6">Don't Wait - Start Growing Today</h2>
+          <p className="text-xl mb-8 text-green-100 max-w-2xl mx-auto">
+            Every day you wait is another day your competitors are getting ahead. Start your transformation today with a
+            free consultation.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              onClick={handleWhatsAppClick}
+              size="lg"
+              className="bg-white text-green-600 hover:bg-gray-100 text-lg px-8 py-4 rounded-lg font-semibold"
+            >
+              <MessageCircle className="mr-2 h-5 w-5" />
+              WhatsApp Us Now
+            </Button>
+            <Button
+              onClick={handlePhoneClick}
+              size="lg"
+              variant="outline"
+              className="border-2 border-white text-white hover:bg-white hover:text-green-600 text-lg px-8 py-4 rounded-lg font-medium"
+            >
+              <Phone className="mr-2 h-5 w-5" />
+              Call Now: +91 9769754446
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <WhatsAppButton />
+    </div>
+  )
+}
