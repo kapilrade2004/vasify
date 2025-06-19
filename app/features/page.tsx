@@ -1,8 +1,23 @@
-import { ArrowRight, MessageCircle, Zap, Users, BarChart3, Shield, Bot, Clock, Globe, Smartphone } from "lucide-react"
+import {
+  ArrowRight,
+  MessageCircle,
+  Zap,
+  Users,
+  BarChart3,
+  Shield,
+  Bot,
+  Clock,
+  Globe,
+  Smartphone,
+  ShoppingCart,
+  QrCode,
+  Code,
+} from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import WhatsAppButton from "@/components/whatsapp-button"
+import MobileNav from "@/components/mobile-nav"
 
 export default function FeaturesPage() {
   const features = [
@@ -92,6 +107,8 @@ export default function FeaturesPage() {
             </div>
             <span className="text-2xl font-bold text-gray-900">VasifyTech</span>
           </Link>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/features" className="text-green-600 font-semibold">
               Features
@@ -113,6 +130,11 @@ export default function FeaturesPage() {
                 Get Started
               </Button>
             </Link>
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+            <MobileNav />
           </div>
         </div>
       </nav>
@@ -139,9 +161,123 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Key Services Features Section */}
       <section className="py-20 px-6 bg-white">
         <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Core WhatsApp Business Features</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our key offerings designed to transform your WhatsApp business communication and drive growth.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Users,
+                title: "WhatsApp CRM",
+                description:
+                  "Lead pipeline and sales automation seamlessly integrated within WhatsApp chat for streamlined operations.",
+                details: [
+                  "Lead management within WhatsApp",
+                  "Sales pipeline automation",
+                  "Customer data synchronization",
+                  "Follow-up reminders",
+                ],
+              },
+              {
+                icon: ShoppingCart,
+                title: "Smart Catalog & Ordering",
+                description:
+                  "Interactive product and service catalog complete with integrated payment functionalities.",
+                details: [
+                  "Interactive product catalogs",
+                  "One-click ordering system",
+                  "Payment gateway integration",
+                  "Order tracking automation",
+                ],
+              },
+              {
+                icon: QrCode,
+                title: "QR Code Journeys",
+                description:
+                  "Innovative offline-to-online conversion flows via QR codes for enhanced customer engagement.",
+                details: [
+                  "Custom QR code generation",
+                  "Landing page creation",
+                  "Conversion tracking",
+                  "Campaign analytics",
+                ],
+              },
+              {
+                icon: Bot,
+                title: "Prebuilt Chatbot Templates",
+                description:
+                  "Ready-to-use chatbot templates tailored for diverse sectors like real estate, education, and retail.",
+                details: [
+                  "Industry-specific templates",
+                  "Customizable workflows",
+                  "AI-powered responses",
+                  "Multi-language support",
+                ],
+              },
+              {
+                icon: BarChart3,
+                title: "Analytics & ROI Dashboard",
+                description:
+                  "Comprehensive analytics from chat interactions to conversion, providing clear ROI insights.",
+                details: ["Real-time analytics", "Conversion tracking", "ROI calculations", "Performance reports"],
+              },
+              {
+                icon: Code,
+                title: "Developer Tools",
+                description:
+                  "Robust public APIs, seamless integrations, and webhook support for advanced customization and connectivity.",
+                details: [
+                  "REST API access",
+                  "Webhook integrations",
+                  "Custom development tools",
+                  "Third-party integrations",
+                ],
+              },
+            ].map((feature, index) => (
+              <Card
+                key={index}
+                className="bg-white border-0 shadow-sm hover:shadow-lg transition-shadow duration-300 h-full"
+              >
+                <CardHeader className="text-center pb-4">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-2xl flex items-center justify-center">
+                    <feature.icon className="h-8 w-8 text-green-600" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-gray-900">{feature.title}</CardTitle>
+                  <p className="text-gray-600">{feature.description}</p>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {feature.details.map((detail, idx) => (
+                      <li key={idx} className="flex items-center text-gray-700">
+                        <div className="w-2 h-2 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Features Section */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Additional Platform Features</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Advanced capabilities that make VasifyTech the most comprehensive WhatsApp business platform.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <Card

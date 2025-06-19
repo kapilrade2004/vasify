@@ -1,26 +1,36 @@
+"use client"
+
 import {
   ArrowRight,
   MessageCircle,
   Bot,
-  Globe,
-  Code,
+  ShoppingCart,
   Users,
+  BarChart3,
+  QrCode,
+  Code,
+  Globe,
+  Smartphone,
   Database,
   TrendingUp,
-  ShoppingCart,
   Palette,
   Shield,
   Server,
   Cloud,
-  Smartphone,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import WhatsAppButton from "@/components/whatsapp-button"
+import { useState } from "react"
+import MobileNav from "@/components/mobile-nav"
 
 export default function ServicesPage() {
-  const services = [
+  const [showCustomServices, setShowCustomServices] = useState(false)
+
+  const whatsappServices = [
     {
       icon: Bot,
       title: "WhatsApp Automation",
@@ -28,6 +38,44 @@ export default function ServicesPage() {
       features: ["Chatbot Development", "Automated Workflows", "Smart Responses", "Lead Qualification"],
       color: "from-green-500 to-emerald-600",
     },
+    {
+      icon: ShoppingCart,
+      title: "WhatsApp E-commerce",
+      description: "Complete online store solutions integrated with WhatsApp for seamless shopping experience",
+      features: ["Product Catalog", "Order Management", "Payment Integration", "Customer Support"],
+      color: "from-blue-500 to-cyan-600",
+    },
+    {
+      icon: Users,
+      title: "CRM Software Solutions",
+      description: "Customer Relationship Management systems integrated with WhatsApp for streamlined sales",
+      features: ["Lead Management", "Sales Pipeline", "Customer Analytics", "WhatsApp Integration"],
+      color: "from-purple-500 to-pink-600",
+    },
+    {
+      icon: BarChart3,
+      title: "Analytics & ROI Dashboard",
+      description: "Comprehensive analytics from chat interactions to conversion, providing clear ROI insights",
+      features: ["Chat Analytics", "Conversion Tracking", "ROI Reports", "Performance Metrics"],
+      color: "from-orange-500 to-red-600",
+    },
+    {
+      icon: QrCode,
+      title: "QR Code Journeys",
+      description: "Innovative offline-to-online conversion flows via QR codes for enhanced customer engagement",
+      features: ["QR Code Generation", "Landing Pages", "Conversion Tracking", "Campaign Management"],
+      color: "from-indigo-500 to-purple-600",
+    },
+    {
+      icon: Code,
+      title: "Developer Tools & APIs",
+      description: "Robust public APIs, seamless integrations, and webhook support for advanced customization",
+      features: ["REST APIs", "Webhook Support", "Custom Integrations", "Developer Documentation"],
+      color: "from-teal-500 to-green-600",
+    },
+  ]
+
+  const customServices = [
     {
       icon: Globe,
       title: "Website Development",
@@ -41,13 +89,6 @@ export default function ServicesPage() {
       description: "Native and cross-platform mobile applications for iOS and Android",
       features: ["Native iOS/Android", "React Native", "Flutter Development", "App Store Optimization"],
       color: "from-purple-500 to-pink-600",
-    },
-    {
-      icon: Users,
-      title: "CRM Solutions",
-      description: "Customer Relationship Management systems to streamline your sales process",
-      features: ["Lead Management", "Sales Pipeline", "Customer Analytics", "Integration Support"],
-      color: "from-orange-500 to-red-600",
     },
     {
       icon: Database,
@@ -64,25 +105,11 @@ export default function ServicesPage() {
       color: "from-teal-500 to-green-600",
     },
     {
-      icon: Code,
-      title: "Custom Software",
-      description: "Tailored software solutions to streamline your business operations",
-      features: ["Custom Applications", "Legacy Modernization", "System Integration", "Performance Optimization"],
-      color: "from-gray-600 to-gray-800",
-    },
-    {
       icon: TrendingUp,
       title: "Digital Marketing",
       description: "Comprehensive digital marketing strategies to grow your online presence",
       features: ["Social Media Marketing", "SEO/SEM", "Content Strategy", "Analytics & Reporting"],
       color: "from-pink-500 to-rose-600",
-    },
-    {
-      icon: ShoppingCart,
-      title: "E-commerce Development",
-      description: "Complete online store solutions with payment integration and inventory management",
-      features: ["Online Store Setup", "Payment Gateway", "Inventory Management", "Order Tracking"],
-      color: "from-yellow-500 to-orange-600",
     },
     {
       icon: Palette,
@@ -118,6 +145,8 @@ export default function ServicesPage() {
             </div>
             <span className="text-2xl font-bold text-gray-900">VasifyTech</span>
           </Link>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/features" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
               Features
@@ -140,6 +169,11 @@ export default function ServicesPage() {
               </Button>
             </Link>
           </div>
+
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+            <MobileNav />
+          </div>
         </div>
       </nav>
 
@@ -147,7 +181,7 @@ export default function ServicesPage() {
       <section className="pt-32 pb-20 px-6">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Complete <span className="text-green-500">Digital Solutions</span> for Your Business
+            <span className="text-green-500">WhatsApp Business</span> Solutions & More
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
             From WhatsApp automation to custom software development, we provide end-to-end solutions to help your
@@ -165,14 +199,21 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* WhatsApp Services Section */}
       <section className="py-20 px-6 bg-white">
         <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">WhatsApp Business Solutions</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our core WhatsApp services designed to transform your customer engagement and drive business growth.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+            {whatsappServices.map((service, index) => (
               <Card
                 key={index}
-                className="bg-white border-0 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 h-full"
+                className="bg-white border-0 shadow-sm hover:shadow-lg active:shadow-lg transition-all duration-300 transform hover:-translate-y-1 active:-translate-y-1 h-full"
               >
                 <CardHeader className="text-center pb-4">
                   <div
@@ -180,7 +221,7 @@ export default function ServicesPage() {
                   >
                     <service.icon className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-2xl font-bold text-gray-900">{service.title}</CardTitle>
+                  <CardTitle className="text-xl font-bold text-gray-900">{service.title}</CardTitle>
                   <p className="text-gray-600">{service.description}</p>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col">
@@ -193,7 +234,7 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                   <Link href="/contact">
-                    <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white">
+                    <Button className="w-full bg-green-500 hover:bg-green-600 text-white">
                       Get Quote
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -204,6 +245,75 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      {/* Custom Software Services Toggle */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="container mx-auto text-center">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Need More Than WhatsApp?</h2>
+          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            We also offer comprehensive custom software development services to meet all your business needs.
+          </p>
+
+          <Button
+            onClick={() => setShowCustomServices(!showCustomServices)}
+            size="lg"
+            variant="outline"
+            className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white px-8 py-4 rounded-lg text-lg font-medium"
+          >
+            {showCustomServices ? "Hide" : "View"} Custom Software Services
+            {showCustomServices ? <ChevronUp className="ml-2 h-5 w-5" /> : <ChevronDown className="ml-2 h-5 w-5" />}
+          </Button>
+        </div>
+      </section>
+
+      {/* Custom Services Section */}
+      {showCustomServices && (
+        <section className="py-20 px-6 bg-white">
+          <div className="container mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Custom Software Development</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Complete digital solutions including web development, mobile apps, and enterprise software.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {customServices.map((service, index) => (
+                <Card
+                  key={index}
+                  className="bg-white border-0 shadow-sm hover:shadow-lg active:shadow-lg transition-all duration-300 transform hover:-translate-y-1 active:-translate-y-1 h-full"
+                >
+                  <CardHeader className="text-center pb-4">
+                    <div
+                      className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${service.color} rounded-2xl flex items-center justify-center`}
+                    >
+                      <service.icon className="h-8 w-8 text-white" />
+                    </div>
+                    <CardTitle className="text-xl font-bold text-gray-900">{service.title}</CardTitle>
+                    <p className="text-gray-600">{service.description}</p>
+                  </CardHeader>
+                  <CardContent className="flex-grow flex flex-col">
+                    <ul className="space-y-2 mb-6 flex-grow">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-gray-700">
+                          <div className="w-2 h-2 bg-gray-500 rounded-full mr-3 flex-shrink-0"></div>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link href="/contact">
+                      <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white">
+                        Get Quote
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Why Choose Us */}
       <section className="py-20 px-6 bg-gray-50">
@@ -216,8 +326,8 @@ export default function ServicesPage() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Expert Team",
-                description: "Certified professionals with years of experience in WhatsApp Business solutions",
+                title: "WhatsApp Experts",
+                description: "Meta Business Partners with specialized expertise in WhatsApp Business solutions",
               },
               {
                 title: "Proven Results",

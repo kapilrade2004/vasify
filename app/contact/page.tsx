@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import WhatsAppButton from "@/components/whatsapp-button"
 import ContactForm from "@/components/contact-form"
+import WhatsAppQR from "@/components/whatsapp-qr"
+import { useEffect } from "react"
+import MobileNav from "@/components/mobile-nav"
 
 export default function ContactPage() {
   const contactInfo = [
@@ -24,7 +27,7 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: "Office",
-      details: "601, 6th floor, Kohinoor CHS, Dattamandir road, dahanukarwadi, kandivali west, Mumbai - 400067",
+      details: "601, 6th floor, Kohinoor CHS, Dattamandir road, dahanukarwadi, kandivali west, Mumbai – 400067",
       description: "Available for meetings",
     },
     {
@@ -55,6 +58,18 @@ export default function ContactPage() {
     window.open(whatsappUrl, "_blank")
   }
 
+  // Auto-scroll to form section when page loads
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const formSection = document.getElementById("contact-form-section")
+      if (formSection) {
+        formSection.scrollIntoView({ behavior: "smooth", block: "start" })
+      }
+    }, 500)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
       {/* Navigation */}
@@ -66,6 +81,8 @@ export default function ContactPage() {
             </div>
             <span className="text-2xl font-bold text-gray-900">VasifyTech</span>
           </Link>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/features" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
               Features
@@ -87,6 +104,11 @@ export default function ContactPage() {
                 Get Started
               </Button>
             </Link>
+          </div>
+
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+            <MobileNav />
           </div>
         </div>
       </nav>
@@ -111,7 +133,7 @@ export default function ContactPage() {
             {contactInfo.map((info, index) => (
               <Card
                 key={index}
-                className="bg-white border-0 shadow-sm hover:shadow-lg transition-shadow duration-300 text-center"
+                className="bg-white border-0 shadow-sm hover:shadow-lg active:shadow-lg transition-shadow duration-300 text-center cursor-pointer"
               >
                 <CardHeader>
                   <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-2xl flex items-center justify-center">
@@ -130,7 +152,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Contact Form */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section id="contact-form-section" className="py-20 px-6 bg-gray-50">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
@@ -151,13 +173,46 @@ export default function ContactPage() {
                   ))}
                 </div>
 
-                <div className="bg-green-500 p-6 rounded-2xl text-white">
+                {/* WhatsApp Contact Options */}
+                <div className="bg-green-500 p-6 rounded-2xl text-white mb-6">
                   <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
-                  <p className="mb-4 text-green-100">
+                  <p className="mb-6 text-green-100">
                     Book a free 30-minute strategy call to discuss your business goals and how we can help you achieve
                     them.
                   </p>
-                  <Button className="bg-white text-green-600 hover:bg-gray-100 font-semibold">
+
+                  {/* Contact Buttons */}
+                  <div className="space-y-3">
+                    <Button
+                      onClick={handleWhatsAppClick}
+                      className="w-full bg-white text-green-600 hover:bg-gray-100 active:bg-gray-100 font-semibold text-left justify-start"
+                    >
+                      <MessageCircle className="mr-3 h-5 w-5" />
+                      Chat on WhatsApp
+                    </Button>
+
+                    <Button
+                      onClick={handlePhoneClick}
+                      variant="outline"
+                      className="w-full border-2 border-white text-white hover:bg-white hover:text-green-600 active:bg-white active:text-green-600 font-medium text-left justify-start"
+                    >
+                      <Phone className="mr-3 h-5 w-5" />
+                      Call: +91 9769754446
+                    </Button>
+
+                    {/* QR Code Option */}
+                    <div className="bg-white/10 p-4 rounded-lg border border-white/20">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h4 className="font-semibold text-white mb-1">Scan QR Code</h4>
+                          <p className="text-green-100 text-sm">Quick WhatsApp access</p>
+                        </div>
+                        <WhatsAppQR />
+                      </div>
+                    </div>
+                  </div>
+
+                  <Button className="w-full mt-4 bg-white/20 hover:bg-white/30 active:bg-white/30 text-white border border-white/30 font-semibold">
                     Schedule Free Call
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
@@ -208,7 +263,7 @@ export default function ContactPage() {
                     "Yes, we can integrate with your existing CRM, e-commerce platform, or any other business system through APIs and custom integrations.",
                 },
               ].map((faq, index) => (
-                <Card key={index} className="border-0 shadow-sm">
+                <Card key={index} className="border-0 shadow-sm hover:shadow-md active:shadow-md transition-shadow">
                   <CardHeader>
                     <CardTitle className="text-xl font-bold text-gray-900 text-left">{faq.question}</CardTitle>
                   </CardHeader>
@@ -234,7 +289,7 @@ export default function ContactPage() {
             <Button
               onClick={handleWhatsAppClick}
               size="lg"
-              className="bg-white text-green-600 hover:bg-gray-100 text-lg px-8 py-4 rounded-lg font-semibold"
+              className="bg-white text-green-600 hover:bg-gray-100 active:bg-gray-100 text-lg px-8 py-4 rounded-lg font-semibold"
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               WhatsApp Us Now
@@ -243,7 +298,7 @@ export default function ContactPage() {
               onClick={handlePhoneClick}
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-green-600 text-lg px-8 py-4 rounded-lg font-medium"
+              className="border-2 border-white text-white hover:bg-white hover:text-green-600 active:bg-white active:text-green-600 text-lg px-8 py-4 rounded-lg font-medium"
             >
               <Phone className="mr-2 h-5 w-5" />
               Call Now: +91 9769754446

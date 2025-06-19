@@ -1,7 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
+import WhatsAppButton from "@/components/whatsapp-button"
+import WhatsAppQRFloating from "@/components/whatsapp-qr-floating"
+import { Inter } from "next/font/google"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -33,8 +35,7 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "your-google-verification-code",
-  },
-    generator: 'v0.dev'
+  }
 }
 
 export default function RootLayout({
@@ -49,7 +50,10 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#10b981" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>{children}
+        <WhatsAppButton />
+        <WhatsAppQRFloating />
+      </body>
     </html>
   )
 }
