@@ -1,3 +1,4 @@
+"use client"
 import { ArrowRight, MessageCircle, Star, Quote, TrendingUp, Users, Zap } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"

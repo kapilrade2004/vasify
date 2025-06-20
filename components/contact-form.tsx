@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { submitContactForm } from "@/app/actions/contact"
+// import { submitContactForm } from "@/app/actions/contact"
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -17,7 +17,18 @@ export default function ContactForm() {
     setSubmitStatus("idle")
 
     try {
-      const result = await submitContactForm(formData)
+      const data: { [key: string]: any } = {}
+      formData.forEach((value, key) => {
+        data[key] = value
+      })
+      const response = await fetch("https://whatsapp-backend-t6ay.onrender.com/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+      const result = await response.json()
       if (result.success) {
         setSubmitStatus("success")
         // Reset form
@@ -115,22 +126,6 @@ export default function ContactForm() {
               <option value="all">All Services</option>
             </select>
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Monthly Budget Range</label>
-            <select
-              name="budget"
-              className="w-full p-3 border border-gray-300 rounded-md focus:border-green-500 focus:ring-green-500"
-            >
-              <option value="">Select budget range</option>
-              <option value="under-1k">Under $1,000</option>
-              <option value="1k-5k">$1,000 - $5,000</option>
-              <option value="5k-10k">$5,000 - $10,000</option>
-              <option value="10k-25k">$10,000 - $25,000</option>
-              <option value="25k-plus">$25,000+</option>
-            </select>
-          </div>
-
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Project Details *</label>
             <Textarea
