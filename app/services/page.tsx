@@ -157,6 +157,9 @@ export default function ServicesPage() {
             <Link href="/services" className="text-green-600 font-semibold">
               Services
             </Link>
+            <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+              Blogs
+            </Link>
             <Link href="/testimonials" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
               Testimonials
             </Link>

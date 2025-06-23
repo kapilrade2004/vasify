@@ -138,6 +138,9 @@ export default function TestimonialsPage() {
             <Link href="/services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
               Services
             </Link>
+            <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+              Blogs
+            </Link>
             <Link href="/testimonials" className="text-green-600 font-semibold">
               Testimonials
             </Link>

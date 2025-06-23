@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, MessageCircle, Phone, Mail, MapPin, Clock, CheckCircle } from "lucide-react"
+import { ArrowRight, MessageCircle, Phone, Mail, MapPin, Clock, CheckCircle, Facebook, Instagram } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -92,6 +92,9 @@ export default function ContactPage() {
             </Link>
             <Link href="/services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
               Services
+            </Link>
+            <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+              Blogs
             </Link>
             <Link href="/testimonials" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
               Testimonials
@@ -199,6 +202,26 @@ export default function ContactPage() {
                       <Phone className="mr-3 h-5 w-5" />
                       Call: +91 9769754446
                     </Button>
+
+                    <div className="flex space-x-3 mb-4">
+                      <Button
+                        onClick={() => window.open("https://www.facebook.com/profile.php?id=61564894984098&mibextid=ZbWKwL", "_blank")}
+                        variant="outline"
+                        className="flex-1 border-2 border-white text-white hover:bg-white hover:text-green-600 active:bg-white active:text-green-600 font-medium"
+                      >
+                        <Facebook className="mr-2 h-5 w-5" />
+                        Facebook
+                      </Button>
+                      <Button
+                        onClick={() => window.open("https://www.instagram.com/vasifytech?igsh=dnIweG5zdmhvemRo", "_blank")}
+                        variant="outline"
+                        className="flex-1 border-2 border-white text-white hover:bg-white hover:text-green-600 active:bg-white active:text-green-600 font-medium"
+                      >
+                        <Instagram className="mr-2 h-5 w-5" />
+                        Instagram
+                      </Button>
+                    </div>
+
 
                     {/* QR Code Option */}
                     <div className="bg-white/10 p-4 rounded-lg border border-white/20">

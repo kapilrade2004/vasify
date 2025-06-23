@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import WhatsAppButton from "@/components/whatsapp-button"
 import MobileNav from "@/components/mobile-nav"
+import Image from "next/image"
 
 export default function HomePage() {
   const trustedLogos = ["NICMAR", "Parul University", "RINGS & I", "SNAP", "Sri Balaji Society", "AFAIRS", "IMS"]
@@ -157,6 +158,9 @@ export default function HomePage() {
             <Link href="/services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
               Services
             </Link>
+            <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+              Blogs
+            </Link>
             <Link href="/testimonials" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
               Testimonials
             </Link>
@@ -168,7 +172,7 @@ export default function HomePage() {
                 Get Started
               </Button>
             </Link>
-          </div>
+          </div> 
 
           {/* Mobile Navigation */}
           <div className="md:hidden">
@@ -185,11 +189,11 @@ export default function HomePage() {
             <div className="space-y-8">
               <div className="space-y-6">
                 <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  Engage Customers on <span className="text-green-500">WhatsApp</span>, <br />
-                  Effortlessly.
+                  Custom <span className="text-green-500">WhatsApp Solutions</span>, <br />for Every Industry
+                  We Built What the World Needed
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
-                  Automate conversations, provide instant support, and drive sales with{" "}
+                  Custom CRM, chatbots, and automated flows built on WhatsApp — made for retail, healthcare, real estate, and more.{" "}
                   <span className="font-semibold text-gray-900">VasifyTech</span> - the ultimate WhatsApp Business
                   Platform.
                 </p>
@@ -233,17 +237,16 @@ export default function HomePage() {
 
             {/* Right Column - Demo/Video Placeholder */}
             <div className="relative">
-              <Link href="/contact">
-                <div className="bg-green-500 rounded-3xl aspect-[4/3] flex items-center justify-center shadow-2xl cursor-pointer hover:bg-green-600 transition-colors">
-                  <div className="text-center text-white">
-                    <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Play className="h-10 w-10 text-white ml-1" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-2">Get Started with VasifyTech Today!</h3>
-                    <p className="text-green-100">Watch how easy it is to set up</p>
-                  </div>
-                </div>
-              </Link>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/vasifytechhero.jpg"
+                  alt="VasifyTech WhatsApp Business Platform - Features including Instant Lead Capture, Conversation Analytics, 24/7 Availability, Sales Automation, Workflow Optimization, and AI-Powered Bot Training"
+                  width={600}
+                  height={450}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+              </div>
               {/* Decorative elements */}
               <div className="absolute -top-4 -right-4 w-8 h-8 bg-yellow-400 rounded-full"></div>
               <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-400 rounded-full"></div>
