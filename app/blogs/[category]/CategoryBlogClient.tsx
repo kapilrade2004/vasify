@@ -21,38 +21,38 @@ export default function CategoryBlogClient() {
       bgColor: "bg-blue-50",
       blogs: [
         {
-          title: "10 WhatsApp Automation Strategies That Increased Sales by 300%",
+          title: "How WhatsApp Catalogues Are Overtaking Traditional E-Commerce in India",
           excerpt:
             "Discover proven automation strategies that top e-commerce brands use to boost their sales through WhatsApp. Learn about cart abandonment recovery, order updates, and customer support automation.",
-          author: "Sarah Johnson",
-          date: "Dec 15, 2024",
+          author: "VasifyTech Team",
+          date: "Jan 20, 2025",
           readTime: "8 min read",
           image: "/placeholder.svg?height=300&width=500",
           tags: ["Automation", "Sales", "E-commerce"],
-          slug: "10-whatsapp-automation-strategies-that-increased-sales-by-300",
+          slug: "How-WhatsApp-Catalogues-Are-Overtaking-Traditional-E-Commerce-in-India",
         },
-        {
-          title: "WhatsApp Catalog Integration: Complete Guide for Online Stores",
-          excerpt:
-            "Step-by-step guide to integrating WhatsApp Business Catalog with your online store. Showcase products, enable direct ordering, and streamline the customer journey.",
-          author: "Mike Chen",
-          date: "Dec 12, 2024",
-          readTime: "12 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Catalog", "Integration", "D2C"],
-          slug: "whatsapp-catalog-integration-complete-guide-for-online-stores",
-        },
-        {
-          title: "Customer Support Revolution: WhatsApp vs Traditional Channels",
-          excerpt:
-            "Compare WhatsApp customer support with traditional channels. Learn why 89% of customers prefer WhatsApp for support and how to implement it effectively.",
-          author: "Lisa Rodriguez",
-          date: "Dec 10, 2024",
-          readTime: "6 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Support", "Customer Service", "Comparison"],
-          slug: "customer-support-revolution-whatsapp-vs-traditional-channels",
-        },
+        // {
+        //   title: "WhatsApp Catalog Integration: Complete Guide for Online Stores",
+        //   excerpt:
+        //     "Step-by-step guide to integrating WhatsApp Business Catalog with your online store. Showcase products, enable direct ordering, and streamline the customer journey.",
+        //   author: "Mike Chen",
+        //   date: "Dec 12, 2024",
+        //   readTime: "12 min read",
+        //   image: "/placeholder.svg?height=300&width=500",
+        //   tags: ["Catalog", "Integration", "D2C"],
+        //   slug: "whatsapp-catalog-integration-complete-guide-for-online-stores",
+        // },
+        // {
+        //   title: "Customer Support Revolution: WhatsApp vs Traditional Channels",
+        //   excerpt:
+        //     "Compare WhatsApp customer support with traditional channels. Learn why 89% of customers prefer WhatsApp for support and how to implement it effectively.",
+        //   author: "Lisa Rodriguez",
+        //   date: "Dec 10, 2024",
+        //   readTime: "6 min read",
+        //   image: "/placeholder.svg?height=300&width=500",
+        //   tags: ["Support", "Customer Service", "Comparison"],
+        //   slug: "customer-support-revolution-whatsapp-vs-traditional-channels",
+        // },
       ],
     },
     "retail-fmcg": {
@@ -103,38 +103,38 @@ export default function CategoryBlogClient() {
       bgColor: "bg-green-50",
       blogs: [
         {
-          title: "Banking on WhatsApp: Secure Customer Communication Best Practices",
+          title: "How Fintech Startups Are Streamlining Lending via WhatsApp",
           excerpt:
             "Comprehensive guide to implementing secure WhatsApp solutions for banking. Cover compliance, security protocols, and customer verification processes.",
-          author: "Dr. Priya Sharma",
-          date: "Dec 13, 2024",
+          author: "VasifyTech Team",
+          date: "Jan 30, 2025",
           readTime: "15 min read",
           image: "/placeholder.svg?height=300&width=500",
           tags: ["Banking", "Security", "Compliance"],
-          slug: "banking-on-whatsapp-secure-customer-communication-best-practices",
+          slug: "How-Fintech-Startups-Are-Streamlining-Lending-via-WhatsApp",
         },
-        {
-          title: "Fintech Innovation: WhatsApp Payment Integration and KYC Automation",
-          excerpt:
-            "Explore how fintech companies are revolutionizing payments and KYC processes through WhatsApp integration. Real-world case studies and implementation guides.",
-          author: "Alex Morgan",
-          date: "Dec 9, 2024",
-          readTime: "12 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Fintech", "Payments", "KYC"],
-          slug: "fintech-innovation-whatsapp-payment-integration-and-kyc-automation",
-        },
-        {
-          title: "Insurance Claims Processing: Streamlining with WhatsApp Automation",
-          excerpt:
-            "Transform insurance claims processing with WhatsApp automation. Reduce processing time by 70% and improve customer satisfaction significantly.",
-          author: "Jennifer Lee",
-          date: "Dec 6, 2024",
-          readTime: "8 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Insurance", "Claims", "Automation"],
-          slug: "insurance-claims-processing-streamlining-with-whatsapp-automation",
-        },
+    //     {
+    //       title: "Fintech Innovation: WhatsApp Payment Integration and KYC Automation",
+    //       excerpt:
+    //         "Explore how fintech companies are revolutionizing payments and KYC processes through WhatsApp integration. Real-world case studies and implementation guides.",
+    //       author: "Alex Morgan",
+    //       date: "Dec 9, 2024",
+    //       readTime: "12 min read",
+    //       image: "/placeholder.svg?height=300&width=500",
+    //       tags: ["Fintech", "Payments", "KYC"],
+    //       slug: "fintech-innovation-whatsapp-payment-integration-and-kyc-automation",
+    //     },
+    //     {
+    //       title: "Insurance Claims Processing: Streamlining with WhatsApp Automation",
+    //       excerpt:
+    //         "Transform insurance claims processing with WhatsApp automation. Reduce processing time by 70% and improve customer satisfaction significantly.",
+    //       author: "Jennifer Lee",
+    //       date: "Dec 6, 2024",
+    //       readTime: "8 min read",
+    //       image: "/placeholder.svg?height=300&width=500",
+    //       tags: ["Insurance", "Claims", "Automation"],
+    //       slug: "insurance-claims-processing-streamlining-with-whatsapp-automation",
+    //     },
       ],
     },
     "real-estate": {
@@ -144,38 +144,38 @@ export default function CategoryBlogClient() {
       bgColor: "bg-orange-50",
       blogs: [
         {
-          title: "How Real Estate Agents Generate 50+ Leads Daily with WhatsApp",
+          title: "Real Estate Marketing Redefined with WhatsApp Virtual Tours",
           excerpt:
             "Learn the exact WhatsApp lead generation system that successful real estate agents use to dominate their market. Includes templates and automation workflows.",
-          author: "Robert Wilson",
-          date: "Dec 16, 2024",
+          author: "VasifyTech Team",
+          date: "Feb 16, 2025",
           readTime: "11 min read",
           image: "/placeholder.svg?height=300&width=500",
           tags: ["Lead Generation", "Real Estate", "Automation"],
-          slug: "how-real-estate-agents-generate-50-leads-daily-with-whatsapp",
+          slug: "Real-Estate-Marketing-Redefined-with-WhatsApp-Virtual-Tours",
         },
-        {
-          title: "Property Showcase Revolution: Virtual Tours via WhatsApp",
-          excerpt:
-            "Transform property showcasing with WhatsApp virtual tours. Engage prospects with interactive property presentations and instant booking systems.",
-          author: "Maria Garcia",
-          date: "Dec 13, 2024",
-          readTime: "9 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Virtual Tours", "Property", "Showcase"],
-          slug: "property-showcase-revolution-virtual-tours-via-whatsapp",
-        },
-        {
-          title: "Real Estate CRM Integration: Managing Clients Through WhatsApp",
-          excerpt:
-            "Complete guide to integrating WhatsApp with your real estate CRM. Track leads, automate follow-ups, and close more deals efficiently.",
-          author: "Tom Anderson",
-          date: "Dec 10, 2024",
-          readTime: "13 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["CRM", "Integration", "Client Management"],
-          slug: "real-estate-crm-integration-managing-clients-through-whatsapp",
-        },
+        // {
+        //   title: "Property Showcase Revolution: Virtual Tours via WhatsApp",
+        //   excerpt:
+        //     "Transform property showcasing with WhatsApp virtual tours. Engage prospects with interactive property presentations and instant booking systems.",
+        //   author: "Maria Garcia",
+        //   date: "Dec 13, 2024",
+        //   readTime: "9 min read",
+        //   image: "/placeholder.svg?height=300&width=500",
+        //   tags: ["Virtual Tours", "Property", "Showcase"],
+        //   slug: "property-showcase-revolution-virtual-tours-via-whatsapp",
+        // },
+        // {
+        //   title: "Real Estate CRM Integration: Managing Clients Through WhatsApp",
+        //   excerpt:
+        //     "Complete guide to integrating WhatsApp with your real estate CRM. Track leads, automate follow-ups, and close more deals efficiently.",
+        //   author: "Tom Anderson",
+        //   date: "Dec 10, 2024",
+        //   readTime: "13 min read",
+        //   image: "/placeholder.svg?height=300&width=500",
+        //   tags: ["CRM", "Integration", "Client Management"],
+        //   slug: "real-estate-crm-integration-managing-clients-through-whatsapp",
+        // },
       ],
     },
     "education-coaching": {
@@ -267,38 +267,38 @@ export default function CategoryBlogClient() {
       bgColor: "bg-gray-50",
       blogs: [
         {
-          title: "WhatsApp API Mastery: Building Custom Business Solutions",
+          title: "Redefining In-Store Shopping: QR Codes + WhatsApp",
           excerpt:
             "Master WhatsApp Business API development. Build custom integrations, webhooks, and advanced automation systems for enterprise clients.",
-          author: "Tech Team VasifyTech",
-          date: "Dec 16, 2024",
+          author: "VasifyTech Team",
+          date: "Mar 25, 2025",
           readTime: "18 min read",
           image: "/placeholder.svg?height=300&width=500",
           tags: ["API", "Development", "Custom Solutions"],
-          slug: "whatsapp-api-mastery-building-custom-business-solutions",
+          slug: "redefining-in-store-shopping-qr-codes-whatsapp",
         },
         {
-          title: "Advanced Chatbot Development: AI-Powered WhatsApp Assistants",
+          title: "Transforming Hotel Bookings with WhatsApp Catalogues",
           excerpt:
             "Create intelligent WhatsApp chatbots using AI and machine learning. Handle complex queries and provide personalized responses.",
-          author: "AI Development Team",
-          date: "Dec 13, 2024",
+          author: "VasifyTech Team",
+          date: "April 10, 2025",
           readTime: "16 min read",
           image: "/placeholder.svg?height=300&width=500",
           tags: ["AI", "Chatbots", "Machine Learning"],
-          slug: "advanced-chatbot-development-ai-powered-whatsapp-assistants",
+          slug: "Transforming-Hotel-Bookings-with-WhatsApp-Catalogues",
         },
-        {
-          title: "Enterprise WhatsApp Solutions: Scaling for Large Organizations",
-          excerpt:
-            "Design and implement WhatsApp solutions for large enterprises. Multi-department integration, advanced analytics, and compliance management.",
-          author: "Enterprise Solutions Team",
-          date: "Dec 10, 2024",
-          readTime: "20 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Enterprise", "Scaling", "Integration"],
-          slug: "enterprise-whatsapp-solutions-scaling-for-large-organizations",
-        },
+        // {
+        //   title: "Enterprise WhatsApp Solutions: Scaling for Large Organizations",
+        //   excerpt:
+        //     "Design and implement WhatsApp solutions for large enterprises. Multi-department integration, advanced analytics, and compliance management.",
+        //   author: "Enterprise Solutions Team",
+        //   date: "Dec 10, 2024",
+        //   readTime: "20 min read",
+        //   image: "/placeholder.svg?height=300&width=500",
+        //   tags: ["Enterprise", "Scaling", "Integration"],
+        //   slug: "enterprise-whatsapp-solutions-scaling-for-large-organizations",
+        // },
       ],
     },
   }
@@ -417,7 +417,7 @@ export default function CategoryBlogClient() {
                       ))}
                     </div>
                     <Link href={`/blogs/${category}/${blog.slug}`}>
-                      <Button                      >
+                      <Button>
                         Read More
                       </Button>
                     </Link>

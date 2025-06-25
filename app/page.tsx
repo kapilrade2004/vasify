@@ -190,7 +190,6 @@ export default function HomePage() {
               <div className="space-y-6">
                 <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                   Custom <span className="text-green-500">WhatsApp Solutions</span>, <br />for Every Industry
-                  We Built What the World Needed
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
                   Custom CRM, chatbots, and automated flows built on WhatsApp — made for retail, healthcare, real estate, and more.{" "}

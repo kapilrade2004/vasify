@@ -54,6 +54,10 @@ export default function MobileNav() {
                 >
                   Services
                 </Link>
+                <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+                  Blogs
+                </Link>
+
                 <Link
                   href="/testimonials"
                   className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors py-2 border-b border-gray-100"
