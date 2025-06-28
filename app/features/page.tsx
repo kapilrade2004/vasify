@@ -99,50 +99,6 @@ export default function FeaturesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-green-100 z-50">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-              <MessageCircle className="h-6 w-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold text-gray-900">VasifyTech</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/features" className="text-green-600 font-semibold">
-              Features
-            </Link>
-            <Link href="/how-it-works" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-              How it Works
-            </Link>
-            <Link href="/services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-              Services
-            </Link>
-            <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-              Blogs
-            </Link>
-            <Link href="/testimonials" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-              Testimonials
-            </Link>
-            <Link href="/faq" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-              FAQ
-            </Link>
-            <Link href="/contact">
-              <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium">
-                Get Started
-              </Button>
-            </Link>
-          </div>
-
-          {/* Mobile Navigation */}
-          <div className="md:hidden">
-            <MobileNav />
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
         <div className="container mx-auto text-center">

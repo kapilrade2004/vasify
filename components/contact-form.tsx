@@ -111,17 +111,12 @@ export default function ContactForm() {
             >
               <option value="">Select a service</option>
               <option value="whatsapp">WhatsApp Automation</option>
-              <option value="website">Website Development</option>
-              <option value="mobile">Mobile App Development</option>
               <option value="crm">CRM Solutions</option>
-              <option value="erp">ERP Systems</option>
+              <option value="WhatsApp E-commerce">WhatsApp E-commerce</option>
               <option value="saas">SaaS Development</option>
-              <option value="software">Custom Software</option>
-              <option value="marketing">Digital Marketing</option>
-              <option value="ecommerce">E-commerce Development</option>
-              <option value="uiux">UI/UX Design</option>
-              <option value="cybersecurity">Cybersecurity Solutions</option>
-              <option value="cloud">Cloud Solutions</option>
+              <option value="Analytics & ROI Dashboard">Analytics & ROI Dashboard</option>
+              <option value="QR Code Journeys">QR Code Journeys</option>
+              <option value="Developer Tools & APIs">Developer Tools & APIs</option>
               <option value="all">All Services</option>
             </select>
           </div>

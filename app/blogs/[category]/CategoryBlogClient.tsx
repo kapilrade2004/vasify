@@ -27,7 +27,7 @@ export default function CategoryBlogClient() {
           author: "VasifyTech Team",
           date: "Jan 20, 2025",
           readTime: "8 min read",
-          image: "/placeholder.svg?height=300&width=500",
+          image: "/eblog1.jpg?height=300&width=500",
           tags: ["Automation", "Sales", "E-commerce"],
           slug: "How-WhatsApp-Catalogues-Are-Overtaking-Traditional-E-Commerce-in-India",
         },
@@ -62,37 +62,15 @@ export default function CategoryBlogClient() {
       bgColor: "bg-purple-50",
       blogs: [
         {
-          title: "FMCG Brand Success: WhatsApp Marketing That Drives Repeat Purchases",
+          title: "Redefining In-Store Shopping: QR Codes + WhatsApp",
           excerpt:
             "Learn how leading FMCG brands use WhatsApp to build customer loyalty, announce new products, and drive repeat purchases through personalized messaging.",
-          author: "David Kumar",
-          date: "Dec 14, 2024",
+          author: "VasifyTech Team",
+          date: "May 20, 2025",
           readTime: "10 min read",
-          image: "/placeholder.svg?height=300&width=500",
+          image: "/fblog1.jpg?height=300&width=500",
           tags: ["FMCG", "Marketing", "Loyalty"],
-          slug: "fmcg-brand-success-whatsapp-marketing-that-drives-repeat-purchases",
-        },
-        {
-          title: "Retail Store Integration: Connecting Online and Offline with WhatsApp",
-          excerpt:
-            "Bridge the gap between your physical stores and digital presence. Implement click-and-collect, store locator, and inventory updates via WhatsApp.",
-          author: "Emma Thompson",
-          date: "Dec 11, 2024",
-          readTime: "9 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Retail", "Integration", "Omnichannel"],
-          slug: "retail-store-integration-connecting-online-and-offline-with-whatsapp",
-        },
-        {
-          title: "Seasonal Campaigns: Maximizing FMCG Sales During Peak Periods",
-          excerpt:
-            "Strategies for running successful WhatsApp campaigns during festivals, holidays, and seasonal peaks. Includes templates and automation workflows.",
-          author: "Raj Patel",
-          date: "Dec 8, 2024",
-          readTime: "7 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Campaigns", "Seasonal", "Sales"],
-          slug: "seasonal-campaigns-maximizing-fmcg-sales-during-peak-periods",
+          slug: "redefining-in-store-shopping-qr-codes-whatsapp",
         },
       ],
     },
@@ -109,7 +87,7 @@ export default function CategoryBlogClient() {
           author: "VasifyTech Team",
           date: "Jan 30, 2025",
           readTime: "15 min read",
-          image: "/placeholder.svg?height=300&width=500",
+          image: "/bfblog1.jpeg?height=300&width=500",
           tags: ["Banking", "Security", "Compliance"],
           slug: "How-Fintech-Startups-Are-Streamlining-Lending-via-WhatsApp",
         },
@@ -150,7 +128,7 @@ export default function CategoryBlogClient() {
           author: "VasifyTech Team",
           date: "Feb 16, 2025",
           readTime: "11 min read",
-          image: "/placeholder.svg?height=300&width=500",
+          image: "/rblog1.jpeg?height=300&width=500",
           tags: ["Lead Generation", "Real Estate", "Automation"],
           slug: "Real-Estate-Marketing-Redefined-with-WhatsApp-Virtual-Tours",
         },
@@ -185,39 +163,17 @@ export default function CategoryBlogClient() {
       bgColor: "bg-indigo-50",
       blogs: [
         {
-          title: "EdTech Success: Student Engagement Through WhatsApp Automation",
+          title: "Parent Communication Simplified: How WhatsApp Is Revolutionizing Education Engagement",
           excerpt:
             "Boost student engagement and retention with WhatsApp automation. Learn about assignment reminders, progress tracking, and parent communication systems.",
-          author: "Dr. Anita Desai",
-          date: "Dec 15, 2024",
+          author: "VasifyTech Team",
+          date: "May 30, 2025",
           readTime: "10 min read",
-          image: "/placeholder.svg?height=300&width=500",
+          image: "/edblog1.jpeg?height=300&width=500",
           tags: ["EdTech", "Student Engagement", "Automation"],
-          slug: "edtech-success-student-engagement-through-whatsapp-automation",
+          slug: "Parent-Communication-Simplified-How-WhatsApp-Is-Revolutionizing-Education-Engagement",
         },
-        {
-          title: "Coaching Business Growth: WhatsApp Marketing for Course Creators",
-          excerpt:
-            "Scale your coaching business with WhatsApp marketing strategies. From lead nurturing to course delivery, maximize your reach and revenue.",
-          author: "Kevin Brown",
-          date: "Dec 12, 2024",
-          readTime: "8 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Coaching", "Course Creation", "Marketing"],
-          slug: "coaching-business-growth-whatsapp-marketing-for-course-creators",
-        },
-        {
-          title: "Admission Process Automation: Streamlining Educational Enrollment",
-          excerpt:
-            "Automate your admission process with WhatsApp. Handle inquiries, document collection, and enrollment confirmation seamlessly.",
-          author: "Dr. Suresh Kumar",
-          date: "Dec 9, 2024",
-          readTime: "12 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Admissions", "Enrollment", "Education"],
-          slug: "admission-process-automation-streamlining-educational-enrollment",
-        },
-      ],
+     ],
     },
     "healthcare-wellness": {
       title: "Healthcare & Wellness",
@@ -226,37 +182,15 @@ export default function CategoryBlogClient() {
       bgColor: "bg-red-50",
       blogs: [
         {
-          title: "Healthcare Revolution: Patient Communication via WhatsApp",
+          title: "How Multi-Clinic Chains Are Transforming Patient Experience with WhatsApp",
           excerpt:
             "Transform patient communication with secure WhatsApp solutions. Handle appointments, reminders, and follow-ups while maintaining HIPAA compliance.",
-          author: "Dr. Rachel Green",
-          date: "Dec 14, 2024",
+          author: "VasifyTech Team",
+          date: "June 20, 2025",
           readTime: "14 min read",
-          image: "/placeholder.svg?height=300&width=500",
+          image: "/hblog1.jpeg?height=300&width=500",
           tags: ["Healthcare", "Patient Communication", "HIPAA"],
-          slug: "healthcare-revolution-patient-communication-via-whatsapp",
-        },
-        {
-          title: "Telemedicine Integration: WhatsApp for Remote Consultations",
-          excerpt:
-            "Implement WhatsApp for telemedicine consultations. Secure video calls, prescription delivery, and patient monitoring made simple.",
-          author: "Dr. James Miller",
-          date: "Dec 11, 2024",
-          readTime: "11 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Telemedicine", "Remote Consultation", "Healthcare"],
-          slug: "telemedicine-integration-whatsapp-for-remote-consultations",
-        },
-        {
-          title: "Wellness Programs: Automated Health Coaching Through WhatsApp",
-          excerpt:
-            "Create automated wellness programs using WhatsApp. Daily health tips, progress tracking, and personalized coaching at scale.",
-          author: "Dr. Lisa Wang",
-          date: "Dec 8, 2024",
-          readTime: "9 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["Wellness", "Health Coaching", "Automation"],
-          slug: "wellness-programs-automated-health-coaching-through-whatsapp",
+          slug: "How-Multi-Clinic-Chains-Are-Transforming-Patient-Experience-with-WhatsApp",
         },
       ],
     },
@@ -267,25 +201,14 @@ export default function CategoryBlogClient() {
       bgColor: "bg-gray-50",
       blogs: [
         {
-          title: "Redefining In-Store Shopping: QR Codes + WhatsApp",
+          title: "Transforming Hotel Bookings with WhatsApp Catalogues",
           excerpt:
             "Master WhatsApp Business API development. Build custom integrations, webhooks, and advanced automation systems for enterprise clients.",
           author: "VasifyTech Team",
           date: "Mar 25, 2025",
           readTime: "18 min read",
-          image: "/placeholder.svg?height=300&width=500",
+          image: "/cwblog1.png?height=300&width=500",
           tags: ["API", "Development", "Custom Solutions"],
-          slug: "redefining-in-store-shopping-qr-codes-whatsapp",
-        },
-        {
-          title: "Transforming Hotel Bookings with WhatsApp Catalogues",
-          excerpt:
-            "Create intelligent WhatsApp chatbots using AI and machine learning. Handle complex queries and provide personalized responses.",
-          author: "VasifyTech Team",
-          date: "April 10, 2025",
-          readTime: "16 min read",
-          image: "/placeholder.svg?height=300&width=500",
-          tags: ["AI", "Chatbots", "Machine Learning"],
           slug: "Transforming-Hotel-Bookings-with-WhatsApp-Catalogues",
         },
         // {
@@ -307,50 +230,6 @@ export default function CategoryBlogClient() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-green-100 z-50">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-              <MessageCircle className="h-6 w-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold text-gray-900">VasifyTech</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/features" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-              Features
-            </Link>
-            <Link href="/how-it-works" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-              How it Works
-            </Link>
-            <Link href="/services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-              Services
-            </Link>
-            <Link href="/testimonials" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-              Testimonials
-            </Link>
-            <Link href="/faq" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-              FAQ
-            </Link>
-            <Link href="/blogs" className="text-green-600 hover:text-green-700 font-medium transition-colors">
-              Blogs
-            </Link>
-            <Link href="/contact">
-              <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium">
-                Get Started
-              </Button>
-            </Link>
-          </div>
-
-          {/* Mobile Navigation */}
-          <div className="md:hidden">
-            <MobileNav />
-          </div>
-        </div>
-      </nav>
-
       {/* Breadcrumb & Header */}
       <section className="pt-32 pb-12 px-6">
         <div className="container mx-auto">

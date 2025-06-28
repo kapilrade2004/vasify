@@ -4,6 +4,8 @@ import "./globals.css"
 import WhatsAppButton from "@/components/whatsapp-button"
 import WhatsAppQRFloating from "@/components/whatsapp-qr-floating"
 import { Inter } from "next/font/google"
+import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -46,11 +48,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/logo.jpg" />
         <link rel="canonical" href="https://vasifytech.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#10b981" />
       </head>
-      <body className={inter.className}>{children}
+      <body className={inter.className}> <Navbar /> {children} <Footer />
         <WhatsAppButton />
         <WhatsAppQRFloating />
       </body>
