@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, DollarSign, User } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -54,9 +54,26 @@ export default function MobileNav() {
                 >
                   Services
                 </Link>
-                <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-                  Blogs
+                <Link
+                  href="/pricing"
+                  className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
+                >
+                  <DollarSign className="h-4 w-4" />
+                  Pricing
                 </Link>
+
+                <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+                  Industries
+                </Link>
+                <a
+                  href="https://bot.greentickapi.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
+                >
+                  <User className="h-4 w-4" />
+                  User
+                </a>
 
                 <Link
                   href="/testimonials"

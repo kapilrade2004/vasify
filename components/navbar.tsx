@@ -6,6 +6,7 @@ import Link from "next/link"
 import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import MobileNav from "@/components/mobile-nav"
+import { DollarSign, User} from "lucide-react"
 
 const Navbar = () => {
     return (
@@ -13,7 +14,7 @@ const Navbar = () => {
             <div className="container mx-auto px-6 py-4 flex items-center justify-between">
                 <Link href="/" className="flex items-center space-x-3">
                     <Image
-                        src="/logo.jpg"  // adjust to your actual path (e.g. "/images/logo.png")
+                        src="/logo.jpg"
                         alt="VasifyTech Logo"
                         width={200}
                         height={150}
@@ -32,9 +33,26 @@ const Navbar = () => {
                     <Link href="/services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
                         Services
                     </Link>
+                    <Link
+                        href="/pricing"
+                        className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
+                    >
+                        <DollarSign className="h-4 w-4" />
+                        Pricing
+                    </Link>
                     <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
                         Industries
                     </Link>
+                    <a
+                        href="https://bot.greentickapi.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
+                    >
+                        <User className="h-4 w-4" />
+                        User
+                    </a>
+
                     <Link href="/testimonials" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
                         Testimonials
                     </Link>
