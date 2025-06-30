@@ -15,9 +15,9 @@ export default function PricingPage() {
       popular: false,
       showConversationCharges: false,
       conversationCharges: {
-        marketing: "charged separately",
-        utility: "charged separately",
-        authentication: "charged separately",
+        marketing: "As per usage",
+        utility: "As per usage",
+        authentication: "As per usage",
       },
       service: "Unlimited Free Service Conversations",
       features: [
@@ -44,9 +44,9 @@ export default function PricingPage() {
       popular: false,
       showConversationCharges: true,
       conversationCharges: {
-        marketing: "charged separately",
-        utility: "charged separately",
-        authentication: "charged separately",
+        marketing: "As per usage",
+        utility: "As per usage",
+        authentication: "As per usage",
       },
       service: "Unlimited Free Service Conversations",
       features: [
@@ -77,9 +77,9 @@ export default function PricingPage() {
       popular: true,
       showConversationCharges: true,
       conversationCharges: {
-        marketing: "charged separately",
-        utility: "charged separately",
-        authentication: "charged separately",
+        marketing: "As per usage",
+        utility: "As per usage",
+        authentication: "As per usage",
       },
       service: "Unlimited Free Service Conversations",
       features: [
@@ -110,9 +110,9 @@ export default function PricingPage() {
       popular: false,
       showConversationCharges: true,
       conversationCharges: {
-        marketing: "charged separately",
-        utility: "charged separately",
-        authentication: "charged separately",
+        marketing: "As per usage",
+        utility: "As per usage",
+        authentication: "As per usage",
       },
       service: "Unlimited Free Service Conversations",
       features: [
