@@ -131,7 +131,7 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white mt-20">
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">Simple, Transparent Pricing</h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
@@ -139,22 +139,13 @@ export default function PricingPage() {
             hidden fees.
           </p>
           <div className="flex justify-center items-center gap-4 mb-12">
-            <span className="text-gray-600">Monthly</span>
-            <div className="relative">
-              <input type="checkbox" className="sr-only" />
-              <div className="w-12 h-6 bg-gray-300 rounded-full shadow-inner"></div>
-              <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow transition-transform"></div>
-            </div>
-            <span className="text-gray-600">
-              Yearly
-              <Badge className="ml-2 bg-green-100 text-green-800">Save 20%</Badge>
-            </span>
+            <span className="text-gray-600">Monthly Charges</span>
           </div>
         </div>
       </section>
 
       {/* Pricing Plans */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-0 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {plans.map((plan, index) => (

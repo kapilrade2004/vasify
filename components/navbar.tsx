@@ -6,7 +6,7 @@ import Link from "next/link"
 import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import MobileNav from "@/components/mobile-nav"
-import { DollarSign, User} from "lucide-react"
+import { DollarSign, User } from "lucide-react"
 
 const Navbar = () => {
     return (
@@ -52,13 +52,6 @@ const Navbar = () => {
                         <User className="h-4 w-4" />
                         User
                     </a>
-
-                    <Link href="/testimonials" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-                        Testimonials
-                    </Link>
-                    <Link href="/faq" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-                        FAQ
-                    </Link>
                     <Link href="/contact">
                         <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium">
                             Get Started

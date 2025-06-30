@@ -13,7 +13,7 @@ export async function generateStaticParams() {
     "real-estate",
     "education-coaching",
     "healthcare-wellness",
-    "custom-whatsapp",
+    "hospitality-travel",
   ]
 
   const blogSlugs: Record<string, string[]> = {
@@ -35,7 +35,7 @@ export async function generateStaticParams() {
     "healthcare-wellness": [
       "How-Multi-Clinic-Chains-Are-Transforming-Patient-Experience-with-WhatsApp",
     ],
-    "custom-whatsapp": [
+    "hospitality-travel": [
       "Transforming-Hotel-Bookings-with-WhatsApp-Catalogues",
     ],
   }
@@ -341,7 +341,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         `,
       },
     },
-    "custom-whatsapp": {
+    "hospitality-travel": {
       "Transforming-Hotel-Bookings-with-WhatsApp-Catalogues": {
         title: "Transforming Hotel Bookings with WhatsApp Catalogues",
         author: "VasifyTech Team",
@@ -350,76 +350,112 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         image: "/cwblog1.png?height=400&width=800",
         tags: ["FMCG", "Marketing", "Loyalty"],
         content: `
-<h2>Real Estate Marketing Redefined with WhatsApp Virtual Tours</h2>
+<h2>How Hotels Are Boosting Direct Bookings with WhatsApp Catalogues</h2>
 
-<p><strong>Welcome to the age of chat-driven property exploration.</strong></p>
+<p>Say goodbye to high OTA commissions and hello to direct revenue with WhatsApp-powered bookings.</p>
 
-<h2>Traditional Methods Fall Short</h2>
-<p>Modern homebuyers, particularly NRIs and digital-native millennials, expect fast, immersive, and mobile-ready experiences. Static brochures and site visits no longer cut it in a time-crunched, remote world.</p>
+<h2>🏨 Why Hotels Are Rethinking Their Booking Strategy</h2>
+<p>Hotel owners, especially in India and Southeast Asia, are increasingly frustrated with the rising commission costs of OTAs like Booking.com, Agoda, and MakeMyTrip. While these platforms offer visibility, they also eat into profits and disconnect hotels from their guests.</p>
+<p>That’s where WhatsApp Business Catalogues come in—a low-cost, high-impact way for hotels to drive direct bookings, showcase room packages, and engage with guests—all in one conversation.</p>
 
-<h2>WhatsApp-Powered Virtual Tours: The New Norm</h2>
-<p>This approach lets real estate marketers deliver 360° or 3D walkthroughs right inside WhatsApp, offering an engaging experience with:</p>
+<h2>💡 What Is a WhatsApp Catalogue for Hotels?</h2>
+<p>A WhatsApp Catalogue lets businesses list products or services directly inside WhatsApp chats. For hotels, this means:</p>
 <ul>
-  <li>Instant virtual viewing links</li>
-  <li>Real-time expert chats</li>
-  <li>AI-generated recommendations</li>
-  <li>Brochure and floor plan sharing</li>
-  <li>Scheduling and payment options—all within chat</li>
+  <li>Showing room types with images & descriptions</li>
+  <li>Listing seasonal offers or packages</li>
+  <li>Accepting inquiries and confirmations within the app</li>
+  <li>Sharing UPI/payment links or booking forms</li>
+</ul>
+<p>No app download. No logins. Just tap, browse, and book—right inside WhatsApp.</p>
+
+<h2>📲 How WhatsApp Catalogues Drive Direct Hotel Bookings</h2>
+
+<h3>✅ 1. Personalized Guest Experience</h3>
+<p>Unlike websites or OTAs, WhatsApp allows real-time, one-on-one engagement. You can:</p>
+<ul>
+  <li>Offer personalized room suggestions</li>
+  <li>Answer guest queries instantly</li>
+  <li>Share exclusive WhatsApp-only discounts</li>
 </ul>
 
-<h2>Advantages of WhatsApp Tours for Property Sellers</h2>
-
-<h3>1. Engagement Like Never Before</h3>
+<h3>✅ 2. Instant Booking Without the Tech Hassle</h3>
+<p>Hotels often struggle with outdated websites or expensive booking engines. With WhatsApp:</p>
 <ul>
-  <li>98% message open rates</li>
-  <li>45–60% click-through rates</li>
+  <li>Guests scan a QR or click a link</li>
+  <li>Browse your catalogue of rooms, amenities, offers</li>
+  <li>Confirm bookings directly in chat</li>
+</ul>
+<p>No separate booking engine required.</p>
+
+<h3>✅ 3. Boosting Revenue Through Upselling</h3>
+<p>Once a booking starts, your chatbot or team can offer upgrades, spa packages, or special experiences—raising average order value.</p>
+
+<h3>✅ 4. Cutting Commission Costs</h3>
+<p>By driving bookings via WhatsApp:</p>
+<ul>
+  <li>You own the guest data</li>
+  <li>Avoid OTA middlemen</li>
+  <li>Retarget past guests with WhatsApp broadcasts</li>
 </ul>
 
-<h3>2. No App or Signup Barriers</h3>
-<p>Buyers access the tour with a single click—no logins or downloads.</p>
-
-<h3>3. Lead Capture on Autopilot</h3>
+<h2>📈 Real-World Results: Case Snapshot</h2>
+<p>A heritage resort in Rajasthan switched from OTA-first to WhatsApp-first:</p>
 <ul>
-  <li>Buyer name and budget</li>
-  <li>Preferred property type</li>
-  <li>Location and contact info</li>
+  <li>Created a WhatsApp Catalogue with 5 room types & seasonal packages</li>
+  <li>Placed QR codes on Instagram, reception, and flyers</li>
+  <li>Started chats directly from website CTAs</li>
+</ul>
+<p><strong>In 60 days:</strong></p>
+<ul>
+  <li>43% more direct bookings</li>
+  <li>₹3.5 lakhs saved in OTA commissions</li>
+  <li>2X repeat bookings via WhatsApp campaigns</li>
 </ul>
 
-<h3>4. 24/7 Sales Assistance</h3>
-<p>Bots respond instantly, even during off-hours—ensuring no lead is lost.</p>
-
-<h2>Use Cases for Builders, Brokers, and NRIs</h2>
-<ul>
-  <li><strong>Builders:</strong> QR-based marketing, under-construction previews</li>
-  <li><strong>Brokers:</strong> Easy listing distribution, pre-qualified leads</li>
-  <li><strong>NRIs:</strong> End-to-end digital journey—tour, documents, bookings</li>
-</ul>
-
-<h2>Success Story</h2>
-<p>A Mumbai-based developer embedded WhatsApp tour links in Google Ads and Instagram:</p>
-<ul>
-  <li>2,500 tour views</li>
-  <li>430 inquiries</li>
-  <li>76 booked visits</li>
-  <li>18 confirmed sales</li>
-</ul>
-
-<h2>Launch Checklist</h2>
+<h2>🛠️ How to Get Started With WhatsApp Catalogues for Your Hotel</h2>
 <ol>
-  <li>Build a virtual tour with Matterport or similar tools</li>
-  <li>Connect it with WhatsApp API and chatbot</li>
-  <li>Promote via QR codes, SMS, and social media</li>
+  <li>Use a Verified WhatsApp Business API provider</li>
+  <li>Upload room types, images, pricing, and descriptions</li>
+  <li>Set up auto-replies or a lead-qualifying bot</li>
+  <li>Add catalogue links or QR codes to your website, Google Profile, Instagram, Facebook, front desk, or restaurant</li>
+  <li>Integrate UPI pay links or booking forms</li>
 </ol>
+<p>Platforms like [Your Brand Name] can launch this for you in under 7 days.</p>
 
-<h2>Combine With:</h2>
+<h2>🧩 Bonus: Use Cases Across Hotel Operations</h2>
+<table>
+  <tr>
+    <th>Area</th>
+    <th>WhatsApp Solution</th>
+  </tr>
+  <tr>
+    <td>Front Desk</td>
+    <td>Guest check-in/check-out assistance</td>
+  </tr>
+  <tr>
+    <td>Housekeeping</td>
+    <td>Room service & cleaning requests via QR</td>
+  </tr>
+  <tr>
+    <td>F&B</td>
+    <td>WhatsApp menus + table bookings</td>
+  </tr>
+  <tr>
+    <td>Marketing</td>
+    <td>Broadcast offers, reviews, re-engagement</td>
+  </tr>
+</table>
+
+<h2>🔚 Final Thoughts: WhatsApp Is the New Front Desk</h2>
+<p>For mobile-first travelers, WhatsApp isn’t just a chat tool—it’s a revenue engine. Catalogues let guests browse & book easily, while you raise margins and build loyalty.</p>
+<p>Whether you’re a boutique hotel, resort, homestay, or hostel—embracing WhatsApp Catalogues can transform how you drive bookings, upsell, and connect with guests.</p>
+
+<h3>✅ Ready to Turn Chats Into Bookings?</h3>
 <ul>
-  <li>WhatsApp CRM for lead tracking</li>
-  <li>Auto-replies with PDF brochures</li>
-  <li>Real-time catalog of listings</li>
+  <li>💼 Try our WhatsApp Catalogue Builder (Free for 7 Days)</li>
+  <li>📞 Talk to a WhatsApp Hospitality Expert</li>
+  <li>📲 Launch in 1 week, no IT team needed</li>
 </ul>
-
-<h2>Final Thoughts</h2>
-<p>This is more than a marketing tactic—it’s a full-service sales funnel. For apartments, plots, or commercial real estate, WhatsApp virtual tours are a winning investment.</p>
         `,
       },
     },
@@ -636,7 +672,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
             </Link>
             <span className="mx-2 text-gray-400">/</span>
             <Link
-              href={`/ blogs / ${category}`}
+              href={`/blogs/${category}`}
               className="text-gray-600 hover:text-gray-900 transition-colors capitalize"
             >
               {category.replace("-", " ")}

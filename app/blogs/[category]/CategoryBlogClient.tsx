@@ -194,8 +194,8 @@ export default function CategoryBlogClient() {
         },
       ],
     },
-    "custom-whatsapp": {
-      title: "Custom WhatsApp",
+    "hospitality-travel": {
+      title: "Hospitality & Travel",
       description: "Advanced WhatsApp customization and development solutions",
       color: "text-gray-600",
       bgColor: "bg-gray-50",
@@ -309,7 +309,7 @@ export default function CategoryBlogClient() {
       </section>
 
       {/* Related Categories */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-8 px-6 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Explore Other Industries</h2>

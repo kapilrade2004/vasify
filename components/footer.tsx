@@ -66,6 +66,11 @@ const Footer = () => {
                                     Contact
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/testimonials" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+                                    Testimonials
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                     <div>

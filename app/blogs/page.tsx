@@ -17,7 +17,6 @@ export default function BlogsPage() {
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-50",
       iconColor: "text-blue-600",
-      posts: 12,
     },
     {
       id: "retail-fmcg",
@@ -27,7 +26,6 @@ export default function BlogsPage() {
       color: "from-purple-500 to-purple-600",
       bgColor: "bg-purple-50",
       iconColor: "text-purple-600",
-      posts: 8,
     },
     {
       id: "bfsi-fintech",
@@ -37,7 +35,6 @@ export default function BlogsPage() {
       color: "from-green-500 to-green-600",
       bgColor: "bg-green-50",
       iconColor: "text-green-600",
-      posts: 10,
     },
     {
       id: "real-estate",
@@ -47,7 +44,6 @@ export default function BlogsPage() {
       color: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-50",
       iconColor: "text-orange-600",
-      posts: 15,
     },
     {
       id: "education-coaching",
@@ -57,7 +53,6 @@ export default function BlogsPage() {
       color: "from-indigo-500 to-indigo-600",
       bgColor: "bg-indigo-50",
       iconColor: "text-indigo-600",
-      posts: 9,
     },
     {
       id: "healthcare-wellness",
@@ -67,17 +62,15 @@ export default function BlogsPage() {
       color: "from-red-500 to-red-600",
       bgColor: "bg-red-50",
       iconColor: "text-red-600",
-      posts: 7,
     },
     {
-      id: "custom-whatsapp",
-      title: "Custom WhatsApp",
+      id: "hospitality-travel",
+      title: "Hospitality & Travel",
       description: "Advanced WhatsApp customization and development solutions",
       icon: Settings,
       color: "from-gray-500 to-gray-600",
       bgColor: "bg-gray-50",
       iconColor: "text-gray-600",
-      posts: 11,
     },
   ]
 
@@ -97,7 +90,7 @@ export default function BlogsPage() {
       </section>
 
       {/* Blog Categories */}
-      <section className="py-20 px-6">
+      <section className="py-0 px-6">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Choose Your Industry</h2>
@@ -117,7 +110,6 @@ export default function BlogsPage() {
                       <category.icon className={`h-10 w-10 ${category.iconColor}`} />
                     </div>
                     <CardTitle className="text-2xl font-bold text-gray-900 mb-2">{category.title}</CardTitle>
-                    <div className="text-sm text-gray-500 font-medium">{category.posts} Articles</div>
                   </CardHeader>
                   <CardContent className="text-center">
                     <p className="text-gray-600 mb-6">{category.description}</p>
@@ -145,28 +137,28 @@ export default function BlogsPage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
-                title: "10 WhatsApp Automation Strategies That Increased Sales by 300%",
+                title: "How WhatsApp Catalogues Are Overtaking Traditional E-Commerce in India",
                 category: "E-commerce & D2C",
                 readTime: "8 min read",
-                image: "/placeholder.svg?height=200&width=400",
+                image: "/eblog1.jpg?height=200&width=400",
                 excerpt:
                   "Discover proven automation strategies that top e-commerce brands use to boost their sales through WhatsApp.",
                 link: "/blogs/ecommerce-d2c",
               },
               {
-                title: "How Real Estate Agents Generate 50+ Leads Daily with WhatsApp",
+                title: "Redefining In-Store Shopping: QR Codes + WhatsApp",
                 category: "Real Estate",
                 readTime: "6 min read",
-                image: "/placeholder.svg?height=200&width=400",
+                image: "/fblog1.jpg?height=200&width=400",
                 excerpt:
                   "Learn the exact WhatsApp lead generation system that successful real estate agents use to dominate their market.",
                 link: "/blogs/real-estate",
               },
               {
-                title: "Banking on WhatsApp: Secure Customer Communication Best Practices",
+                title: "How Fintech Startups Are Streamlining Lending via WhatsApp",
                 category: "BFSI & Fintech",
                 readTime: "10 min read",
-                image: "/placeholder.svg?height=200&width=400",
+                image: "/bfblog1.jpeg?height=200&width=400",
                 excerpt:
                   "Comprehensive guide to implementing secure WhatsApp solutions for banking and financial services.",
                 link: "/blogs/bfsi-fintech",

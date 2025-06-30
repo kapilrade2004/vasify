@@ -8,7 +8,7 @@ export async function generateStaticParams() {
     { category: "real-estate" },
     { category: "education-coaching" },
     { category: "healthcare-wellness" },
-    { category: "custom-whatsapp" },
+    { category: "hospitality-travel" },
   ]
 }
 

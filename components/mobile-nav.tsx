@@ -74,21 +74,6 @@ export default function MobileNav() {
                   <User className="h-4 w-4" />
                   User
                 </a>
-
-                <Link
-                  href="/testimonials"
-                  className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors py-2 border-b border-gray-100"
-                  onClick={closeMenu}
-                >
-                  Testimonials
-                </Link>
-                <Link
-                  href="/faq"
-                  className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors py-2 border-b border-gray-100"
-                  onClick={closeMenu}
-                >
-                  FAQ
-                </Link>
                 <div className="pt-4">
                   <Link href="/contact" onClick={closeMenu}>
                     <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium w-full shadow-md">
