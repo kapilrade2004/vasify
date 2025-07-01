@@ -77,7 +77,7 @@ export default function MobileNav() {
                 <div className="pt-4">
                   <Link href="/contact" onClick={closeMenu}>
                     <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium w-full shadow-md">
-                      Get Started
+                      Contact Us
                     </Button>
                   </Link>
                 </div>

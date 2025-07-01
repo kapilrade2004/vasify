@@ -71,46 +71,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Let's <span className="text-green-500">Transform</span> Your Business Together
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Ready to revolutionize your WhatsApp business communication? Get your free consultation and discover how
-            VasifyTech can help you achieve your goals.
-          </p>
-        </div>
-      </section>
-
-      {/* Contact Info Cards */}
-      <section className="py-20 px-6 bg-white">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-16">
-            {contactInfo.map((info, index) => (
-              <Card
-                key={index}
-                className="bg-white border-0 shadow-sm hover:shadow-lg active:shadow-lg transition-shadow duration-300 text-center cursor-pointer"
-              >
-                <CardHeader>
-                  <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-2xl flex items-center justify-center">
-                    <info.icon className="h-8 w-8 text-green-600" />
-                  </div>
-                  <CardTitle className="text-xl font-bold text-gray-900">{info.title}</CardTitle>
-                  <div className="text-xl font-bold text-green-600">{info.details}</div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 text-sm">{info.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Main Contact Form */}
-      <section id="contact-form-section" className="py-20 px-6 bg-gray-50">
+        <section id="contact-form-section" className="mt-20 py-20 px-6 bg-gray-50">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
@@ -203,7 +164,45 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      {/* Hero Section */}
+      {/* <section className="pt-20 pb-20 px-6">
+        <div className="container mx-auto text-center">
+          <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            Let's <span className="text-green-500">Transform</span> Your Business Together
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            Ready to revolutionize your WhatsApp business communication? Get your free consultation and discover how
+            VasifyTech can help you achieve your goals.
+          </p>
+        </div>
+      </section> */}
 
+      {/* Contact Info Cards */}
+      <section className="py-8 px-6 bg-white">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-16">
+            {contactInfo.map((info, index) => (
+              <Card
+                key={index}
+                className="bg-white border-0 shadow-sm hover:shadow-lg active:shadow-lg transition-shadow duration-300 text-center cursor-pointer"
+              >
+                <CardHeader>
+                  <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-2xl flex items-center justify-center">
+                    <info.icon className="h-8 w-8 text-green-600" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-gray-900">{info.title}</CardTitle>
+                  <div className="text-xl font-bold text-green-600">{info.details}</div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 text-sm">{info.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Main Contact Form */}
       {/* FAQ Section */}
       <section className="py-20 px-6 bg-white">
         <div className="container mx-auto">

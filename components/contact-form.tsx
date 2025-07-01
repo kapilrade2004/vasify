@@ -121,7 +121,7 @@ export default function ContactForm() {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Project Details *</label>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Describe Your Needs *</label>
             <Textarea
               name="message"
               placeholder="Tell us about your business, goals, and what you're looking to achieve..."

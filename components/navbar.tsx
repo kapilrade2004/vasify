@@ -54,7 +54,7 @@ const Navbar = () => {
                     </a>
                     <Link href="/contact">
                         <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium">
-                            Get Started
+                            Contact Us
                         </Button>
                     </Link>
                 </div>
