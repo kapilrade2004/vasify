@@ -3,19 +3,23 @@ import {
     MessageCircle,
 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-900 text-white py-12 px-6">
+        <footer className="bg-gray-900 text-white py-12 px-6"> 
             <div className="container mx-auto">
                 <div className="grid md:grid-cols-4 gap-8">
                     <div>
-                        <div className="flex items-center space-x-3 mb-6">
-                            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                                <MessageCircle className="h-6 w-6 text-white" />
-                            </div>
-                            <span className="text-2xl font-bold">VasifyTech</span>
-                        </div>
+                <Link href="/" className="flex items-center space-x-3">
+                    <Image
+                        src="/logo.jpg"
+                        alt="VasifyTech Logo"
+                        width={200}
+                        height={150}
+                        className="rounded-full"
+                    />
+                </Link>
                         <p className="text-gray-400 mb-4">The ultimate WhatsApp Business Platform for modern businesses.</p>
                     </div>
                     <div>
