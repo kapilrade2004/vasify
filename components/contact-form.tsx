@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { useRouter } from "next/navigation"
 
 export default function ContactForm() {
+  const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
@@ -33,6 +35,7 @@ export default function ContactForm() {
         // Reset form
         const form = document.getElementById("contact-form") as HTMLFormElement
         form?.reset()
+        router.push("/thank-you")
       } else {
         setSubmitStatus("error")
       }
