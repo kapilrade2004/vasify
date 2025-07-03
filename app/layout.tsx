@@ -52,6 +52,18 @@ export default function RootLayout({
         <link rel="canonical" href="https://vasifytech.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#10b981" />
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17301719624"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-17301719624');
+            `
+          }}
+        />
       </head>
       <body className={inter.className}> <Navbar /> {children} <Footer />
         <WhatsAppButton />
