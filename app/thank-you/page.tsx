@@ -8,7 +8,7 @@ const ThankYouPage: NextPage = () => {
         <h1 className="text-2xl font-bold text-green-700 mb-4">Thank You!</h1>
         <p className="text-green-800 mb-6">
           Your message has been sent successfully.<br/>
-          We'll get back to you within 2 hours.
+          We'll get back to you shortly.
         </p>
         <Link href="/" className="text-green-600 hover:underline">
           Go back to Home
