@@ -53,20 +53,20 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#10b981" />
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17301719624"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LL25WKRSH7"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'AW-17301719624');
+              gtag('config', 'G-LL25WKRSH7');
             `
           }}
-        />
-          <script
-    dangerouslySetInnerHTML={{
-      __html: `
+        />          
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -78,18 +78,18 @@ export default function RootLayout({
         fbq('init', '1528358318152104');
         fbq('track', 'PageView');
       `
-    }}
-  />
+          }}
+        />
 
-  <noscript>
-    <img
-      height="1"
-      width="1"
-      style={{ display: 'none' }}
-      src="https://www.facebook.com/tr?id=1528358318152104&ev=PageView&noscript=1"
-      alt=""
-    />
-  </noscript>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=1528358318152104&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
 
       </head>
       <body className={inter.className}> <Navbar /> {children} <Footer />
