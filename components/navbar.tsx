@@ -44,7 +44,7 @@ const Navbar = () => {
                         Industries
                     </Link>
                     <a
-                        href="https://bot.greentickapi.com/"
+                        href="https://whatsapp.vasifytech.com/account/login"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
