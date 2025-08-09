@@ -54,6 +54,9 @@ export default function MobileNav() {
                 >
                   Services
                 </Link>
+                <Link href="/free-guide" className="text-green-600 font-medium text-xl transition-colors">
+                  Free Guide
+                </Link>
                 <Link
                   href="/pricing"
                   className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
