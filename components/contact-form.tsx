@@ -18,7 +18,7 @@ export default function ContactForm() {
     setSubmitStatus("idle")
 
     try {
-      const data: { [key: string]: any } = {}
+      const data: { [key: string]: any } = {} 
       formData.forEach((value, key) => {
         data[key] = value
       })

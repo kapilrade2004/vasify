@@ -145,12 +145,10 @@ export default function HomePage() {
             <div className="space-y-8">
               <div className="space-y-6">
                 <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  Custom <span className="text-green-500">WhatsApp Solutions</span>, <br />for Every Industry
+                  The Ultimate <span className="text-green-500">WhatsApp Business Platform</span> for Automated Engagement
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
-                  Custom CRM, chatbots, and automated flows built on WhatsApp — made for retail, healthcare, real estate, and more.{" "}
-                  <span className="font-semibold text-gray-900">VasifyTech</span> - the ultimate WhatsApp Business
-                  Platform.
+                  Use the official WhatsApp Business API to build custom CRM flows, automated chatbots, and more. Power your customer engagement with VasifyTech.
                 </p>
               </div>
 
@@ -185,7 +183,7 @@ export default function HomePage() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="/vasifytechhero.jpg"
-                  alt="VasifyTech WhatsApp Business Platform - Features including Instant Lead Capture, Conversation Analytics, 24/7 Availability, Sales Automation, Workflow Optimization, and AI-Powered Bot Training"
+                  alt="A dashboard showcasing the features of the VasifyTech WhatsApp Business Platform, including sales automation and AI chatbot training."
                   width={600}
                   height={450}
                   className="w-full h-auto object-cover"
@@ -218,12 +216,11 @@ export default function HomePage() {
       <section className="py-20 px-6 bg-gray-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Key Offerings: Our Solution Ecosystem</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Our WhatsApp Business Platform Services</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive WhatsApp business solutions designed to transform your customer engagement and drive growth.
+              Comprehensive WhatsApp automation solutions designed to transform your customer engagement and drive growth.
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {coreServices.map((service, index) => (
               <Card
@@ -263,9 +260,9 @@ export default function HomePage() {
       <section className="py-20 px-6 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Target Audience: Who We Serve</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">WhatsApp Solutions For Your Industry</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Tailored solutions for diverse industries, helping businesses of all sizes leverage WhatsApp for growth.
+              Tailored solutions for diverse industries like real estate and retail, helping businesses of all sizes leverage WhatsApp for growth.
             </p>
           </div>
 
@@ -297,13 +294,12 @@ export default function HomePage() {
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Everything you need to succeed on WhatsApp
+              Powerful Features of Our WhatsApp Automation Platform
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Powerful features designed to help you engage customers, automate workflows, and grow your business.
+              Engage customers, automate workflows, and grow your business with our enterprise-grade features.
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <Card key={index} className="bg-white border-0 shadow-sm hover:shadow-lg transition-shadow duration-300">

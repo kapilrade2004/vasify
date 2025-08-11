@@ -9,34 +9,72 @@ import Footer from "@/components/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
+// export const metadata: Metadata = {
+//   title: "VasifyTech - Engage Customers on WhatsApp, Effortlessly",
+//   description:
+//     "Automate conversations, provide instant support, and drive sales with VasifyTech - the ultimate WhatsApp Business Platform. Meta Business Partner.",
+//   keywords:
+//     "WhatsApp Business, WhatsApp automation, customer engagement, chatbot, business messaging, Meta Business Partner, WhatsApp API, VasifyTech",
+//   authors: [{ name: "VasifyTech" }],
+//   creator: "VasifyTech",
+//   publisher: "VasifyTech",
+//   robots: "index, follow",
+//   openGraph: {
+//     type: "website",
+//     locale: "en_US",
+//     url: "https://vasifytech.com",
+//     title: "VasifyTech - Engage Customers on WhatsApp, Effortlessly",
+//     description:
+//       "Automate conversations, provide instant support, and drive sales with VasifyTech - the ultimate WhatsApp Business Platform.",
+//     siteName: "VasifyTech",
+//   },
+//   twitter: {
+//     card: "summary_large_image",
+//     title: "VasifyTech - Engage Customers on WhatsApp, Effortlessly",
+//     description:
+//       "Automate conversations, provide instant support, and drive sales with VasifyTech - the ultimate WhatsApp Business Platform.",
+//     creator: "@vasifytech",
+//   },
+//   verification: {
+//     google: "your-google-verification-code",
+//   }
+// }
 export const metadata: Metadata = {
-  title: "VasifyTech - Engage Customers on WhatsApp, Effortlessly",
+  // SEO CHANGE: Title is now more specific and keyword-focused.
+  title: "WhatsApp Business API Platform for Automated Engagement",
+
+  // SEO CHANGE: Description now includes primary and secondary keywords naturally.
   description:
-    "Automate conversations, provide instant support, and drive sales with VasifyTech - the ultimate WhatsApp Business Platform. Meta Business Partner.",
+    "Supercharge customer engagement with VasifyTech's automated WhatsApp Business API platform. Our services help you connect, sell, and support with ease.",
+  
   keywords:
-    "WhatsApp Business, WhatsApp automation, customer engagement, chatbot, business messaging, Meta Business Partner, WhatsApp API, VasifyTech",
+    "WhatsApp Business Platform, WhatsApp Business API, WhatsApp automation, automated customer engagement, chatbot, business messaging, Meta Business Partner, VasifyTech",
   authors: [{ name: "VasifyTech" }],
   creator: "VasifyTech",
   publisher: "VasifyTech",
   robots: "index, follow",
+
+  // SEO CHANGE: OpenGraph data now matches the new, improved title and description.
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://vasifytech.com",
-    title: "VasifyTech - Engage Customers on WhatsApp, Effortlessly",
+    title: "WhatsApp Business API Platform for Automated Engagement | VasifyTech",
     description:
-      "Automate conversations, provide instant support, and drive sales with VasifyTech - the ultimate WhatsApp Business Platform.",
+      "Supercharge customer engagement with VasifyTech's automated WhatsApp Business API platform. Our services help you connect, sell, and support with ease.",
     siteName: "VasifyTech",
   },
+  
+  // SEO CHANGE: Twitter card data also updated for consistency.
   twitter: {
     card: "summary_large_image",
-    title: "VasifyTech - Engage Customers on WhatsApp, Effortlessly",
+    title: "WhatsApp Business API Platform for Automated Engagement | VasifyTech",
     description:
-      "Automate conversations, provide instant support, and drive sales with VasifyTech - the ultimate WhatsApp Business Platform.",
-    creator: "@vasifytech",
+      "Supercharge customer engagement with VasifyTech's automated WhatsApp Business API platform.",
+    creator: "@vasifytech", // Make sure this is your correct Twitter handle
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "your-google-verification-code", // Don't forget to add your code here
   }
 }
 

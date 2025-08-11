@@ -10,90 +10,83 @@ import { DownloadModal } from "@/components/download-modal"
 const guides = [
   {
     id: 1,
-    title: "WhatsApp Business API Complete Setup Guide",
-    description: "Step-by-step guide to set up WhatsApp Business API for your business with screenshots and examples.",
-    pages: 45,
-    category: "Setup",
-    difficulty: "Beginner",
+    title: "Custom WhatsApp Automation Guide Vasify",
+    description: "A comprehensive guide to setting up and automating WhatsApp Business for your business needs.",
+    pages: 3,
+    category: "Chatbots",
     downloadCount: 12500,
     rating: 4.9,
-    thumbnail: "/placeholder.svg?height=200&width=300&text=WhatsApp+API+Guide",
-    pdfUrl: "/guides/whatsapp-api-setup-guide.pdf",
-    topics: ["API Setup", "Business Verification", "Webhook Configuration", "Message Templates"],
+    thumbnail: "/MyOperator-chatbot-platform.png?height=200&width=300&text=WhatsApp+API+Guide",
+    pdfUrl: "https://vasifytech.com/Custom_WhatsApp_Automation_Guide_Vasify.pdf",
+    topics: ["Getting Started", "API Integration", "Automation Flows", "Best Practices"],
   },
   {
     id: 2,
-    title: "WhatsApp Marketing Automation Strategies",
+    title: "WhatsApp Ecommerce Eguide Vasify",
     description:
-      "Advanced strategies for automating your WhatsApp marketing campaigns and increasing customer engagement.",
-    pages: 62,
-    category: "Marketing",
-    difficulty: "Intermediate",
+      "Master WhatsApp Business for e-commerce with our guide on automation, marketing, and customer engagement.",
+    pages: 3,
+    category: "E-commerce",
     downloadCount: 8900,
     rating: 4.8,
-    thumbnail: "/placeholder.svg?height=200&width=300&text=Marketing+Automation",
-    pdfUrl: "/guides/whatsapp-marketing-automation.pdf",
-    topics: ["Campaign Planning", "Automation Flows", "Customer Segmentation", "Performance Tracking"],
+    thumbnail: "/WhatsApp-Business-account.png?height=200&width=300&text=Marketing+Automation",
+    pdfUrl: "https://vasifytech.com/WhatsApp_Ecommerce_Eguide_Vasify.pdf",
+    topics: ["E-commerce Setup", "Product Catalog", "Order Management", "Customer Engagement"],
   },
-  {
-    id: 3,
-    title: "Chatbot Design Best Practices",
-    description:
-      "Learn how to design effective chatbots that provide excellent customer service and drive conversions.",
-    pages: 38,
-    category: "Chatbots",
-    difficulty: "Intermediate",
-    downloadCount: 15200,
-    rating: 4.9,
-    thumbnail: "/placeholder.svg?height=200&width=300&text=Chatbot+Design",
-    pdfUrl: "/guides/chatbot-design-best-practices.pdf",
-    topics: ["Conversation Design", "User Experience", "Flow Optimization", "Testing Strategies"],
-  },
-  {
-    id: 4,
-    title: "WhatsApp Business Compliance Guide",
-    description:
-      "Everything you need to know about WhatsApp Business policies, compliance, and avoiding account restrictions.",
-    pages: 28,
-    category: "Compliance",
-    difficulty: "Beginner",
-    downloadCount: 6700,
-    rating: 4.7,
-    thumbnail: "/placeholder.svg?height=200&width=300&text=Compliance+Guide",
-    pdfUrl: "/guides/whatsapp-compliance-guide.pdf",
-    topics: ["Policy Guidelines", "Message Templates", "Opt-in Requirements", "Account Safety"],
-  },
-  {
-    id: 5,
-    title: "Customer Support Automation with WhatsApp",
-    description:
-      "Transform your customer support with WhatsApp automation, reducing response times and improving satisfaction.",
-    pages: 52,
-    category: "Support",
-    difficulty: "Advanced",
-    downloadCount: 9800,
-    rating: 4.8,
-    thumbnail: "/placeholder.svg?height=200&width=300&text=Support+Automation",
-    pdfUrl: "/guides/customer-support-automation.pdf",
-    topics: ["Support Workflows", "Escalation Management", "Agent Handoff", "Performance Metrics"],
-  },
-  {
-    id: 6,
-    title: "WhatsApp E-commerce Integration",
-    description: "Complete guide to integrating WhatsApp with your e-commerce platform for better customer experience.",
-    pages: 41,
-    category: "E-commerce",
-    difficulty: "Intermediate",
-    downloadCount: 11300,
-    rating: 4.9,
-    thumbnail: "/placeholder.svg?height=200&width=300&text=E-commerce+Integration",
-    pdfUrl: "/guides/whatsapp-ecommerce-integration.pdf",
-    topics: ["Order Management", "Payment Integration", "Shipping Updates", "Customer Notifications"],
-  },
+  // {
+  //   id: 3,
+  //   title: "Chatbot Design Best Practices",
+  //   description:
+  //     "Learn how to design effective chatbots that provide excellent customer service and drive conversions.",
+  //   pages: 38,
+  //   category: "Chatbots",
+  //   downloadCount: 15200,
+  //   rating: 4.9,
+  //   thumbnail: "/placeholder.svg?height=200&width=300&text=Chatbot+Design",
+  //   pdfUrl: "/guides/chatbot-design-best-practices.pdf",
+  //   topics: ["Conversation Design", "User Experience", "Flow Optimization", "Testing Strategies"],
+  // },
+  // {
+  //   id: 4,
+  //   title: "WhatsApp Business Compliance Guide",
+  //   description:
+  //     "Everything you need to know about WhatsApp Business policies, compliance, and avoiding account restrictions.",
+  //   pages: 28,
+  //   category: "Compliance",
+  //   downloadCount: 6700,
+  //   rating: 4.7,
+  //   thumbnail: "/placeholder.svg?height=200&width=300&text=Compliance+Guide",
+  //   pdfUrl: "/guides/whatsapp-compliance-guide.pdf",
+  //   topics: ["Policy Guidelines", "Message Templates", "Opt-in Requirements", "Account Safety"],
+  // },
+  // {
+  //   id: 5,
+  //   title: "Customer Support Automation with WhatsApp",
+  //   description:
+  //     "Transform your customer support with WhatsApp automation, reducing response times and improving satisfaction.",
+  //   pages: 52,
+  //   category: "Support",
+  //   downloadCount: 9800,
+  //   rating: 4.8,
+  //   thumbnail: "/placeholder.svg?height=200&width=300&text=Support+Automation",
+  //   pdfUrl: "/guides/customer-support-automation.pdf",
+  //   topics: ["Support Workflows", "Escalation Management", "Agent Handoff", "Performance Metrics"],
+  // },
+  // {
+  //   id: 6,
+  //   title: "WhatsApp E-commerce Integration",
+  //   description: "Complete guide to integrating WhatsApp with your e-commerce platform for better customer experience.",
+  //   pages: 41,
+  //   category: "E-commerce",
+  //   downloadCount: 11300,
+  //   rating: 4.9,
+  //   thumbnail: "/placeholder.svg?height=200&width=300&text=E-commerce+Integration",
+  //   pdfUrl: "/guides/whatsapp-ecommerce-integration.pdf",
+  //   topics: ["Order Management", "Payment Integration", "Shipping Updates", "Customer Notifications"],
+  // },
 ]
 
 const categories = ["All", "Setup", "Marketing", "Chatbots", "Compliance", "Support", "E-commerce"]
-const difficulties = ["All", "Beginner", "Intermediate", "Advanced"]
 
 export default function FreeGuidePage() {
   const [selectedCategory, setSelectedCategory] = useState("All")
@@ -103,26 +96,12 @@ export default function FreeGuidePage() {
 
   const filteredGuides = guides.filter((guide) => {
     const categoryMatch = selectedCategory === "All" || guide.category === selectedCategory
-    const difficultyMatch = selectedDifficulty === "All" || guide.difficulty === selectedDifficulty
-    return categoryMatch && difficultyMatch
+    return categoryMatch
   })
 
   const handleDownload = (guide: any) => {
     setSelectedGuide(guide)
     setShowDownloadModal(true)
-  }
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case "Beginner":
-        return "bg-green-100 text-green-800"
-      case "Intermediate":
-        return "bg-yellow-100 text-yellow-800"
-      case "Advanced":
-        return "bg-red-100 text-red-800"
-      default:
-        return "bg-gray-100 text-gray-800"
-    }
   }
 
   return (
@@ -177,22 +156,6 @@ export default function FreeGuidePage() {
                 ))}
               </div>
             </div>
-            <div className="flex-1">
-              <h3 className="text-sm font-medium text-gray-700 mb-3">Difficulty</h3>
-              <div className="flex flex-wrap gap-2">
-                {difficulties.map((difficulty) => (
-                  <Button
-                    key={difficulty}
-                    variant={selectedDifficulty === difficulty ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedDifficulty(difficulty)}
-                    className={selectedDifficulty === difficulty ? "bg-green-500 hover:bg-green-600" : ""}
-                  >
-                    {difficulty}
-                  </Button>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -211,9 +174,6 @@ export default function FreeGuidePage() {
                   />
                   <div className="absolute top-4 left-4">
                     <Badge className="bg-white text-gray-900">{guide.category}</Badge>
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <Badge className={getDifficultyColor(guide.difficulty)}>{guide.difficulty}</Badge>
                   </div>
                 </div>
 
