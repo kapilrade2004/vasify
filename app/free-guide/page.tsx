@@ -33,45 +33,45 @@ const guides = [
     pdfUrl: "https://vasifytech.com/WhatsApp_Ecommerce_Eguide_Vasify.pdf",
     topics: ["E-commerce Setup", "Product Catalog", "Order Management", "Customer Engagement"],
   },
-  // {
-  //   id: 3,
-  //   title: "Chatbot Design Best Practices",
-  //   description:
-  //     "Learn how to design effective chatbots that provide excellent customer service and drive conversions.",
-  //   pages: 38,
-  //   category: "Chatbots",
-  //   downloadCount: 15200,
-  //   rating: 4.9,
-  //   thumbnail: "/placeholder.svg?height=200&width=300&text=Chatbot+Design",
-  //   pdfUrl: "/guides/chatbot-design-best-practices.pdf",
-  //   topics: ["Conversation Design", "User Experience", "Flow Optimization", "Testing Strategies"],
-  // },
-  // {
-  //   id: 4,
-  //   title: "WhatsApp Business Compliance Guide",
-  //   description:
-  //     "Everything you need to know about WhatsApp Business policies, compliance, and avoiding account restrictions.",
-  //   pages: 28,
-  //   category: "Compliance",
-  //   downloadCount: 6700,
-  //   rating: 4.7,
-  //   thumbnail: "/placeholder.svg?height=200&width=300&text=Compliance+Guide",
-  //   pdfUrl: "/guides/whatsapp-compliance-guide.pdf",
-  //   topics: ["Policy Guidelines", "Message Templates", "Opt-in Requirements", "Account Safety"],
-  // },
-  // {
-  //   id: 5,
-  //   title: "Customer Support Automation with WhatsApp",
-  //   description:
-  //     "Transform your customer support with WhatsApp automation, reducing response times and improving satisfaction.",
-  //   pages: 52,
-  //   category: "Support",
-  //   downloadCount: 9800,
-  //   rating: 4.8,
-  //   thumbnail: "/placeholder.svg?height=200&width=300&text=Support+Automation",
-  //   pdfUrl: "/guides/customer-support-automation.pdf",
-  //   topics: ["Support Workflows", "Escalation Management", "Agent Handoff", "Performance Metrics"],
-  // },
+  {
+    id: 3,
+    title: "Banking & Fintech E‑Guide Vasify",
+    description:
+      "Optimize your banking and fintech operations with WhatsApp Business automation, enhancing customer service and engagement.",
+    pages: 5,
+    category: "Banking & Fintech",
+    downloadCount: 15200,
+    rating: 4.9,
+    thumbnail: "/bankingfintech.jpg?height=200&width=300&text=Chatbot+Design",
+    pdfUrl: "https://vasifytech.com/Banking%20%26%20Fintech%20E%E2%80%91Guide.pdf",
+    topics: ["Secure Messaging", "Transaction Alerts", "Customer Support", "Regulatory Compliance"],
+  },
+  {
+    id: 4,
+    title: "Healthcare & Clinics E‑Guide Vasify",
+    description:
+      "Leverage WhatsApp Business for healthcare and clinics to improve patient communication and streamline operations.",
+    pages: 5,
+    category: "Healthcare & Clinics",
+    downloadCount: 6700,
+    rating: 4.7,
+    thumbnail: "/healthcare.jpg?height=200&width=300&text=Compliance+Guide",
+    pdfUrl: "https://vasifytech.com/Healthcare%20%26%20Clinics%20E%E2%80%91Guide.pdf",
+    topics: ["Appointment Reminders", "Patient Communication", "Telehealth Integration", "Data Privacy"],
+  },
+  {
+    id: 5,
+    title: "Education & Coaching Institutes E-Guide Vasify ",
+    description:
+      "Enhance student engagement and streamline administrative tasks with WhatsApp Business automation for educational institutions.",
+    pages: 5,
+    category: "Education & Coaching Institutes",
+    downloadCount: 9800,
+    rating: 4.8,
+    thumbnail: "/education.jpeg?height=200&width=300&text=Support+Automation",
+    pdfUrl: "https://vasifytech.com/Education%20%26%20Coaching%20Institutes%20E-Guide.pdf",
+    topics: ["Student Communication", "Course Updates", "Administrative Automation", "Feedback Collection"],
+  },
   // {
   //   id: 6,
   //   title: "WhatsApp E-commerce Integration",
@@ -86,7 +86,7 @@ const guides = [
   // },
 ]
 
-const categories = ["All", "Setup", "Marketing", "Chatbots", "Compliance", "Support", "E-commerce"]
+const categories = ["All", "Banking & Fintech", "Healthcare & Clinics", "Chatbots", "Education & Coaching Institutes", "E-commerce"]
 
 export default function FreeGuidePage() {
   const [selectedCategory, setSelectedCategory] = useState("All")

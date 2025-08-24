@@ -18,10 +18,27 @@ export default function ContactForm() {
     setSubmitStatus("idle")
 
     try {
-      const data: { [key: string]: any } = {} 
+      const data: { [key: string]: any } = {}
       formData.forEach((value, key) => {
         data[key] = value
       })
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (!emailRegex.test(data.email)) {
+        setSubmitStatus("error")
+        alert("Please enter a valid email address.")
+        setIsSubmitting(false)
+        return
+      }
+
+      // --- Phone validation ---
+      // Accepts +countrycode or plain digits, 10–15 total
+      const phoneRegex = /^[0-9]{10}$/;
+      if (!phoneRegex.test(data.phone)) {
+        setSubmitStatus("error");
+        alert("Please enter a valid 10-digit phone number.");
+        setIsSubmitting(false);
+        return;
+      }
       const response = await fetch("https://whatsapp-backend-t6ay.onrender.com/api/contact", {
         method: "POST",
         headers: {
