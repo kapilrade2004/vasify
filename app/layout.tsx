@@ -90,6 +90,7 @@ export default function RootLayout({
         <link rel="canonical" href="https://vasifytech.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#10b981" />
+        <meta name="google-site-verification" content="V_86hNVYNxpJT3WQCeTce5f3wdyJQ6GNXjwet7ypGwQ" />
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-LL25WKRSH7"></script>
         <script
