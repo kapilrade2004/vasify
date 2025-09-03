@@ -53,7 +53,7 @@ export function DownloadModal({ guide, isOpen, onClose }: DownloadModalProps) {
       };
 
       // 2. Send data to your new backend endpoint
-      const response = await fetch("https://whatsapp-backend-t6ay.onrender.com/api/guide-download", { // Adjust URL if needed
+      const response = await fetch("https://backend.vasifytech.com/api/guide-download", { // Adjust URL if needed
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

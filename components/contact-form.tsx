@@ -39,7 +39,7 @@ export default function ContactForm() {
         setIsSubmitting(false);
         return;
       }
-      const response = await fetch("https://whatsapp-backend-t6ay.onrender.com/api/contact", {
+      const response = await fetch("https://backend.vasifytech.com/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
