@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   // SEO CHANGE: Description now includes primary and secondary keywords naturally.
   description:
     "Supercharge customer engagement with VasifyTech's automated WhatsApp Business API platform. Our services help you connect, sell, and support with ease.",
-  
+
   keywords:
     "WhatsApp Business Platform, WhatsApp Business API, WhatsApp automation, automated customer engagement, chatbot, business messaging, Meta Business Partner, VasifyTech",
   authors: [{ name: "VasifyTech" }],
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
       "Supercharge customer engagement with VasifyTech's automated WhatsApp Business API platform. Our services help you connect, sell, and support with ease.",
     siteName: "VasifyTech",
   },
-  
+
   // SEO CHANGE: Twitter card data also updated for consistency.
   twitter: {
     card: "summary_large_image",
@@ -86,6 +86,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2KE2KFM2JL"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-2KE2KFM2JL');
+          `}}
+        />
         <link rel="icon" href="/logo.jpg" />
         <link rel="canonical" href="https://vasifytech.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -102,7 +112,7 @@ export default function RootLayout({
               gtag('config', 'G-LL25WKRSH7');
             `
           }}
-        />          
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
