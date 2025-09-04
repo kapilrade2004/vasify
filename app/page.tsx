@@ -182,7 +182,7 @@ export default function HomePage() {
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/vasifytechhero.jpg"
+                  src="/vasifytechhero.webp"
                   alt="A dashboard showcasing the features of the VasifyTech WhatsApp Business Platform, including sales automation and AI chatbot training."
                   width={600}
                   height={450}
@@ -197,20 +197,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Trusted By Section */}
-      {/* <section className="py-16 px-6 bg-white">
-        <div className="container mx-auto text-center">
-          <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-8">TRUSTED BY</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            {trustedLogos.map((logo, index) => (
-              <div key={index} className="text-gray-400 font-bold text-lg">
-                {logo}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* Core Services Section */}
       <section className="py-20 px-6 bg-gray-50">

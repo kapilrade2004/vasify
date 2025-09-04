@@ -69,7 +69,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         author: "VasifyTech Team",
         date: "Jan 20, 2025",
         readTime: "8 min read",
-        image: "/eblog1.jpg?height=400&width=800",
+        image: "/eblog1.png?height=400&width=800",
         tags: ["Automation", "Sales", "E-commerce"],
         content: `
 <h2>How WhatsApp Catalogues Are Overtaking Traditional E-Commerce in India</h2>
@@ -133,7 +133,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         author: "VasifyTech Team",
         date: "Mar 25, 2025",
         readTime: "10 min read",
-        image: "/fblog1.jpg?height=400&width=800",
+        image: "/fblog1.png?height=400&width=800",
         tags: ["FMCG", "Marketing", "Loyalty"],
         content: `
 <h2>Redefining In-Store Shopping: QR Codes + WhatsApp</h2>
@@ -199,7 +199,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         author: "VasifyTech Team",
         date: "Jan 30, 2025",
         readTime: "10 min read",
-        image: "/bfblog1.jpeg?height=400&width=800",
+        image: "/bfblog1.png?height=400&width=800",
         tags: ["FMCG", "Marketing", "Loyalty"],
         content: `
 <h2>How Fintech Startups Are Streamlining Lending via WhatsApp</h2>
@@ -265,7 +265,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         author: "VasifyTech Team",
         date: "Feb 16, 2025",
         readTime: "10 min read",
-        image: "/rblog1.jpeg?height=400&width=800",
+        image: "/rblog1.png?height=400&width=800",
         tags: ["FMCG", "Marketing", "Loyalty"],
         content: `
 <h2>Real Estate Marketing Redefined with WhatsApp Virtual Tours</h2>
@@ -465,7 +465,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         author: "VasifyTech Team",
         date: "May 30, 2025",
         readTime: "10 min read",
-        image: "/hblog1.jpeg?height=400&width=800",
+        image: "/hblog1.png?height=400&width=800",
         tags: ["FMCG", "Marketing", "Loyalty"],
         content: `
         <h2>🏥 How Multi-Clinic Chains Are Transforming Patient Experience with WhatsApp</h2>
@@ -572,7 +572,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         author: "VasifyTech Team",
         date: "June 20, 2025",
         readTime: "10 min read",
-        image: "/edblog1.jpeg?height=400&width=800",
+        image: "/edblog1.png?height=400&width=800",
         tags: ["FMCG", "Marketing", "Loyalty"],
         content: `
 <h2>📚 Parent Communication Simplified: How WhatsApp Is Revolutionizing Education Engagement</h2>

@@ -140,7 +140,7 @@ export default function BlogsPage() {
                 title: "How WhatsApp Catalogues Are Overtaking Traditional E-Commerce in India",
                 category: "E-commerce & D2C",
                 readTime: "8 min read",
-                image: "/eblog1.jpg?height=200&width=400",
+                image: "/eblog1.png?height=200&width=400",
                 excerpt:
                   "Discover proven automation strategies that top e-commerce brands use to boost their sales through WhatsApp.",
                 link: "/blogs/ecommerce-d2c",
@@ -149,7 +149,7 @@ export default function BlogsPage() {
                 title: "Redefining In-Store Shopping: QR Codes + WhatsApp",
                 category: "Real Estate",
                 readTime: "6 min read",
-                image: "/fblog1.jpg?height=200&width=400",
+                image: "/fblog1.png?height=200&width=400",
                 excerpt:
                   "Learn the exact WhatsApp lead generation system that successful real estate agents use to dominate their market.",
                 link: "/blogs/real-estate",
@@ -158,7 +158,7 @@ export default function BlogsPage() {
                 title: "How Fintech Startups Are Streamlining Lending via WhatsApp",
                 category: "BFSI & Fintech",
                 readTime: "10 min read",
-                image: "/bfblog1.jpeg?height=200&width=400",
+                image: "/bfblog1.png?height=200&width=400",
                 excerpt:
                   "Comprehensive guide to implementing secure WhatsApp solutions for banking and financial services.",
                 link: "/blogs/bfsi-fintech",
