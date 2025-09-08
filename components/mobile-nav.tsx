@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X, DollarSign, User } from "lucide-react"
+import { Menu, X, DollarSign, User, Bot } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -41,11 +41,13 @@ export default function MobileNav() {
                   Features
                 </Link>
                 <Link
-                  href="/how-it-works"
-                  className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors py-2 border-b border-gray-100"
+                  href="/ai-agent"
+                  className="flex items-center gap-1 text-green-600 font-medium text-xl hover:text-green-600 transition-colors"
                   onClick={closeMenu}
+
                 >
-                  How it Works
+                  <Bot className="h-4 w-4" />
+                  AI Agent
                 </Link>
                 <Link
                   href="/services"

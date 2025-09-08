@@ -6,7 +6,7 @@ import Link from "next/link"
 import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import MobileNav from "@/components/mobile-nav"
-import { DollarSign, User } from "lucide-react"
+import { DollarSign, User, Bot} from "lucide-react"
 
 const Navbar = () => {
     return (
@@ -27,8 +27,12 @@ const Navbar = () => {
                     <Link href="/features" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
                         Features
                     </Link>
-                    <Link href="/how-it-works" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-                        How it Works
+                    <Link
+                        href="/ai-agent"
+                        className="flex items-center gap-1 text-green-600 font-medium text-xl hover:text-green-600 transition-colors"
+                    >
+                        <Bot className="h-4 w-4" />
+                        AI Agent
                     </Link>
                     <Link href="/services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
                         Services
@@ -44,7 +48,7 @@ const Navbar = () => {
                         Pricing
                     </Link>
                     <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-                        Industries
+                        Blogs
                     </Link>
                     <a
                         href="https://whatsapp.vasifytech.com/account/login"
