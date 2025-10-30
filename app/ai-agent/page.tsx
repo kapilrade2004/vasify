@@ -15,7 +15,14 @@ import {
   CheckCircle,
   Users,
   Clock,
+  Check,
+  Crown,
+  Rocket
 } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import IndustryChatbotClient from "./industry-chatbot-client"
 
 export const metadata: Metadata = {
   title: "AI Agent - Intelligent Conversational AI for Business | VasifyTech",
@@ -24,6 +31,67 @@ export const metadata: Metadata = {
   keywords:
     "AI Agent, Conversational AI, WhatsApp AI, Multi-language AI, CRM Integration, Business Automation, Indian Languages AI, Intelligent Chatbot",
 }
+
+const aiAgentPlans = [
+  {
+    name: "Starter",
+    price: "₹2,999",
+    period: "/month",
+    description: "Perfect for small businesses starting with AI",
+    icon: <Bot className="h-6 w-6" />,
+    popular: false,
+    features: [
+      "Multi-language support (10 languages)",
+      "1,000 conversations/month",
+      "WhatsApp integration",
+      "Basic CRM integration",
+      "Email support",
+      "Standard response time",
+      "Basic analytics dashboard",
+      "1 automation flow",
+    ],
+  },
+  {
+    name: "Professional",
+    price: "₹7,999",
+    period: "/month",
+    description: "Advanced AI for growing businesses",
+    icon: <Crown className="h-6 w-6" />,
+    popular: true,
+    features: [
+      "All Starter features",
+      "Multi-language support (50+ languages)",
+      "10,000 conversations/month",
+      "WhatsApp, Web & Mobile integration",
+      "Advanced CRM integration",
+      "Priority support",
+      "Advanced analytics & insights",
+      "5 custom automation flows",
+      "Content moderation",
+      "Custom training data",
+    ],
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    period: "/month",
+    description: "Unlimited AI power for large organizations",
+    icon: <Rocket className="h-6 w-6" />,
+    popular: false,
+    features: [
+      "All Professional features",
+      "Unlimited conversations",
+      "All platforms integration",
+      "Custom CRM & API integrations",
+      "24/7 dedicated support",
+      "Custom AI model training",
+      "Unlimited automation flows",
+      "White-label solution",
+      "Dedicated account manager",
+      "SLA guarantee",
+    ],
+  },
+]
 
 export default function AIAgentPage() {
   const features = [
@@ -117,7 +185,7 @@ export default function AIAgentPage() {
                 The most advanced conversational AI that understands every language, handles complex conversations, and
                 integrates seamlessly with your business ecosystem.
               </p>
- {/* testing */}
+              {/* testing */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact">
                   <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
@@ -214,18 +282,7 @@ export default function AIAgentPage() {
               across all business sectors.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {industries.map((industry, index) => (
-              <div key={index} className="group">
-                <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="text-4xl mb-4">{industry.icon}</div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">{industry.name}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{industry.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <IndustryChatbotClient industries={industries} />
         </div>
       </section>
 
@@ -374,6 +431,65 @@ export default function AIAgentPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">AI Agent Pricing</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Choose the perfect AI Agent plan for your business needs. Scale as you grow with flexible pricing.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {aiAgentPlans.map((plan, index) => (
+              <Card
+                key={index}
+                className={`relative ${plan.popular ? "ring-2 ring-blue-500 shadow-xl scale-105" : "shadow-lg"} hover:shadow-xl transition-all duration-300`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-blue-500 text-white px-4 py-1">Most Popular</Badge>
+                  </div>
+                )}
+                <CardHeader className="text-center pb-8">
+                  <div
+                    className={`w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center ${plan.popular ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-600"}`}
+                  >
+                    {plan.icon}
+                  </div>
+                  <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                    <span className="text-gray-600">{plan.period}</span>
+                  </div>
+                  <CardDescription className="mt-4 text-gray-600">{plan.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Link href="/contact">
+                    <Button
+                      className={`w-full mb-6 ${plan.popular ? "bg-blue-500 hover:bg-blue-600" : "bg-gray-900 hover:bg-gray-800"} text-white`}
+                    >
+                      Choose Plan
+                    </Button>
+                  </Link>
+                  <div>
+                    <h4 className="font-semibold text-sm text-gray-700 mb-3">Features</h4>
+                    <ul className="space-y-2">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start gap-2">
+                          <Check className="h-4 w-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

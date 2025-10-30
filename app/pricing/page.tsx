@@ -1,11 +1,11 @@
-import { Check, Star, Zap, Crown, Rocket } from "lucide-react"
+import { Check, Star, Zap, Crown, Rocket, Bot, Code } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 
 export default function PricingPage() {
-  const plans = [
+  const whatsappPlans = [
     {
       name: "Free",
       price: "₹0",
@@ -13,19 +13,12 @@ export default function PricingPage() {
       description: "Perfect for getting started with WhatsApp Business",
       icon: <Zap className="h-6 w-6" />,
       popular: false,
-      showConversationCharges: false,
-      conversationCharges: {
-        marketing: "As per usage",
-        utility: "As per usage",
-        authentication: "As per usage",
-      },
-      service: "Unlimited Free Service Conversations",
+      service: "WhatsApp Services",
       features: [
         "Unlimited Free Service Conversations/month",
         "Free WhatsApp Business API",
         "Free WhatsApp Blue Tick Application",
         "₹1 Free Conversation Credit",
-        "Unlimited Free Service Conversations (Live chat Replies to user messages)",
         "Click to WhatsApp Ads Manager",
         "Upload & Manage Contacts",
         "Create tags & attributes",
@@ -42,13 +35,7 @@ export default function PricingPage() {
       description: "Ideal for small businesses with growing needs",
       icon: <Star className="h-6 w-6" />,
       popular: false,
-      showConversationCharges: true,
-      conversationCharges: {
-        marketing: "As per usage",
-        utility: "As per usage",
-        authentication: "As per usage",
-      },
-      service: "Unlimited Free Service Conversations",
+      service: "WhatsApp Services",
       features: [
         "All features in Free Plan",
         "Up to 10 Tags",
@@ -64,8 +51,6 @@ export default function PricingPage() {
         "Shopify & WooCommerce Integrations",
         "Dialogflow Chatbot Integration",
         "Shared Team Inbox",
-        "Click to WhatsApp Ads Manager",
-        "5 Chatbot Flows: $40 (charged separately)",
       ],
     },
     {
@@ -75,13 +60,7 @@ export default function PricingPage() {
       description: "Advanced features for growing businesses",
       icon: <Crown className="h-6 w-6" />,
       popular: true,
-      showConversationCharges: true,
-      conversationCharges: {
-        marketing: "As per usage",
-        utility: "As per usage",
-        authentication: "As per usage",
-      },
-      service: "Unlimited Free Service Conversations",
+      service: "WhatsApp Services",
       features: [
         "All features in Basic Plan",
         "Upto 100 Tags",
@@ -97,24 +76,16 @@ export default function PricingPage() {
         "Google Sheets Integration",
         "Birthday automation message",
         "User Access Control",
-        "Automatic Failed Message Retry",
-        "5 Chatbot Flows: $40 (charged separately)",
       ],
     },
     {
       name: "Enterprise",
       price: "Custom",
       period: "/month",
-      description: "Complete solution for enterprises and agencies",
+      description: "Complete solution for enterprises",
       icon: <Rocket className="h-6 w-6" />,
       popular: false,
-      showConversationCharges: true,
-      conversationCharges: {
-        marketing: "As per usage",
-        utility: "As per usage",
-        authentication: "As per usage",
-      },
-      service: "Unlimited Free Service Conversations",
+      service: "WhatsApp Services",
       features: [
         "All features in Pro Plan",
         "Recommended for Brands with 5 Lac+ Users",
@@ -129,26 +100,155 @@ export default function PricingPage() {
     },
   ]
 
+  const aiAgentPlans = [
+    {
+      name: "Starter",
+      price: "₹2,999",
+      period: "/month",
+      description: "Perfect for small businesses starting with AI",
+      icon: <Bot className="h-6 w-6" />,
+      popular: false,
+      service: "AI Agent",
+      features: [
+        "Multi-language support (10 languages)",
+        "1,000 conversations/month",
+        "WhatsApp integration",
+        "Basic CRM integration",
+        "Email support",
+        "Standard response time",
+        "Basic analytics dashboard",
+        "1 automation flow",
+      ],
+    },
+    {
+      name: "Professional",
+      price: "₹7,999",
+      period: "/month",
+      description: "Advanced AI for growing businesses",
+      icon: <Crown className="h-6 w-6" />,
+      popular: true,
+      service: "AI Agent",
+      features: [
+        "All Starter features",
+        "Multi-language support (50+ languages)",
+        "10,000 conversations/month",
+        "WhatsApp, Web & Mobile integration",
+        "Advanced CRM integration",
+        "Priority support",
+        "Advanced analytics & insights",
+        "5 custom automation flows",
+        "Content moderation",
+        "Custom training data",
+      ],
+    },
+    {
+      name: "Enterprise",
+      price: "Custom",
+      period: "/month",
+      description: "Unlimited AI power for large organizations",
+      icon: <Rocket className="h-6 w-6" />,
+      popular: false,
+      service: "AI Agent",
+      features: [
+        "All Professional features",
+        "Unlimited conversations",
+        "All platforms integration",
+        "Custom CRM & API integrations",
+        "24/7 dedicated support",
+        "Custom AI model training",
+        "Unlimited automation flows",
+        "White-label solution",
+        "Dedicated account manager",
+        "SLA guarantee",
+      ],
+    },
+  ]
+
+  const websitePlans = [
+    {
+      name: "Basic Website",
+      price: "₹19,999",
+      period: "one-time",
+      description: "Perfect landing page or portfolio website",
+      icon: <Code className="h-6 w-6" />,
+      popular: false,
+      service: "Website Development",
+      features: [
+        "Up to 5 pages",
+        "Responsive design",
+        "Basic SEO optimization",
+        "Contact form integration",
+        "1 month free support",
+        "Mobile optimized",
+        "Fast loading speed",
+        "Social media integration",
+      ],
+    },
+    {
+      name: "Business Website",
+      price: "₹49,999",
+      period: "one-time",
+      description: "Complete business website with CMS",
+      icon: <Crown className="h-6 w-6" />,
+      popular: true,
+      service: "Website Development",
+      features: [
+        "Up to 15 pages",
+        "Custom design",
+        "Advanced SEO optimization",
+        "CMS integration",
+        "3 months free support",
+        "Blog functionality",
+        "Analytics integration",
+        "Payment gateway integration",
+        "WhatsApp integration",
+        "Email marketing setup",
+      ],
+    },
+    {
+      name: "E-commerce",
+      price: "₹99,999",
+      period: "one-time",
+      description: "Full-featured online store",
+      icon: <Rocket className="h-6 w-6" />,
+      popular: false,
+      service: "Website Development",
+      features: [
+        "Unlimited pages",
+        "Custom e-commerce design",
+        "Product management system",
+        "Multiple payment gateways",
+        "6 months free support",
+        "Inventory management",
+        "Order tracking system",
+        "Customer accounts",
+        "Advanced analytics",
+        "Marketing automation",
+        "Multi-vendor support (optional)",
+      ],
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="py-20 bg-white mt-20">
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">Simple, Transparent Pricing</h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Choose the perfect plan for your business. All plans include our core WhatsApp automation features with no
-            hidden fees.
+            Choose the perfect plan for your business. All plans include our core features with no hidden fees.
           </p>
-          <div className="flex justify-center items-center gap-4 mb-12">
-            <span className="text-gray-600">Monthly Charges</span>
-          </div>
         </div>
       </section>
 
-      {/* Pricing Plans */}
-      <section className="py-0 bg-gray-50">
+      {/* WhatsApp Services Pricing */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">WhatsApp Services</h2>
+            <p className="text-lg text-gray-600">Automate your WhatsApp business communication</p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {plans.map((plan, index) => (
+            {whatsappPlans.map((plan, index) => (
               <Card
                 key={index}
                 className={`relative ${plan.popular ? "ring-2 ring-green-500 shadow-xl scale-105" : "shadow-lg"} hover:shadow-xl transition-all duration-300`}
@@ -179,37 +279,6 @@ export default function PricingPage() {
                       {plan.name === "Free" ? "Get Started Free" : "Choose Plan"}
                     </Button>
                   </Link>
-
-                  {/* Conversation Charges - Only show for paid plans */}
-                  {plan.showConversationCharges && (
-                    <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-                      <h4 className="font-semibold text-sm text-gray-700 mb-3">Conversation Charges</h4>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">Marketing</span>
-                          <span className="text-green-600 font-medium">({plan.conversationCharges.marketing})</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">Utility</span>
-                          <span className="text-green-600 font-medium">({plan.conversationCharges.utility})</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">Authentication</span>
-                          <span className="text-green-600 font-medium">
-                            ({plan.conversationCharges.authentication})
-                          </span>
-                        </div>
-                      </div>
-                      <div className="mt-3 pt-3 border-t border-gray-200">
-                        <div className="text-sm">
-                          <span className="font-medium text-gray-700">Service: </span>
-                          <span className="text-green-600">{plan.service}</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Features */}
                   <div>
                     <h4 className="font-semibold text-sm text-gray-700 mb-3">Features</h4>
                     <ul className="space-y-2">
@@ -227,8 +296,123 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+
+      {/* AI Agent Pricing */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">AI Agent</h2>
+            <p className="text-lg text-gray-600">Intelligent conversational AI for your business</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {aiAgentPlans.map((plan, index) => (
+              <Card
+                key={index}
+                className={`relative ${plan.popular ? "ring-2 ring-blue-500 shadow-xl scale-105" : "shadow-lg"} hover:shadow-xl transition-all duration-300`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-blue-500 text-white px-4 py-1">Most Popular</Badge>
+                  </div>
+                )}
+                <CardHeader className="text-center pb-8">
+                  <div
+                    className={`w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center ${plan.popular ? "bg-blue-500 text-white" : "bg-gray-100 text-gray-600"}`}
+                  >
+                    {plan.icon}
+                  </div>
+                  <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                    <span className="text-gray-600">{plan.period}</span>
+                  </div>
+                  <CardDescription className="mt-4 text-gray-600">{plan.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Link href="/contact">
+                    <Button
+                      className={`w-full mb-6 ${plan.popular ? "bg-blue-500 hover:bg-blue-600" : "bg-gray-900 hover:bg-gray-800"} text-white`}
+                    >
+                      Choose Plan
+                    </Button>
+                  </Link>
+                  <div>
+                    <h4 className="font-semibold text-sm text-gray-700 mb-3">Features</h4>
+                    <ul className="space-y-2">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start gap-2">
+                          <Check className="h-4 w-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Website Development Pricing */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Website Development</h2>
+            <p className="text-lg text-gray-600">Professional websites built for your business</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {websitePlans.map((plan, index) => (
+              <Card
+                key={index}
+                className={`relative ${plan.popular ? "ring-2 ring-green-500 shadow-xl scale-105" : "shadow-lg"} hover:shadow-xl transition-all duration-300`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-green-500 text-white px-4 py-1">Most Popular</Badge>
+                  </div>
+                )}
+                <CardHeader className="text-center pb-8">
+                  <div
+                    className={`w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center ${plan.popular ? "bg-green-500 text-white" : "bg-gray-100 text-gray-600"}`}
+                  >
+                    {plan.icon}
+                  </div>
+                  <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                    <span className="text-gray-600 text-sm block mt-1">{plan.period}</span>
+                  </div>
+                  <CardDescription className="mt-4 text-gray-600">{plan.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Link href="/contact">
+                    <Button
+                      className={`w-full mb-6 ${plan.popular ? "bg-green-500 hover:bg-green-600" : "bg-gray-900 hover:bg-gray-800"} text-white`}
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
+                  <div>
+                    <h4 className="font-semibold text-sm text-gray-700 mb-3">Features</h4>
+                    <ul className="space-y-2">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start gap-2">
+                          <Check className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
@@ -238,46 +422,43 @@ export default function PricingPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">What are conversation charges?</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Can I switch between plans?</h3>
                   <p className="text-gray-600">
-                    Conversation charges are WhatsApp's fees for different types of messages. Marketing, Utility, and
-                    Authentication messages have separate charges as per WhatsApp's pricing.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Are service conversations really free?</h3>
-                  <p className="text-gray-600">
-                    Yes! Service conversations (replies to user messages within 24 hours) are completely free and
-                    unlimited on all plans.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Can I upgrade or downgrade anytime?</h3>
-                  <p className="text-gray-600">
-                    You can change your plan at any time. Upgrades take effect immediately, and downgrades take effect
-                    at the next billing cycle.
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">What's included in the Free plan?</h3>
-                  <p className="text-gray-600">
-                    The Free plan includes WhatsApp Business API, unlimited service conversations, basic features, and
-                    $1 conversation credit to get started.
+                    Yes! You can upgrade or downgrade your plan at any time. Changes take effect at the next billing
+                    cycle.
                   </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Do you offer custom solutions?</h3>
                   <p className="text-gray-600">
-                    Yes! For enterprises with specific needs, we offer custom solutions with dedicated support and
-                    tailored features.
+                    For enterprises with specific needs, we offer custom solutions with tailored features and dedicated
+                    support.
                   </p>
                 </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">What payment methods do you accept?</h3>
+                  <p className="text-gray-600">
+                    We accept all major credit cards, debit cards, UPI, and bank transfers for your convenience.
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Is there a setup fee?</h3>
                   <p className="text-gray-600">
                     No setup fees! All plans come with free setup and onboarding support to get you started quickly.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Can I cancel anytime?</h3>
+                  <p className="text-gray-600">
+                    Yes, you can cancel your subscription at any time. No long-term contracts or cancellation fees.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Do you provide training?</h3>
+                  <p className="text-gray-600">
+                    Yes! We provide comprehensive training and documentation to help your team get up to speed quickly.
                   </p>
                 </div>
               </div>

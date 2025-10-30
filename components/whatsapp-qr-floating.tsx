@@ -9,7 +9,7 @@ export default function WhatsAppQRFloating() {
   const [isOpen, setIsOpen] = useState(false)
 
   // Replace with your actual WhatsApp number (without + or spaces)
-  const phoneNumber = "919769754446"
+  const phoneNumber = "919769026133"
   const message = "Hi! I'm interested in VasifyTech's services. Can you help me get started?"
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 

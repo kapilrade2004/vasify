@@ -34,13 +34,6 @@ export default function MobileNav() {
             <div className="container mx-auto px-6 py-8">
               <div className="flex flex-col space-y-6">
                 <Link
-                  href="/features"
-                  className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors py-2 border-b border-gray-100"
-                  onClick={closeMenu}
-                >
-                  Features
-                </Link>
-                <Link
                   href="/ai-agent"
                   className="flex items-center gap-1 text-green-600 font-medium text-xl hover:text-green-600 transition-colors"
                   onClick={closeMenu}
@@ -49,12 +42,20 @@ export default function MobileNav() {
                   <Bot className="h-4 w-4" />
                   AI Agent
                 </Link>
+
                 <Link
-                  href="/services"
+                  href="/whatsappservices"
                   className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors py-2 border-b border-gray-100"
                   onClick={closeMenu}
                 >
-                  Services
+                  Whatsapp Services
+                </Link>
+                <Link
+                  href="/development"
+                  className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors py-2 border-b border-gray-100"
+                  onClick={closeMenu}
+                >
+                  Website Development
                 </Link>
                 <Link href="/free-guide" className="text-green-600 font-medium text-xl transition-colors">
                   Free Guide
@@ -68,7 +69,7 @@ export default function MobileNav() {
                 </Link>
 
                 <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-                  Industries
+                  Blogs
                 </Link>
                 <a
                   href="https://bot.greentickapi.com/"

@@ -6,7 +6,7 @@ import Link from "next/link"
 import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import MobileNav from "@/components/mobile-nav"
-import { DollarSign, User, Bot} from "lucide-react"
+import { DollarSign, User, Bot } from "lucide-react"
 
 const Navbar = () => {
     return (
@@ -24,20 +24,21 @@ const Navbar = () => {
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-8">
-                    <Link href="/features" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-                        Features
-                    </Link>
                     <Link
                         href="/ai-agent"
-                        className="flex items-center gap-1 text-green-600 font-medium text-xl hover:text-green-600 transition-colors"
+                        className="flex items-center gap-1 text-green-600 font-medium hover:text-green-600 transition-colors"
                     >
                         <Bot className="h-4 w-4" />
                         AI Agent
                     </Link>
-                    <Link href="/services" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
-                        Services
+
+                    <Link href="/whatsappservices" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
+                        Whatsapp Services
                     </Link>
-                    <Link href="/free-guide" className="text-green-600 font-medium text-xl transition-colors">
+                    <Link href="/development" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
+                        Website Development
+                    </Link>
+                    <Link href="/free-guide" className="text-green-600 font-medium transition-colors">
                         Free Guide
                     </Link>
                     <Link
@@ -47,7 +48,7 @@ const Navbar = () => {
                         <DollarSign className="h-4 w-4" />
                         Pricing
                     </Link>
-                    <Link href="/blogs" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+                    <Link href="/blogs" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
                         Blogs
                     </Link>
                     <a
