@@ -247,10 +247,8 @@ export default function HomePage() {
                     <div className="font-bold text-blue-600 text-sm">Meta</div>
                     <div className="text-gray-600 text-xs">Business Partner</div>
                   </div>
+                  
                 </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact">
                   <Button
                     size="lg"
@@ -343,40 +341,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Target Industries Section */}
-      <section className="py-20 px-6 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">WhatsApp Solutions For Your Industry</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Tailored solutions for diverse industries like real estate and retail, helping businesses of all sizes leverage WhatsApp for growth.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {targetIndustries.map((industry, index) => (
-              <Card
-                key={index}
-                className="bg-white border-0 shadow-sm hover:shadow-lg transition-all duration-300 h-full"
-              >
-                <CardHeader className="text-center pb-4">
-                  <div
-                    className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${industry.color} rounded-2xl flex items-center justify-center`}
-                  >
-                    <industry.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <CardTitle className="text-xl font-bold text-gray-900">{industry.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 text-center">{industry.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
       <section id="features" className="py-20 px-6 bg-gray-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
@@ -414,6 +378,39 @@ export default function HomePage() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Target Industries Section */}
+      <section className="py-20 px-6 bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">WhatsApp Solutions For Your Industry</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Tailored solutions for diverse industries like real estate and retail, helping businesses of all sizes leverage WhatsApp for growth.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {targetIndustries.map((industry, index) => (
+              <Card
+                key={index}
+                className="bg-white border-0 shadow-sm hover:shadow-lg transition-all duration-300 h-full"
+              >
+                <CardHeader className="text-center pb-4">
+                  <div
+                    className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${industry.color} rounded-2xl flex items-center justify-center`}
+                  >
+                    <industry.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-gray-900">{industry.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 text-center">{industry.description}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -611,7 +608,7 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-lg text-lg font-medium"
+                  className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-medium w-full sm:w-auto bg-transparent"
                 >
                   Schedule Demo
                 </Button>

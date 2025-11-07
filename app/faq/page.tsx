@@ -337,7 +337,7 @@ export default function FAQPage() {
                   variant="outline"
                   className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-lg text-lg font-medium"
                 >
-                  Contact Support
+                  Schedule Demo
                 </Button>
               </Link>
             </div>

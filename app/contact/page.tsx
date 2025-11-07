@@ -51,7 +51,7 @@ export default function ContactPage() {
   }
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = "919769754446" // Replace with actual WhatsApp number
+    const phoneNumber = "919769026133" // Replace with actual WhatsApp number
     const message = "Hi! I'm interested in VasifyTech's services. Can you help me get started?"
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
@@ -113,7 +113,7 @@ export default function ContactPage() {
                     <Button
                       onClick={handlePhoneClick}
                       variant="outline"
-                      className="w-full border-2 border-white text-white hover:bg-white hover:text-green-600 active:bg-white active:text-green-600 font-medium text-left justify-start"
+                      className="w-full bg-white text-green-600 hover:bg-gray-100 active:bg-gray-100 font-semibold text-left justify-start"
                     >
                       <Phone className="mr-3 h-5 w-5" />
                       Call: +91 9769754446
@@ -123,7 +123,7 @@ export default function ContactPage() {
                       <Button
                         onClick={() => window.open("https://www.facebook.com/profile.php?id=61564894984098&mibextid=ZbWKwL", "_blank")}
                         variant="outline"
-                        className="flex-1 border-2 border-white text-white hover:bg-white hover:text-green-600 active:bg-white active:text-green-600 font-medium"
+                      className="w-full bg-white text-green-600 hover:bg-gray-100 active:bg-gray-100 font-semibold text-left justify-start"
                       >
                         <Facebook className="mr-2 h-5 w-5" />
                         Facebook
@@ -131,7 +131,7 @@ export default function ContactPage() {
                       <Button
                         onClick={() => window.open("https://www.instagram.com/vasifytech?igsh=dnIweG5zdmhvemRo", "_blank")}
                         variant="outline"
-                        className="flex-1 border-2 border-white text-white hover:bg-white hover:text-green-600 active:bg-white active:text-green-600 font-medium"
+                      className="w-full bg-white text-green-600 hover:bg-gray-100 active:bg-gray-100 font-semibold text-left justify-start"
                       >
                         <Instagram className="mr-2 h-5 w-5" />
                         Instagram
@@ -275,7 +275,7 @@ export default function ContactPage() {
               onClick={handlePhoneClick}
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-green-600 active:bg-white active:text-green-600 text-lg px-8 py-4 rounded-lg font-medium"
+              className="bg-white text-green-600 active:bg-gray-100 text-lg px-8 py-4 rounded-lg font-semibold"
             >
               <Phone className="mr-2 h-5 w-5" />
               Call Now: +91 9769754446

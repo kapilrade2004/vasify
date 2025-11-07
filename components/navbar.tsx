@@ -21,6 +21,7 @@ const Navbar = () => {
                         className="rounded-full"
                     />
                 </Link>
+                <div className="flex-grow" />  {/* ← adds space between logo and nav */}
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-8">

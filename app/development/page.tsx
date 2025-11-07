@@ -239,14 +239,6 @@ export default function WebsiteDevelopmentPage() {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-6">
-                {achievements.map((achievement, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-3xl font-bold text-green-600 mb-1">{achievement.value}</div>
-                    <div className="text-sm text-gray-600">{achievement.label}</div>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Right Column - Visual */}
@@ -555,9 +547,9 @@ export default function WebsiteDevelopmentPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-10 py-6 rounded-xl text-lg font-bold transition-all bg-transparent"
+                  className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 rounded-lg text-lg font-medium"
                 >
-                  Schedule Consultation
+                  Schedule Demo
                 </Button>
               </Link>
             </div>
