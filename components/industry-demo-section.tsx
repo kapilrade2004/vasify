@@ -256,11 +256,11 @@ export default function IndustryDemoSection() {
 
             {/* ... Image section ... */}
             <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 p-4 sm:p-6 md:p-8 lg:p-12 flex items-center justify-center max-w-full overflow-hidden">
-              <div className="relative w-full aspect-[4/3] max-w-full">
+              <div className="relative w-full max-w-xl aspect-[4/3] sm:aspect-[16/9] md:aspect-[4/3]">
                 <img
                   src={selectedIndustry.image || "/placeholder.svg"}
                   alt={selectedIndustry.name}
-                  className="w-full h-full object-cover rounded-2xl shadow-2xl border-2 md:border-4 border-white"
+                  className="w-full h-full object-cover md:object-contain rounded-2xl shadow-2xl border-2 md:border-4 border-white"
                 />
                 <div
                   className={`absolute inset-0 bg-gradient-to-t ${selectedIndustry.gradient} opacity-20 rounded-2xl`}
