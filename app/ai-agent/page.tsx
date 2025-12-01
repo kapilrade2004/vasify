@@ -7,7 +7,7 @@ import {
   Database,
   Shield,
   Workflow,
-  Building2,
+  Building2, 
   Brain,
   Languages,
   Smartphone,
@@ -22,7 +22,8 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import IndustryChatbotClient from "./industry-chatbot-client"
+import IndustryCard from "@/components/IndustryCard";
+
 
 export const metadata: Metadata = {
   title: "AI Agent - Intelligent Conversational AI for Business | VasifyTech",
@@ -140,18 +141,14 @@ export default function AIAgentPage() {
   ]
 
   const industries = [
-    {
-      name: "E-commerce & Retail",
-      icon: "🛒",
-      description: "Product recommendations, order tracking, customer support",
-    },
-    { name: "Healthcare", icon: "🏥", description: "Appointment booking, symptom checking, patient support" },
-    { name: "Education", icon: "🎓", description: "Course enrollment, student queries, learning assistance" },
-    { name: "Banking & Finance", icon: "🏦", description: "Account queries, loan assistance, financial guidance" },
-    { name: "Real Estate", icon: "🏠", description: "Property search, lead qualification, viewing scheduling" },
-    { name: "Travel & Hospitality", icon: "✈️", description: "Booking assistance, travel planning, customer service" },
-    { name: "Food & Restaurants", icon: "🍽️", description: "Menu browsing, order taking, reservation management" },
-    { name: "Automotive", icon: "🚗", description: "Service booking, product inquiries, dealer support" },
+    { name: "E-commerce & Retail", icon: "🛒", description: "Product recommendations, order tracking, customer support", chat_agent_key: "e-com-retail", status: false},
+    { name: "Healthcare", icon: "🏥", description: "Appointment booking, symptom checking, patient support", chat_agent_key: "healthcare", status: true },
+    { name: "Education", icon: "🎓", description: "Course enrollment, student queries, learning assistance", chat_agent_key: "education", status: true },
+    { name: "Banking & Finance", icon: "🏦", description: "Account queries, loan assistance, financial guidance", chat_agent_key: "bfsi", status: true },
+    { name: "Real Estate", icon: "🏠", description: "Property search, lead qualification, viewing scheduling", chat_agent_key: "real-estate", status: true },
+    { name: "Travel & Hospitality", icon: "✈️", description: "Booking assistance, travel planning, customer service", chat_agent_key: "travel-hospitality", status: true },
+    { name: "Food & Restaurants", icon: "🍽️", description: "Menu browsing, order taking, reservation management", chat_agent_key: "food-restaurants", status: false },
+    { name: "Automotive", icon: "🚗", description: "Service booking, product inquiries, dealer support", chat_agent_key: "automotive", status: false },
   ]
 
   const stats = [
@@ -185,7 +182,7 @@ export default function AIAgentPage() {
                 The most advanced conversational AI that understands every language, handles complex conversations, and
                 integrates seamlessly with your business ecosystem.
               </p>
-              {/* testing */}
+ {/* testing */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact">
                   <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
@@ -273,7 +270,7 @@ export default function AIAgentPage() {
       </section>
 
       {/* Industries Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white scroll-mt-24" id="industries">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Built for Every Industry</h2>
@@ -282,7 +279,19 @@ export default function AIAgentPage() {
               across all business sectors.
             </p>
           </div>
-          <IndustryChatbotClient industries={industries} />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {industries.map((industry, index) => (
+              <IndustryCard
+                  key={index}
+                  icon={industry.icon}
+                  name={industry.name}
+                  description={industry.description}
+                  chatAgentKey={industry.chat_agent_key}
+                  status={industry.status}
+                />
+            ))}
+          </div>
         </div>
       </section>
 

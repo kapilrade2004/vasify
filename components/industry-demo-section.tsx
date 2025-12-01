@@ -4,23 +4,31 @@ import { useState } from "react"
 import { Bot, ShoppingCart, Heart, GraduationCap, Building2, Plane, Utensils } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import IndustryChatbotModal from "@/components/industry-chatbot-modal"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+import ChatInterface from "@/components/chat/ChatInterface"
+import { useUserStore } from "@/hooks/use-user-store"
+
+const chatAgentKeyMap: { [key: string]: string } = {
+  ecommerce: "e-com-retail",
+  healthcare: "healthcare",
+  education: "education",
+  realestate: "real-estate",
+  travel: "travel-hospitality",
+  food: "food-restaurants",
+}
 
 const industries = [
   {
     id: "ecommerce",
     name: "E-commerce & Retail",
     icon: ShoppingCart,
+    isLive: false, // Set to false
     tagline: "Boost Sales with AI-Powered Shopping Assistant",
-    description:
-      "Automate product queries, order tracking, and personalized shopping assistance. Increase conversions by 300% with instant responses and smart recommendations.",
-    demoPrompt: "I'm looking for a blue dress in size M. Do you have any recommendations?",
-    features: [
-      "Product recommendations & upselling",
-      "Order tracking & status updates",
-      "Inventory availability checks",
-      "Personalized shopping experience",
-    ],
+    description: "Automate product queries, order tracking, and personalized shopping assistance. Increase conversions by 300% with instant responses and smart recommendations.",
+    features: ["Product recommendations & upselling", "Order tracking & status updates", "Inventory availability checks", "Personalized shopping experience"],
     image: "/e-commerce-shopping-cart-with-ai-chatbot-helping-c.jpg",
     gradient: "from-purple-500 to-pink-500",
   },
@@ -28,16 +36,10 @@ const industries = [
     id: "healthcare",
     name: "Healthcare",
     icon: Heart,
+    isLive: true,
     tagline: "Streamline Patient Care with 24/7 Support",
-    description:
-      "Handle appointment scheduling, symptom checking, and medical inquiries automatically. Reduce administrative workload by 70% while improving patient satisfaction.",
-    demoPrompt: "I need to book an appointment with a cardiologist for next week.",
-    features: [
-      "Appointment scheduling & reminders",
-      "Symptom assessment & triage",
-      "Prescription refill requests",
-      "Medical record access",
-    ],
+    description: "Handle appointment scheduling, symptom checking, and medical inquiries automatically. Reduce administrative workload by 70% while improving patient satisfaction.",
+    features: ["Appointment scheduling & reminders", "Symptom assessment & triage", "Prescription refill requests", "Medical record access"],
     image: "/healthcare-appointment-booking-interface-with-doct.jpg",
     gradient: "from-red-500 to-pink-500",
   },
@@ -45,16 +47,10 @@ const industries = [
     id: "education",
     name: "Education",
     icon: GraduationCap,
+    isLive: true,
     tagline: "Enhance Student Engagement Instantly",
-    description:
-      "Assist with course enrollment, fee inquiries, and student support. Handle 1000+ student queries simultaneously with personalized responses.",
-    demoPrompt: "What courses are available for web development? How much do they cost?",
-    features: [
-      "Course information & enrollment",
-      "Fee payment & scholarship queries",
-      "Assignment submission tracking",
-      "Student counseling support",
-    ],
+    description: "Assist with course enrollment, fee inquiries, and student support. Handle 1000+ student queries simultaneously with personalized responses.",
+    features: ["Course information & enrollment", "Fee payment & scholarship queries", "Assignment submission tracking", "Student counseling support"],
     image: "/education-platform-with-course-catalog-and-student.jpg",
     gradient: "from-blue-500 to-cyan-500",
   },
@@ -62,16 +58,10 @@ const industries = [
     id: "realestate",
     name: "Real Estate",
     icon: Building2,
+    isLive: true,
     tagline: "Convert More Leads with Instant Responses",
-    description:
-      "Provide property details, schedule viewings, and qualify leads automatically. Close deals 50% faster with AI-powered property matching.",
-    demoPrompt: "I'm looking for a 3BHK apartment in Mumbai under 1 crore.",
-    features: [
-      "Property search & recommendations",
-      "Virtual tour scheduling",
-      "Price negotiations & offers",
-      "Document verification support",
-    ],
+    description: "Provide property details, schedule viewings, and qualify leads automatically. Close deals 50% faster with AI-powered property matching.",
+    features: ["Property search & recommendations", "Virtual tour scheduling", "Price negotiations & offers", "Document verification support"],
     image: "/real-estate-property-listing-with-modern-apartment.jpg",
     gradient: "from-orange-500 to-red-500",
   },
@@ -79,16 +69,10 @@ const industries = [
     id: "travel",
     name: "Travel & Hospitality",
     icon: Plane,
+    isLive: true,
     tagline: "Simplify Bookings & Travel Planning",
-    description:
-      "Handle booking inquiries, itinerary planning, and travel assistance seamlessly. Increase booking rates by 40% with personalized recommendations.",
-    demoPrompt: "I want to book a family vacation to Goa for 5 days in December.",
-    features: [
-      "Flight & hotel bookings",
-      "Itinerary customization",
-      "Travel insurance & visa support",
-      "Real-time travel updates",
-    ],
+    description: "Handle booking inquiries, itinerary planning, and travel assistance seamlessly. Increase booking rates by 40% with personalized recommendations.",
+    features: ["Flight & hotel bookings", "Itinerary customization", "Travel insurance & visa support", "Real-time travel updates"],
     image: "/travel-booking-interface-with-beach-destination-an.jpg",
     gradient: "from-teal-500 to-green-500",
   },
@@ -96,32 +80,73 @@ const industries = [
     id: "food",
     name: "Food & Restaurants",
     icon: Utensils,
+    isLive: false, // Set to false
     tagline: "Take Orders Seamlessly with AI",
-    description:
-      "Manage orders, reservations, and menu inquiries automatically. Handle peak hours effortlessly with unlimited concurrent conversations.",
-    demoPrompt: "Can I see your menu? I'd like to order for delivery.",
-    features: [
-      "Menu browsing & recommendations",
-      "Order placement & tracking",
-      "Table reservations",
-      "Dietary preferences & allergies",
-    ],
+    description: "Manage orders, reservations, and menu inquiries automatically. Handle peak hours effortlessly with unlimited concurrent conversations.",
+    features: ["Menu browsing & recommendations", "Order placement & tracking", "Table reservations", "Dietary preferences & allergies"],
     image: "/placeholder.svg?height=500&width=600",
     gradient: "from-yellow-500 to-orange-500",
   },
 ]
 
 export default function IndustryDemoSection() {
-  const [selectedIndustry, setSelectedIndustry] = useState(industries[0])
+  const [selectedIndustry, setSelectedIndustry] = useState(industries[1]) // Start with a live one
   const [showChatbot, setShowChatbot] = useState(false)
+  const { aiChatUsername, aiChatUserMobile, setAIChatUsername, setAIChatUserMobile } = useUserStore()
+  const [showRegistration, setShowRegistration] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false); // <-- NEW: Add loading state
+
 
   const handleIndustryClick = (industry: (typeof industries)[0]) => {
     setSelectedIndustry(industry)
   }
 
   const handleTryDemo = () => {
+    if (!aiChatUsername || !aiChatUserMobile) {
+      setShowRegistration(true)
+    } else {
+      setShowRegistration(false)
+    }
     setShowChatbot(true)
   }
+
+  const handleLeadSubmit = async () => {
+    setIsSubmitting(true);
+
+    // Split full name into first and last name
+    const nameParts = aiChatUsername.trim().split(' ');
+    const firstName = nameParts[0];
+    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '(No last name)';
+
+    const leadData = {
+      firstName: firstName,
+      lastName: lastName,
+      // Since we don't have email, we create a placeholder. The phone number is the key identifier.
+      email: `${aiChatUserMobile}@lead.vasifytech.com`,
+      phone: aiChatUserMobile,
+      company: 'N/A - From home page AI Bot Demo',
+      service: selectedIndustry.name, // The industry they are interested in
+      message: `User started a demo for the "${selectedIndustry.name}" AI Agent.`,
+    };
+
+    try {
+      // This is a "fire-and-forget" call. We don't block the user if it fails.
+      await fetch("https://backend.vasifytech.com/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(leadData),
+      });
+      console.log("Lead submitted successfully:", leadData);
+    } catch (error) {
+      console.error("Failed to submit lead:", error);
+    } finally {
+      // IMPORTANT: Always proceed to the chat for a good user experience
+      setIsSubmitting(false);
+      setShowRegistration(false);
+    }
+  };
 
   const SelectedIcon = selectedIndustry.icon
 
@@ -144,25 +169,22 @@ export default function IndustryDemoSection() {
               <button
                 key={industry.id}
                 onClick={() => handleIndustryClick(industry)}
-                className={`flex flex-col items-center gap-2 p-3 md:p-4 rounded-xl border-2 transition-all duration-300 hover:scale-105 ${
-                  selectedIndustry.id === industry.id
-                    ? `border-primary bg-primary/10 shadow-lg`
-                    : "border-gray-200 bg-white hover:border-primary/50"
-                }`}
+                className={`flex flex-col items-center gap-2 p-3 md:p-4 rounded-xl border-2 transition-all duration-300 ${selectedIndustry.id === industry.id
+                  ? `border-primary bg-primary/10 shadow-lg`
+                  : "border-gray-200 bg-white"
+                  } ${!industry.isLive ? 'opacity-60' : 'hover:scale-105'}`} // Visual cue for disabled bots
               >
                 <div
-                  className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all ${
-                    selectedIndustry.id === industry.id
-                      ? `bg-gradient-to-br ${industry.gradient} text-white`
-                      : "bg-gray-100 text-gray-600"
-                  }`}
+                  className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all ${selectedIndustry.id === industry.id
+                    ? `bg-gradient-to-br ${industry.gradient} text-white`
+                    : "bg-gray-100 text-gray-600"
+                    }`}
                 >
                   <Icon className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <span
-                  className={`text-xs md:text-sm font-medium text-center ${
-                    selectedIndustry.id === industry.id ? "text-primary" : "text-gray-700"
-                  }`}
+                  className={`text-xs md:text-sm font-medium text-center ${selectedIndustry.id === industry.id ? "text-primary" : "text-gray-700"
+                    }`}
                 >
                   {industry.name}
                 </span>
@@ -180,6 +202,7 @@ export default function IndustryDemoSection() {
                 <SelectedIcon className="w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" />
               </div>
 
+              {/* ... Card content ... */}
               <div className="max-w-full overflow-hidden">
                 <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 break-words hyphens-auto">
                   {selectedIndustry.name}
@@ -210,16 +233,28 @@ export default function IndustryDemoSection() {
                 ))}
               </div>
 
-              <Button
-                size="lg"
-                onClick={handleTryDemo}
-                className={`bg-gradient-to-r ${selectedIndustry.gradient} hover:opacity-90 text-white group w-full md:w-auto text-sm md:text-base`}
-              >
-                Try {selectedIndustry.name} Demo Bot
-                <Bot className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
-              </Button>
+              {/* CONDITIONAL BUTTON RENDERING */}
+              {selectedIndustry.isLive ? (
+                <Button
+                  size="lg"
+                  onClick={handleTryDemo}
+                  className={`bg-gradient-to-r ${selectedIndustry.gradient} hover:opacity-90 text-white group w-full md:w-auto text-sm md:text-base`}
+                >
+                  Try {selectedIndustry.name} Demo Bot
+                  <Bot className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
+                </Button>
+              ) : (
+                <Button
+                  size="lg"
+                  disabled
+                  className="bg-gray-300 text-gray-500 cursor-not-allowed w-full md:w-auto text-sm md:text-base"
+                >
+                  Coming Soon
+                </Button>
+              )}
             </div>
 
+            {/* ... Image section ... */}
             <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 p-4 sm:p-6 md:p-8 lg:p-12 flex items-center justify-center max-w-full overflow-hidden">
               <div className="relative w-full aspect-[4/3] max-w-full">
                 <img
@@ -230,7 +265,6 @@ export default function IndustryDemoSection() {
                 <div
                   className={`absolute inset-0 bg-gradient-to-t ${selectedIndustry.gradient} opacity-20 rounded-2xl`}
                 ></div>
-
                 <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-white/95 backdrop-blur-md rounded-lg px-3 py-1.5 md:px-4 md:py-2 shadow-lg">
                   <p className="text-[10px] md:text-xs font-semibold text-gray-600">AI-Powered</p>
                   <p className="text-sm md:text-lg font-bold text-gray-900">24/7 Available</p>
@@ -240,17 +274,31 @@ export default function IndustryDemoSection() {
           </div>
         </Card>
 
-        {showChatbot && (
-          <IndustryChatbotModal
-            industry={{
-              name: selectedIndustry.name,
-              icon: selectedIndustry.name.split(" ")[0],
-              description: selectedIndustry.description,
-            }}
-            isOpen={showChatbot}
-            onClose={() => setShowChatbot(false)}
-          />
-        )}
+        {/* The Dialog logic remains the same */}
+        <Dialog open={showChatbot} onOpenChange={setShowChatbot}>
+          <DialogContent className="sm:max-w-[500px] h-[600px] max-h-[80vh] p-0">
+            {showRegistration ? (
+              <div className="p-6 space-y-4">
+                <h2 className="text-lg font-bold">Please enter your details to start</h2>
+                <Input placeholder="Your Name" value={aiChatUsername} onChange={(e) => setAIChatUsername(e.target.value)} />
+                <PhoneInput country={'in'} value={aiChatUserMobile} onChange={(phone) => setAIChatUserMobile(phone)} inputClass="!w-full !h-10 !text-base !rounded-md !border-input !px-3 !py-2 !bg-background" containerClass="!w-full" buttonClass="!border-input !bg-background paddin-x-3" />
+                <Button
+                  className="w-full"
+                  onClick={handleLeadSubmit}
+                  disabled={!aiChatUsername || !aiChatUserMobile || isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Continue to Chat"}
+                </Button>
+
+                <Button variant="outline" className="w-full" onClick={() => setShowChatbot(false)}>
+                  Cancel
+                </Button>
+              </div>
+            ) : (
+              <ChatInterface title={selectedIndustry.name} chatAgentKey={chatAgentKeyMap[selectedIndustry.id]} userName={aiChatUsername} userMobile={aiChatUserMobile} />
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   )
