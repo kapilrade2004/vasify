@@ -6,8 +6,12 @@ import Link from "next/link"
 import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import MobileNav from "@/components/mobile-nav"
+<<<<<<< HEAD
 import {  User, Bot } from "lucide-react"
 import { IndianRupee } from "lucide-react";
+=======
+import { DollarSign, User, Bot } from "lucide-react"
+>>>>>>> 65de131dcdfc309458f454c42c6bbd0ac17622d8
 
 const Navbar = () => {
     return (
@@ -43,12 +47,17 @@ const Navbar = () => {
                     <Link href="/free-guide" className="text-green-600 font-medium transition-colors">
                         Free Guide
                     </Link>
+<<<<<<< HEAD
                     {/* <Link
+=======
+                    <Link
+>>>>>>> 65de131dcdfc309458f454c42c6bbd0ac17622d8
                         href="/pricing"
                         className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
                     >
                         <DollarSign className="h-4 w-4" />
                         Pricing
+<<<<<<< HEAD
                     </Link> */}
                     <Link
     href="/pricing"
@@ -57,6 +66,9 @@ const Navbar = () => {
     <IndianRupee className="h-4 w-4" />
     Pricing
 </Link>
+=======
+                    </Link>
+>>>>>>> 65de131dcdfc309458f454c42c6bbd0ac17622d8
                     <Link href="/blogs" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
                         Blogs
                     </Link>
