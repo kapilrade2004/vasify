@@ -167,7 +167,7 @@ export default function PricingPage() {
   const websitePlans = [
     {
       name: "Basic Website",
-      price: "₹19,999",
+      price: "₹9999",
       period: "one-time",
       description: "Perfect landing page or portfolio website",
       icon: <Code className="h-6 w-6" />,
@@ -186,7 +186,7 @@ export default function PricingPage() {
     },
     {
       name: "Business Website",
-      price: "₹49,999",
+      price: "₹19,999",
       period: "one-time",
       description: "Complete business website with CMS",
       icon: <Crown className="h-6 w-6" />,
@@ -207,7 +207,7 @@ export default function PricingPage() {
     },
     {
       name: "E-commerce",
-      price: "₹99,999",
+      price: "₹49,999",
       period: "one-time",
       description: "Full-featured online store",
       icon: <Rocket className="h-6 w-6" />,
