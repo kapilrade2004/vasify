@@ -51,7 +51,7 @@ export default function ContactPage() {
   }
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = "919769026133" // Replace with actual WhatsApp number
+    const phoneNumber = "919769026133"
     const message = "Hi! I'm interested in VasifyTech's services. Can you help me get started?"
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
@@ -71,7 +71,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
-        <section id="contact-form-section" className="mt-20 py-20 px-6 bg-gray-50">
+      <section id="contact-form-section" className="mt-20 py-20 px-6 bg-gray-50">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
@@ -123,7 +123,7 @@ export default function ContactPage() {
                       <Button
                         onClick={() => window.open("https://www.facebook.com/profile.php?id=61564894984098&mibextid=ZbWKwL", "_blank")}
                         variant="outline"
-                      className="w-full bg-white text-green-600 hover:bg-gray-100 active:bg-gray-100 font-semibold text-left justify-start"
+                        className="w-full bg-white text-green-600 hover:bg-gray-100 active:bg-gray-100 font-semibold text-left justify-start"
                       >
                         <Facebook className="mr-2 h-5 w-5" />
                         Facebook
@@ -131,13 +131,12 @@ export default function ContactPage() {
                       <Button
                         onClick={() => window.open("https://www.instagram.com/vasifytech?igsh=dnIweG5zdmhvemRo", "_blank")}
                         variant="outline"
-                      className="w-full bg-white text-green-600 hover:bg-gray-100 active:bg-gray-100 font-semibold text-left justify-start"
+                        className="w-full bg-white text-green-600 hover:bg-gray-100 active:bg-gray-100 font-semibold text-left justify-start"
                       >
                         <Instagram className="mr-2 h-5 w-5" />
                         Instagram
                       </Button>
                     </div>
-
 
                     {/* QR Code Option */}
                     <div className="bg-white/10 p-4 rounded-lg border border-white/20">
@@ -164,18 +163,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      {/* Hero Section */}
-      {/* <section className="pt-20 pb-20 px-6">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Let's <span className="text-green-500">Transform</span> Your Business Together
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Ready to revolutionize your WhatsApp business communication? Get your free consultation and discover how
-            VasifyTech can help you achieve your goals.
-          </p>
-        </div>
-      </section> */}
 
       {/* Contact Info Cards */}
       <section className="py-8 px-6 bg-white">
@@ -202,7 +189,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Main Contact Form */}
       {/* FAQ Section */}
       <section className="py-20 px-6 bg-white">
         <div className="container mx-auto">

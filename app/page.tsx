@@ -29,7 +29,15 @@ import IndustryDemoSection from "@/components/industry-demo-section"
 import BrandMarquee from "@/components/brand-marquee"
 
 export default function HomePage() {
-  const trustedLogos = ["NICMAR", "Parul University", "RINGS & I", "SNAP", "Sri Balaji Society", "AFAIRS", "IMS"]
+  const trustedLogos = [
+    "NICMAR",
+    "Parul University",
+    "RINGS & I",
+    "SNAP",
+    "Sri Balaji Society",
+    "AFAIRS",
+    "IMS",
+  ]
 
   const services = [
     {
@@ -137,29 +145,37 @@ export default function HomePage() {
       id: "real-estate",
       name: "Real Estate",
       icon: Home,
-      caption: "See how our AI Agent handles customer queries, schedules demos, and shares pricing instantly.",
-      demoPrompt: "Hi! I'm interested in 2BHK apartments in Mumbai. Can you show me available options?",
+      caption:
+        "See how our AI Agent handles customer queries, schedules demos, and shares pricing instantly.",
+      demoPrompt:
+        "Hi! I'm interested in 2BHK apartments in Mumbai. Can you show me available options?",
     },
     {
       id: "hospitality",
       name: "Hospitality",
       icon: Hotel,
-      caption: "Automate 24x7 guest inquiries, booking confirmations, and service requests.",
-      demoPrompt: "Do you have rooms available for this weekend? What are your rates?",
+      caption:
+        "Automate 24x7 guest inquiries, booking confirmations, and service requests.",
+      demoPrompt:
+        "Do you have rooms available for this weekend? What are your rates?",
     },
     {
       id: "car-rental",
       name: "Car Rental",
       icon: Car,
-      caption: "Handle booking inquiries, pricing, and availability checks automatically.",
-      demoPrompt: "I need to rent an SUV for 3 days. What are your options and prices?",
+      caption:
+        "Handle booking inquiries, pricing, and availability checks automatically.",
+      demoPrompt:
+        "I need to rent an SUV for 3 days. What are your options and prices?",
     },
     {
       id: "healthcare",
       name: "Healthcare",
       icon: Heart,
-      caption: "Simplify appointment scheduling and patient inquiry management.",
-      demoPrompt: "I'd like to book an appointment with a dentist. Are there any slots available this week?",
+      caption:
+        "Simplify appointment scheduling and patient inquiry management.",
+      demoPrompt:
+        "I'd like to book an appointment with a dentist. Are there any slots available this week?",
     },
     {
       id: "ecommerce",
@@ -172,8 +188,10 @@ export default function HomePage() {
       id: "education",
       name: "Education",
       icon: GraduationCap,
-      caption: "Automate student counseling, admissions, and course inquiries.",
-      demoPrompt: "What are the admission requirements for MBA programs? When does the next batch start?",
+      caption:
+        "Automate student counseling, admissions, and course inquiries.",
+      demoPrompt:
+        "What are the admission requirements for MBA programs? When does the next batch start?",
     },
   ]
 
@@ -208,8 +226,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
       {/* Hero Section with Slider */}
-      <section className="pt-20 md:pt-24 pb-8 md:pb-12 px-4">
-        <div className="container mx-auto">
+      <section className="pt-20 md:pt-24 pb-8 md:pb-12 px-2 sm:px-4">
+        <div className="container mx-auto px-0 sm:px-2 md:px-4 lg:px-6 max-w-7xl">
           <ServicesSlider />
         </div>
       </section>
@@ -221,7 +239,7 @@ export default function HomePage() {
 
       {/* Core Services Section */}
       <section className="py-12 md:py-20 px-4">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
               Complete Digital Transformation Solutions
@@ -231,7 +249,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {services.map((service, index) => {
               const Icon = service.icon
               return (
@@ -273,7 +291,7 @@ export default function HomePage() {
 
       {/* Target Industries Section */}
       <section className="py-12 md:py-24 px-4 sm:px-6 bg-gradient-to-br from-gray-50 to-green-50">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-4">
               <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full text-xs md:text-sm font-semibold">
@@ -288,7 +306,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {whyChooseUs.map((item, index) => (
               <Card
                 key={index}
@@ -315,7 +333,7 @@ export default function HomePage() {
 
       {/* Industries Section */}
       <section className="py-12 md:py-24 px-4 sm:px-6 bg-white">
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto text-center px-4 sm:px-6">
           <div className="inline-block mb-4">
             <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full text-xs md:text-sm font-semibold">
               Industries We Serve
@@ -328,7 +346,7 @@ export default function HomePage() {
             From startups to enterprises, businesses across all sectors trust VasifyTech to power their growth
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
             {industries.map((industry, index) => (
               <div
                 key={index}
@@ -346,7 +364,7 @@ export default function HomePage() {
 
       {/* Testimonials Section */}
       <section id="testimonials" className="py-12 md:py-20 px-4 md:px-6 bg-gray-50">
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 px-4">
               Loved by businesses worldwide
@@ -356,7 +374,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 name: "Rajesh Kumar",
@@ -413,7 +431,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="py-12 md:py-20 px-4 md:px-6 bg-green-500">
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto text-center px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-white">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 px-4">
               Ready to transform your WhatsApp experience?
@@ -444,6 +462,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
       {/* WhatsApp Button */}
       <WhatsAppButton />
     </div>
