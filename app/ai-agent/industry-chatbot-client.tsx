@@ -8,6 +8,7 @@ interface Industry {
   icon: string
   description: string
 }
+
 interface IndustryChatbotClientProps {
   industries: Industry[]
 }
@@ -40,5 +41,3 @@ export default function IndustryChatbotClient({ industries }: IndustryChatbotCli
     </>
   )
 }
-
-
