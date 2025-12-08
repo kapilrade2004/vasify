@@ -587,7 +587,7 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-3 sm:px-6 py-2 sm:py-3 rounded-lg text-base sm:text-lg font-medium"
+                  className="border-2 border-white text-green-600 hover:bg-white hover:text-green-600 px-3 sm:px-6 py-2 sm:py-3 rounded-lg text-base sm:text-lg font-medium"
                 >
                   Schedule Demo
                 </Button>

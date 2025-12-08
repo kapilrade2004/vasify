@@ -84,7 +84,7 @@ export default function HomePage() {
         "E-commerce platforms with payment integration",
         "Custom CRM, ERP & business automation tools",
       ],
-      href: "/development",
+      href: "/website-development",
       cta: "Build Your Platform",
       gradient: "from-primary/10 to-primary/5",
     },
