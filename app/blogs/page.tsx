@@ -1,4 +1,3 @@
-"use client"
 
 import { MessageCircle, ShoppingCart, Building2, CreditCard, Home, GraduationCap, Heart, Settings } from "lucide-react"
 import Link from "next/link"
