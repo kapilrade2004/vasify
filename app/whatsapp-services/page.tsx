@@ -29,6 +29,8 @@ import { Badge } from "@/components/ui/badge"
 import WhatsAppButton from "@/components/whatsapp-button"
 import Image from "next/image"
 
+
+
 export default function HomePage() {
   const coreServices = [
     {

@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   // SEO CHANGE: Description now includes primary and secondary keywords naturally.
   description:
     "Supercharge customer engagement with VasifyTech's automated WhatsApp Business API platform. Our services help you connect, sell, and support with ease.",
-
   keywords:
     "WhatsApp Business Platform, WhatsApp Business API, WhatsApp automation, automated customer engagement, chatbot, business messaging, Meta Business Partner, VasifyTech",
   authors: [{ name: "VasifyTech" }],

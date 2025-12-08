@@ -235,7 +235,8 @@ export default function PricingPage() {
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">Simple, Transparent Pricing</h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Choose the perfect plan for your business. All plans include our core features with no hidden fees.
+Explore simple, transparent pricing for WhatsApp services, AI agents, and website development. Choose the perfect VasifyTech plan with no hidden fees.
+
           </p>
         </div>
       </section>

@@ -58,7 +58,7 @@ export default function HomePage() {
     },
     {
       icon: MessageSquare,
-      title: "WhatsApp Business API",
+      title: "WhatsApp Business Platform Services | VasifyTech",
       tagline: "Official Meta Business Partner",
       description:
         "Transform customer engagement with official WhatsApp Business API. Build custom CRM flows, automate responses, and manage conversations at scale.",
@@ -74,7 +74,7 @@ export default function HomePage() {
     },
     {
       icon: Code,
-      title: "Website & App Development",
+      title: "Best Website Development Company in India | VasifyTech",
       tagline: "Custom Digital Solutions",
       description:
         "Build stunning websites and mobile apps with cutting-edge technology. From e-commerce platforms to custom software, we bring your vision to life.",
@@ -241,9 +241,9 @@ export default function HomePage() {
       <section className="py-12 md:py-20 px-4">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-              Complete Digital Transformation Solutions
-            </h2>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+             WhatsApp Business API Platform for Automated Engagement
+            </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               Everything you need to automate customer engagement, scale operations, and drive business growth
             </p>

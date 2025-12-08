@@ -115,8 +115,7 @@ export default function FreeGuidePage() {
               Free WhatsApp Business <span className="text-green-500">Guides</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Download our comprehensive guides to master WhatsApp Business automation, marketing, and customer
-              engagement. All guides are completely free and packed with actionable insights.
+             Access free WhatsApp Business guides from VasifyTech—learn setup, automation, APIs, marketing strategies, and best practices to grow your business.ngagement. All guides are completely free and packed with actionable insights.
             </p>
             <div className="flex items-center justify-center space-x-8 text-sm text-gray-600">
               <div className="flex items-center space-x-2">

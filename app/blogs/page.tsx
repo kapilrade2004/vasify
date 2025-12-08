@@ -80,11 +80,10 @@ export default function BlogsPage() {
       <section className="pt-32 pb-20 px-6">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Industry <span className="text-green-500">Insights</span> & WhatsApp Solutions
+            Latest <span className="text-green-500">Guides</span>  Guides on WhatsApp Business, AI & Digital Growth
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Discover how different industries are leveraging WhatsApp Business to transform their customer engagement,
-            boost sales, and streamline operations.
+         Read expert articles, WhatsApp business strategies, industry case-studies and best practices on VasifyTech’s blog — your go-to source for growth & automation tips.
           </p>
         </div>
       </section>
