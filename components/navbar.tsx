@@ -37,13 +37,13 @@ const Navbar = () => {
                         AI Agent
                     </Link>
 
-                    <Link href="/whatsappservices" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
+                    <Link href="/whatsapp-services" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
                         Whatsapp Services
                     </Link>
-                    <Link href="/development" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
+                    <Link href="/website-development" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
                         Website Development
                     </Link>
-                    <Link href="/free-guide" className="text-green-600 font-medium transition-colors">
+                    <Link href="/free-whatsapp-business-guide" className="text-green-600 font-medium transition-colors">
                         Free Guide
                     </Link>
 
