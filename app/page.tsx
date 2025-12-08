@@ -68,7 +68,7 @@ export default function HomePage() {
         "Rich media support (images, videos, documents, catalogs)",
         "Advanced analytics & conversation insights",
       ],
-      href: "/whatsapp-api",
+      href: "/whatsapp-services",
       cta: "Get WhatsApp API",
       gradient: "from-primary/10 to-primary/5",
     },

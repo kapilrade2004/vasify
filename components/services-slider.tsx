@@ -22,7 +22,7 @@ const services = [
     tagline: "Official Meta Business Partner",
     description:
       "Transform customer engagement with official WhatsApp Business API. Build custom CRM flows, automate responses, and manage conversations at scale.",
-    href: "/whatsappservices",
+    href: "/whatsapp-services",
     gradient: "from-green-500 via-emerald-500 to-teal-600",
     accentColor: "bg-green-500",
     image: "/whatsapp-business-api-interface-with-message-templ.jpg",
@@ -32,7 +32,7 @@ const services = [
     tagline: "Custom Digital Solutions",
     description:
       "Build stunning websites and mobile apps with cutting-edge technology. From e-commerce platforms to custom software, we bring your vision to life.",
-    href: "/development",
+    href: "/website-development",
     gradient: "from-orange-500 via-red-500 to-pink-600",
     accentColor: "bg-orange-500",
     image: "/modern-website-and-mobile-app-development-with-res.jpg",
