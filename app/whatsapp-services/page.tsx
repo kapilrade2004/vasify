@@ -29,7 +29,19 @@ import { Badge } from "@/components/ui/badge"
 import WhatsAppButton from "@/components/whatsapp-button"
 import Image from "next/image"
 
-
+export const metadata = {
+  title: "WhatsApp Business Platform Services | VasifyTech",
+  description:
+    "Boost customer engagement with VasifyTech’s WhatsApp Business platform solutions—automation, chatbots, and secure messaging for seamless business communication.",
+  openGraph: {
+    title: "WhatsApp Business Platform Services | VasifyTech",
+    description:
+      "Boost customer engagement with VasifyTech’s WhatsApp Business platform solutions—automation, chatbots, and secure messaging for seamless business communication.",
+    url: "https://vasifytech.com/whatsapp-services",
+    type: "website",
+    siteName: "VasifyTech",
+  },
+};
 
 export default function HomePage() {
   const coreServices = [

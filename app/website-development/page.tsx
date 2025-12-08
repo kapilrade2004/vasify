@@ -26,6 +26,20 @@ import { Badge } from "@/components/ui/badge"
 import WhatsAppButton from "@/components/whatsapp-button"
 import MobileNav from "@/components/mobile-nav"
 
+export const metadata = {
+  title: "Best Website Development Company in India | VasifyTech",
+  description:
+    "VasifyTech is India’s leading website development company, delivering fast, secure, modern websites that help businesses grow and stand out online.",
+  openGraph: {
+    title: "Best Website Development Company in India | VasifyTech",
+    description:
+      "VasifyTech is India’s leading website development company, delivering fast, secure, modern websites that help businesses grow and stand out online.",
+    url: "https://vasifytech.com/website-development",
+    type: "website",
+    siteName: "VasifyTech",
+  },
+};
+
 export default function WebsiteDevelopmentPage() {
   const services = [
     {
@@ -202,19 +216,18 @@ export default function WebsiteDevelopmentPage() {
                 <Globe className="h-4 w-4 text-green-600" />
                 <span className="text-sm font-semibold text-gray-700">Professional Web Development</span>
               </div>
-
               <div className="space-y-6">
-                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight">
-                  Build Stunning{" "}
+                <h1 className="text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-900 leading-tight">
+                  Leading Website Development{" "}
                   <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                    Websites
-                  </span>{" "}
+                    Company{" "}
+                  </span>
                   That Convert
                 </h1>
-                <p className="text-xl lg:text-2xl text-gray-600 leading-relaxed">
+                <h1 className="text-xl lg:text-xl text-gray-600 leading-relaxed">
                   From e-commerce platforms to custom web applications, we create high-performance websites optimized
                   for conversions and built with modern technology.
-                </p>
+                </h1>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">

@@ -4,6 +4,20 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 
+export const metadata = {
+  title: "VasifyTech Pricing | WhatsApp, AI Agent & Website Plans",
+  description:
+    "Explore simple, transparent pricing for WhatsApp API, AI agents, and website development. Choose the perfect VasifyTech plan with no hidden fees.",
+  openGraph: {
+    title: "VasifyTech Pricing | WhatsApp, AI Agent & Website Plans",
+    description:
+      "Explore simple, transparent pricing for WhatsApp API, AI agents, and website development. Choose the perfect VasifyTech plan with no hidden fees.",
+    url: "https://vasifytech.com/pricing",
+    type: "website",
+    siteName: "VasifyTech",
+  },
+};
+
 export default function PricingPage() {
   const whatsappPlans = [
     {

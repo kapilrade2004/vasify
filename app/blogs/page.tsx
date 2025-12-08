@@ -7,6 +7,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import WhatsAppButton from "@/components/whatsapp-button"
 import MobileNav from "@/components/mobile-nav"
 
+export const metadata = {
+  title: "WhatsApp Business API & Industry Insights Blog | VasifyTech",
+  description:
+    "Read expert articles, WhatsApp business strategies, industry case-studies and best practices on VasifyTech’s blog — your go-to source for growth & automation tips.",
+  openGraph: {
+    title: "WhatsApp Business API & Industry Insights Blog | VasifyTech",
+    description:
+      "Read expert articles, WhatsApp business strategies, industry case-studies and best practices on VasifyTech’s blog — your go-to source for growth & automation tips.",
+    url: "https://vasifytech.com/blogs",
+    type: "website",
+    siteName: "VasifyTech",
+  },
+};
+
+
 export default function BlogsPage() {
   const blogCategories = [
     {
