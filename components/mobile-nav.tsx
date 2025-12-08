@@ -44,20 +44,20 @@ export default function MobileNav() {
                 </Link>
 
                 <Link
-                  href="/whatsappservices"
+                  href="/whatsapp-services"
                   className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors py-2 border-b border-gray-100"
                   onClick={closeMenu}
                 >
                   Whatsapp Services
                 </Link>
                 <Link
-                  href="/development"
+                  href="/website-development"
                   className="text-lg font-medium text-gray-700 hover:text-green-600 transition-colors py-2 border-b border-gray-100"
                   onClick={closeMenu}
                 >
                   Website Development
                 </Link>
-                <Link href="/free-guide" className="text-green-600 font-medium text-xl transition-colors">
+                <Link href="/free-whatsapp-business-guide" className="text-green-600 font-medium text-xl transition-colors">
                   Free Guide
                 </Link>
                 <Link
