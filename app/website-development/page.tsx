@@ -224,10 +224,10 @@ export default function WebsiteDevelopmentPage() {
                   </span>
                   That Convert
                 </h1>
-                <h1 className="text-xl lg:text-xl text-gray-600 leading-relaxed">
+                <h2 className="text-xl lg:text-xl text-gray-600 leading-relaxed">
                   From e-commerce platforms to custom web applications, we create high-performance websites optimized
                   for conversions and built with modern technology.
-                </h1>
+                </h2>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
