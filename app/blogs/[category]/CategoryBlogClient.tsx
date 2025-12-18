@@ -14,47 +14,39 @@ export default function CategoryBlogClient() {
 
   // Blog data for different categories
   const blogData: Record<string, any> = {
-    "ecommerce-d2c": {
-      title: "E-commerce & D2C",
-      description: "WhatsApp strategies for online retail and direct-to-consumer brands",
-      color: "text-blue-600",
-      bgColor: "bg-blue-50",
-      blogs: [
-        {
-          title: "How WhatsApp Catalogues Are Overtaking Traditional E-Commerce in India",
-          excerpt:
-            "Discover proven automation strategies that top e-commerce brands use to boost their sales through WhatsApp. Learn about cart abandonment recovery, order updates, and customer support automation.",
-          author: "VasifyTech Team",
-          date: "Jan 20, 2025",
-          readTime: "8 min read",
-          image: "/eblog1.png?height=300&width=500",
-          tags: ["Automation", "Sales", "E-commerce"],
-          slug: "How-WhatsApp-Catalogues-Are-Overtaking-Traditional-E-Commerce-in-India",
-        },
-        // {
-        //   title: "WhatsApp Catalog Integration: Complete Guide for Online Stores",
-        //   excerpt:
-        //     "Step-by-step guide to integrating WhatsApp Business Catalog with your online store. Showcase products, enable direct ordering, and streamline the customer journey.",
-        //   author: "Mike Chen",
-        //   date: "Dec 12, 2024",
-        //   readTime: "12 min read",
-        //   image: "/placeholder.svg?height=300&width=500",
-        //   tags: ["Catalog", "Integration", "D2C"],
-        //   slug: "whatsapp-catalog-integration-complete-guide-for-online-stores",
-        // },
-        // {
-        //   title: "Customer Support Revolution: WhatsApp vs Traditional Channels",
-        //   excerpt:
-        //     "Compare WhatsApp customer support with traditional channels. Learn why 89% of customers prefer WhatsApp for support and how to implement it effectively.",
-        //   author: "Lisa Rodriguez",
-        //   date: "Dec 10, 2024",
-        //   readTime: "6 min read",
-        //   image: "/placeholder.svg?height=300&width=500",
-        //   tags: ["Support", "Customer Service", "Comparison"],
-        //   slug: "customer-support-revolution-whatsapp-vs-traditional-channels",
-        // },
-      ],
+   "ecommerce-d2c": {
+  title: "E-commerce & D2C",
+  description: "WhatsApp strategies for online retail and direct-to-consumer brands",
+  color: "text-blue-600",
+  bgColor: "bg-blue-50",
+  blogs: [
+    {
+      title: "How AI Chatbot Development Is Transforming D2C Support on WhatsApp",
+      excerpt:
+        "Discover how AI chatbot development is revolutionizing D2C customer support on WhatsApp with AI agents, automation, lead generation, and real-world examples.",
+      author: "VasifyTech Team",
+      date: "Dec 15, 2025",
+      readTime: "8 min read",
+      image:
+        "/How_AI_Chatbot_Development_Is_Transforming_D2C_Support_on_WhatsApp.png?height=300&width=500",
+      tags: ["AI Chatbots", "D2C", "WhatsApp Automation", "Customer Support"],
+      slug: "how-ai-chatbot-development-transforming-d2c-customer-support-whatsapp",
     },
+
+    {
+      title: "How WhatsApp Catalogues Are Overtaking Traditional E-Commerce in India",
+      excerpt:
+        "Learn how WhatsApp Catalogues are replacing traditional e-commerce platforms in India by enabling chat-based shopping, higher conversions, and lower costs.",
+      author: "VasifyTech Team",
+      date: "Jan 20, 2025",
+      readTime: "8 min read",
+      image: "/eblog1.png?height=300&width=500",
+      tags: ["E-commerce", "D2C", "WhatsApp Commerce", "Catalogues"],
+      slug: "how-whatsapp-catalogues-overtaking-traditional-ecommerce-india",
+    },
+  ],
+    },
+
     "retail-fmcg": {
       title: "Retail & FMCG",
       description: "Customer engagement solutions for retail and fast-moving consumer goods",
@@ -91,28 +83,28 @@ export default function CategoryBlogClient() {
           tags: ["Banking", "Security", "Compliance"],
           slug: "How-Fintech-Startups-Are-Streamlining-Lending-via-WhatsApp",
         },
-    //     {
-    //       title: "Fintech Innovation: WhatsApp Payment Integration and KYC Automation",
-    //       excerpt:
-    //         "Explore how fintech companies are revolutionizing payments and KYC processes through WhatsApp integration. Real-world case studies and implementation guides.",
-    //       author: "Alex Morgan",
-    //       date: "Dec 9, 2024",
-    //       readTime: "12 min read",
-    //       image: "/placeholder.svg?height=300&width=500",
-    //       tags: ["Fintech", "Payments", "KYC"],
-    //       slug: "fintech-innovation-whatsapp-payment-integration-and-kyc-automation",
-    //     },
-    //     {
-    //       title: "Insurance Claims Processing: Streamlining with WhatsApp Automation",
-    //       excerpt:
-    //         "Transform insurance claims processing with WhatsApp automation. Reduce processing time by 70% and improve customer satisfaction significantly.",
-    //       author: "Jennifer Lee",
-    //       date: "Dec 6, 2024",
-    //       readTime: "8 min read",
-    //       image: "/placeholder.svg?height=300&width=500",
-    //       tags: ["Insurance", "Claims", "Automation"],
-    //       slug: "insurance-claims-processing-streamlining-with-whatsapp-automation",
-    //     },
+        //     {
+        //       title: "Fintech Innovation: WhatsApp Payment Integration and KYC Automation",
+        //       excerpt:
+        //         "Explore how fintech companies are revolutionizing payments and KYC processes through WhatsApp integration. Real-world case studies and implementation guides.",
+        //       author: "Alex Morgan",
+        //       date: "Dec 9, 2024",
+        //       readTime: "12 min read",
+        //       image: "/placeholder.svg?height=300&width=500",
+        //       tags: ["Fintech", "Payments", "KYC"],
+        //       slug: "fintech-innovation-whatsapp-payment-integration-and-kyc-automation",
+        //     },
+        //     {
+        //       title: "Insurance Claims Processing: Streamlining with WhatsApp Automation",
+        //       excerpt:
+        //         "Transform insurance claims processing with WhatsApp automation. Reduce processing time by 70% and improve customer satisfaction significantly.",
+        //       author: "Jennifer Lee",
+        //       date: "Dec 6, 2024",
+        //       readTime: "8 min read",
+        //       image: "/placeholder.svg?height=300&width=500",
+        //       tags: ["Insurance", "Claims", "Automation"],
+        //       slug: "insurance-claims-processing-streamlining-with-whatsapp-automation",
+        //     },
       ],
     },
     "real-estate": {
@@ -173,7 +165,7 @@ export default function CategoryBlogClient() {
           tags: ["EdTech", "Student Engagement", "Automation"],
           slug: "Parent-Communication-Simplified-How-WhatsApp-Is-Revolutionizing-Education-Engagement",
         },
-     ],
+      ],
     },
     "healthcare-wellness": {
       title: "Healthcare & Wellness",
