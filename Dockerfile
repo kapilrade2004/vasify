@@ -7,7 +7,9 @@ WORKDIR /app
 COPY package.json /app
 COPY pnpm-lock.yaml /app
 
-RUN pnpm install
+RUN npm config set jobs 1
+
+RUN pnpm install --fetch-concurrency=1 --lockfile-intake-concurrency=1
 
 COPY . /app
 
