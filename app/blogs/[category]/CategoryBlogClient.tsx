@@ -81,7 +81,7 @@ export default function CategoryBlogClient() {
           readTime: "15 min read",
           image: "/bfblog1.png?height=300&width=500",
           tags: ["Banking", "Security", "Compliance"],
-          slug: "How-Fintech-Startups-Are-Streamlining-Lending-via-WhatsApp",
+          slug: "how-fintech-startups-are-streamlining-lending-via-whatsapp",
         },
         //     {
         //       title: "Fintech Innovation: WhatsApp Payment Integration and KYC Automation",
@@ -122,8 +122,18 @@ export default function CategoryBlogClient() {
           readTime: "11 min read",
           image: "/rblog1.png?height=300&width=500",
           tags: ["Lead Generation", "Real Estate", "Automation"],
-          slug: "Real-Estate-Marketing-Redefined-with-WhatsApp-Virtual-Tours",
+          slug: "real-estate-marketing-redefined-with-whatsapp-virtual-tours",
         },
+        {
+      title: "Best WhatsApp Chatbot for Lead Generation in Real Estate",
+      excerpt: "Discover how AI WhatsApp chatbots automate real estate lead generation from first inquiry to site visit booking. Perfect for Indian builders, brokers & developers.",
+      author: "VasifyTech Team",
+      date: "September 5, 2025",
+      readTime: "10 min read",
+      image: "/real_estate_chatbot.png?height=300&width=500",
+      tags: ["AI Chatbots", "Real Estate", "Lead Generation", "WhatsApp", "Automation"],
+      slug: "best-whatsapp-chatbot-for-lead-generation-in-realestate",
+    },
         // {
         //   title: "Property Showcase Revolution: Virtual Tours via WhatsApp",
         //   excerpt:
@@ -148,44 +158,66 @@ export default function CategoryBlogClient() {
         // },
       ],
     },
-    "education-coaching": {
-      title: "Education & Coaching",
-      description: "Student engagement and enrollment automation for educational institutions",
-      color: "text-indigo-600",
-      bgColor: "bg-indigo-50",
-      blogs: [
-        {
-          title: "Parent Communication Simplified: How WhatsApp Is Revolutionizing Education Engagement",
-          excerpt:
-            "Boost student engagement and retention with WhatsApp automation. Learn about assignment reminders, progress tracking, and parent communication systems.",
-          author: "VasifyTech Team",
-          date: "May 30, 2025",
-          readTime: "10 min read",
-          image: "/edblog1.png?height=300&width=500",
-          tags: ["EdTech", "Student Engagement", "Automation"],
-          slug: "Parent-Communication-Simplified-How-WhatsApp-Is-Revolutionizing-Education-Engagement",
-        },
-      ],
+"education-coaching": {
+  title: "Education & Coaching",
+  description: "Student engagement and enrollment automation for educational institutions",
+  color: "text-indigo-600",
+  bgColor: "bg-indigo-50",
+  blogs: [
+    {
+      title: "AI Chatbot Development for Education: Automating Admissions & Student Support",
+      excerpt:
+        "Discover how AI chatbot development is transforming education by automating admissions and student support in Indian schools, colleges, and EdTech platforms.",
+      author: "VasifyTech Team",
+      date: "July 15, 2025",
+      readTime: "12 min read",
+      image: "/ai_chatbot_for_school.png?height=300&width=500",
+      tags: ["AI Chatbots", "Education", "Automation", "Admissions", "Student Support"],
+      slug: "ai-chatbot-development-education-automating-admissions-student-support",
     },
-    "healthcare-wellness": {
-      title: "Healthcare & Wellness",
-      description: "Patient communication and appointment management for healthcare providers",
-      color: "text-red-600",
-      bgColor: "bg-red-50",
-      blogs: [
-        {
-          title: "How Multi-Clinic Chains Are Transforming Patient Experience with WhatsApp",
-          excerpt:
-            "Transform patient communication with secure WhatsApp solutions. Handle appointments, reminders, and follow-ups while maintaining HIPAA compliance.",
-          author: "VasifyTech Team",
-          date: "June 20, 2025",
-          readTime: "14 min read",
-          image: "/hblog1.png?height=300&width=500",
-          tags: ["Healthcare", "Patient Communication", "HIPAA"],
-          slug: "How-Multi-Clinic-Chains-Are-Transforming-Patient-Experience-with-WhatsApp",
-        },
-      ],
+    {
+      title: "Parent Communication Simplified: How WhatsApp Is Revolutionizing Education Engagement",
+      excerpt:
+        "Boost student engagement and retention with WhatsApp automation. Learn about assignment reminders, progress tracking, and parent communication systems.",
+      author: "VasifyTech Team",
+      date: "June 20, 2025",
+      readTime: "10 min read",
+      image: "/edblog1.png?height=300&width=500",
+      tags: ["EdTech", "Student Engagement", "Automation"],
+      slug: "parent-communication-simplified-how-whatsapp-is-revolutionizing-education-engagement",
     },
+  ],
+},
+"healthcare-wellness": {
+  title: "Healthcare & Wellness",
+  description: "Patient communication and appointment management for healthcare providers",
+  color: "text-red-600",
+  bgColor: "bg-red-50",
+  blogs: [
+    {
+      title: "AI Powered Chatbot in Healthcare: 24/7 Patient Support on WhatsApp",
+      excerpt:
+        "Discover how AI powered chatbots are enabling 24/7 patient support on WhatsApp for hospitals, clinics, and diagnostic centers in India.",
+      author: "VasifyTech Team",
+      date: "August 10, 2025",
+      readTime: "11 min read",
+      image: "/ai_power_whatsapp_chatbot.png?height=300&width=500",
+      tags: ["AI Chatbots", "Healthcare", "WhatsApp", "Automation", "Patient Support"],
+      slug: "ai-powered-chatbot-healthcare-247-patient-support-whatsapp",
+    },
+    {
+      title: "How Multi-Clinic Chains Are Transforming Patient Experience with WhatsApp",
+      excerpt:
+        "Transform patient communication with secure WhatsApp solutions. Handle appointments, reminders, and follow-ups while maintaining HIPAA compliance.",
+      author: "VasifyTech Team",
+      date: "June 20, 2025",
+      readTime: "14 min read",
+      image: "/hblog1.png?height=300&width=500",
+      tags: ["Healthcare", "Patient Communication", "HIPAA"],
+      slug: "how-multi-clinic-chains-are-transforming-patient-experience-with-whatsapp",
+    },
+  ],
+},
     "hospitality-travel": {
       title: "Hospitality & Travel",
       description: "Advanced WhatsApp customization and development solutions",
@@ -201,7 +233,7 @@ export default function CategoryBlogClient() {
           readTime: "18 min read",
           image: "/cwblog1.png?height=300&width=500",
           tags: ["API", "Development", "Custom Solutions"],
-          slug: "Transforming-Hotel-Bookings-with-WhatsApp-Catalogues",
+          slug: "transforming-hotel-bookings-with-whatsapp-catalogues",
         },
         // {
         //   title: "Enterprise WhatsApp Solutions: Scaling for Large Organizations",
