@@ -25,27 +25,29 @@ export async function generateStaticParams() {
 
   const blogSlugs: Record<string, string[]> = {
     "ecommerce-d2c": [
-      "How-WhatsApp-Catalogues-Are-Overtaking-Traditional-E-Commerce-in-India",
-      "ai-chatbot-d2c-customer-support-enhanced",
+      "how-whatsapp-catalogues-overtaking-traditional-ecommerce-india", // Changed to lowercase kebab
+      "how-ai-chatbot-development-transforming-d2c-customer-support-whatsapp",
     ],
-    "retail-fmcg": ["redefining-in-store-shopping-qr-codes-whatsapp"],
+    "retail-fmcg": [
+      "redefining-in-store-shopping-qr-codes-whatsapp",
+    ],
     "bfsi-fintech": [
-      "How-Fintech-Startups-Are-Streamlining-Lending-via-WhatsApp",
+      "how-fintech-startups-are-streamlining-lending-via-whatsapp", // Changed to lowercase kebab
     ],
     "real-estate": [
-      "Real-Estate-Marketing-Redefined-with-WhatsApp-Virtual-Tours",
+      "real-estate-marketing-redefined-with-whatsapp-virtual-tours",
       "best-whatsapp-chatbot-for-lead-generation-in-realestate",
     ],
     "education-coaching": [
-      "Parent-Communication-Simplified-How-WhatsApp-Is-Revolutionizing-Education-Engagement",
-      "Ai-Chatbot-Development-Education-Automating-Admissions-Student-Support",
+      "parent-communication-simplified-how-whatsapp-is-revolutionizing-education-engagement",
+      "ai-chatbot-development-education-automating-admissions-student-support",
     ],
     "healthcare-wellness": [
-      "How-Multi-Clinic-Chains-Are-Transforming-Patient-Experience-with-WhatsApp",
-      "Ai-Powered-Chatbot-Healthcare-247-Patient-Support-Whatsapp",
+      "how-multi-clinic-chains-are-transforming-patient-experience-with-whatsapp",
+      "ai-powered-chatbot-healthcare-247-patient-support-whatsapp",
     ],
     "hospitality-travel": [
-      "Transforming-Hotel-Bookings-with-WhatsApp-Catalogues",
+      "transforming-hotel-bookings-with-whatsapp-catalogues",
     ],
   };
 
@@ -73,7 +75,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
   // Blog articles data
   const blogArticles: Record<string, any> = {
     "ecommerce-d2c": {
-      "ai-chatbot-d2c-customer-support-enhanced": {
+      "how-ai-chatbot-development-transforming-d2c-customer-support-whatsapp": {
         title:
           "How AI Chatbot Development Is Transforming D2C Customer Support on WhatsApp",
         metaTitle: "AI Chatbots for D2C Customer Support on WhatsApp",
@@ -82,7 +84,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         author: "VasifyTech Team",
         date: "September 10, 2025",
         readTime: "9 min read",
-        image: "/ai-chatbot-d2c-customer-support.png?height=400&width=800",
+        image: "/How_AI_Chatbot_Development_Is_Transforming_D2C_Support_on_WhatsApp.png?height=400&width=800",
         tags: [
           "AI Chatbots",
           "D2C",
@@ -447,7 +449,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
       },
     },
     "bfsi-fintech": {
-      "How-Fintech-Startups-Are-Streamlining-Lending-via-WhatsApp": {
+      "how-fintech-startups-are-streamlining-lending-via-whatsapp": {
         title:
           "FMCG Brand Success: WhatsApp Marketing That Drives Repeat Purchases",
         author: "VasifyTech Team",
@@ -514,7 +516,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
       },
     },
     "real-estate": {
-      "Real-Estate-Marketing-Redefined-with-WhatsApp-Virtual-Tours": {
+      "real-estate-marketing-redefined-with-whatsapp-virtual-tours": {
         title: "Real Estate Marketing Redefined with WhatsApp Virtual Tours",
         author: "VasifyTech Team",
         date: "Feb 16, 2025",
@@ -603,8 +605,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         author: "VasifyTech Team",
         date: "September 5, 2025",
         readTime: "10 min read",
-        image:
-          "/ai-chatbot-real-estate-lead-generation.png?height=400&width=800",
+        image: "/real_estate_chatbot.png?height=400&width=800",
         tags: [
           "AI Chatbots",
           "Real Estate",
@@ -954,7 +955,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
           author: "VasifyTech Team",
           date: "July 15, 2025",
           readTime: "12 min read",
-          image: "/ai-chatbot-development-education.png?height=400&width=800",
+          image: "/ai_chatbot_for_school.png?height=400&width=800",
           tags: [
             "AI Chatbots",
             "Education",
@@ -1139,7 +1140,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         },
     },
     "hospitality-travel": {
-      "Transforming-Hotel-Bookings-with-WhatsApp-Catalogues": {
+      "transforming-hotel-bookings-with-whatsapp-catalogues": {
         title: "Transforming Hotel Bookings with WhatsApp Catalogues",
         author: "VasifyTech Team",
         date: "April 10, 2025",
@@ -1374,7 +1375,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
         author: "VasifyTech Team",
         date: "August 10, 2025",
         readTime: "11 min read",
-        image: "/ai-powered-chatbot-healthcare.png?height=400&width=800",
+        image: "/ai_power_whatsapp_chatbot.png?height=400&width=800",
         tags: [
           "AI Chatbots",
           "Healthcare",
