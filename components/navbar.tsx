@@ -1,10 +1,16 @@
 "use client"
-
-import { Bot, IndianRupee, User } from "lucide-react"
+import {
+    MessageCircle,
+} from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
+import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import MobileNav from "@/components/mobile-nav"
+
+import {  User, Bot } from "lucide-react"
+import { IndianRupee } from "lucide-react";
+
+
 
 const Navbar = () => {
     return (
@@ -19,8 +25,7 @@ const Navbar = () => {
                         className="rounded-full"
                     />
                 </Link>
-
-                <div className="flex-grow" />
+                <div className="flex-grow" />  {/* ← adds space between logo and nav */}
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-8">
@@ -35,38 +40,33 @@ const Navbar = () => {
                     <Link href="/whatsapp-services" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
                         Whatsapp Services
                     </Link>
-
                     <Link href="/website-development" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
                         Website Development
                     </Link>
-
                     <Link href="/free-whatsapp-business-guide" className="text-green-600 font-medium transition-colors">
                         Free Guide
                     </Link>
 
-                    <Link
-                        href="/pricing"
-                        className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
-                    >
-                        <IndianRupee className="h-4 w-4" />
-                        Pricing
-                    </Link>
 
+                    <Link
+    href="/pricing"
+    className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
+>
+    <IndianRupee className="h-4 w-4" />
+    Pricing
+</Link>
                     <Link href="/blogs" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
                         Blogs
                     </Link>
-
-                    {/* User Login (No Dropdown) */}
                     <a
                         href="https://whatsapp.vasifytech.com/account/login"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors font-medium"
+                        className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
                     >
                         <User className="h-4 w-4" />
                         User
                     </a>
-
                     <Link href="/contact">
                         <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium">
                             Contact Us
