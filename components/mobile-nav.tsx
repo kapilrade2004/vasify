@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X, DollarSign, User, Bot } from "lucide-react"
+import { Menu, X, DollarSign, User, Bot,IndianRupee } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -57,6 +57,13 @@ export default function MobileNav() {
                 >
                   Website Development
                 </Link>
+                                  <Link
+  href="/products"
+  className="text-gray-600 hover:text-green-600 font-medium transition-colors"
+>
+  Products
+</Link>
+                
                 <Link href="/free-whatsapp-business-guide" className="text-green-600 font-medium text-xl transition-colors">
                   Free Guide
                 </Link>
@@ -64,7 +71,8 @@ export default function MobileNav() {
                   href="/pricing"
                   className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
                 >
-                  <DollarSign className="h-4 w-4" />
+                  {/* <DollarSign className="h-4 w-4" /> */}
+                  <IndianRupee className="h-4 w-4" />
                   Pricing
                 </Link>
 
