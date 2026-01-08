@@ -1,3 +1,99 @@
+// "use client"
+
+// import { Bot, IndianRupee, User } from "lucide-react"
+// import Link from "next/link"
+// import Image from "next/image"
+// import { Button } from "@/components/ui/button"
+// import MobileNav from "@/components/mobile-nav"
+
+// const Navbar = () => {
+//     return (
+//         <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-green-100 z-50">
+//             <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+//                 <Link href="/" className="flex items-center space-x-3">
+//                     <Image
+//                         src="/logo.jpg"
+//                         alt="VasifyTech Logo"
+//                         width={200}
+//                         height={150}
+//                         className="rounded-full"
+//                     />
+//                 </Link>
+
+//                 <div className="flex-grow" />
+
+//                 {/* Desktop Navigation */}
+//                 <div className="hidden md:flex items-center space-x-8">
+//                     <Link
+//                         href="/ai-agent"
+//                         className="flex items-center gap-1 text-green-600 font-medium hover:text-green-600 transition-colors"
+//                     >
+//                         <Bot className="h-4 w-4" />
+//                         AI Agent
+//                     </Link>
+
+//                     <Link href="/whatsapp-services" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
+//                         Whatsapp Services
+//                     </Link>
+
+//                     <Link href="/website-development" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
+//                         Website Development
+//                     </Link>
+//                     <Link
+//   href="/products"
+//   className="text-gray-600 hover:text-green-600 font-medium transition-colors"
+// >
+//   Products
+// </Link>
+
+
+
+//                     <Link href="/free-whatsapp-business-guide" className="text-green-600 font-medium transition-colors">
+//                         Free Guide
+//                     </Link>
+
+//                     <Link
+//                         href="/pricing"
+//                         className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
+//                     >
+//                         <IndianRupee className="h-4 w-4" />
+//                         Pricing
+//                     </Link>
+
+//                     <Link href="/blogs" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
+//                         Blogs
+//                     </Link>
+
+//                     {/* User Login (No Dropdown) */}
+//                     <a
+//                         href="https://whatsapp.vasifytech.com/account/login"
+//                         target="_blank"
+//                         rel="noopener noreferrer"
+//                         className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors font-medium"
+//                     >
+//                         <User className="h-4 w-4" />
+//                         User
+//                     </a>
+
+//                     <Link href="/contact">
+//                         <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium">
+//                             Contact Us
+//                         </Button>
+//                     </Link>
+//                 </div>
+
+//                 {/* Mobile Navigation */}
+//                 <div className="md:hidden">
+//                     <MobileNav />
+//                 </div>
+//             </div>
+//         </nav>
+//     )
+// }
+
+// export default Navbar
+
+//testing
 "use client"
 
 import { Bot, IndianRupee, User } from "lucide-react"
@@ -9,8 +105,8 @@ import MobileNav from "@/components/mobile-nav"
 const Navbar = () => {
     return (
         <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-green-100 z-50">
-            <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-                <Link href="/" className="flex items-center space-x-3">
+            <div className="container mx-auto px-4 lg:px-6 py-3 flex items-center justify-between gap-4">
+                <Link href="/" className="flex items-center flex-shrink-0">
                     <Image
                         src="/logo.jpg"
                         alt="VasifyTech Logo"
@@ -20,70 +116,79 @@ const Navbar = () => {
                     />
                 </Link>
 
-                <div className="flex-grow" />
-
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8 flex-wrap">
                     <Link
                         href="/ai-agent"
-                        className="flex items-center gap-1 text-green-600 font-medium hover:text-green-600 transition-colors"
+                        className="flex items-center gap-1 text-green-600 font-medium hover:text-green-600 transition-colors whitespace-nowrap text-sm lg:text-base"
                     >
                         <Bot className="h-4 w-4" />
                         AI Agent
                     </Link>
 
-                    <Link href="/whatsapp-services" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
+                    <Link 
+                        href="/whatsapp-services" 
+                        className="text-gray-600 hover:text-green-600 font-medium transition-colors whitespace-nowrap text-sm lg:text-base"
+                    >
                         Whatsapp Services
                     </Link>
 
-                    <Link href="/website-development" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
+                    <Link 
+                        href="/website-development" 
+                        className="text-gray-600 hover:text-green-600 font-medium transition-colors whitespace-nowrap text-sm lg:text-base"
+                    >
                         Website Development
                     </Link>
+
                     <Link
-  href="/products"
-  className="text-gray-600 hover:text-green-600 font-medium transition-colors"
->
-  Products
-</Link>
+                        href="/products"
+                        className="text-gray-600 hover:text-green-600 font-medium transition-colors whitespace-nowrap text-sm lg:text-base"
+                    >
+                        Products
+                    </Link>
 
-
-
-                    <Link href="/free-whatsapp-business-guide" className="text-green-600 font-medium transition-colors">
+                    <Link 
+                        href="/free-whatsapp-business-guide" 
+                        className="text-green-600 font-medium transition-colors whitespace-nowrap text-sm lg:text-base"
+                    >
                         Free Guide
                     </Link>
 
                     <Link
                         href="/pricing"
-                        className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors"
+                        className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors whitespace-nowrap text-sm lg:text-base"
                     >
                         <IndianRupee className="h-4 w-4" />
                         Pricing
                     </Link>
 
-                    <Link href="/blogs" className="text-gray-600 hover:text-green-600 font-medium transition-colors">
+                    <Link 
+                        href="/blogs" 
+                        className="text-gray-600 hover:text-green-600 font-medium transition-colors whitespace-nowrap text-sm lg:text-base"
+                    >
                         Blogs
                     </Link>
 
-                    {/* User Login (No Dropdown) */}
+                    {/* User Login */}
                     <a
                         href="https://whatsapp.vasifytech.com/account/login"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors font-medium"
+                        className="flex items-center gap-1 text-gray-700 hover:text-green-600 transition-colors font-medium whitespace-nowrap text-sm lg:text-base"
                     >
                         <User className="h-4 w-4" />
                         User
                     </a>
 
                     <Link href="/contact">
-                        <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium">
+                        <Button className="bg-green-500 hover:bg-green-600 text-white px-4 lg:px-6 py-2 rounded-lg font-medium text-sm lg:text-base whitespace-nowrap">
                             Contact Us
                         </Button>
                     </Link>
                 </div>
 
                 {/* Mobile Navigation */}
-                <div className="md:hidden">
+                <div className="md:hidden flex-shrink-0">
                     <MobileNav />
                 </div>
             </div>
