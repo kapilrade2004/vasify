@@ -40,11 +40,10 @@ const Navbar = () => {
                         Website Development
                     </Link>
                     <Link
-  href="/products"
-  className="text-gray-600 hover:text-green-600 font-medium transition-colors"
->
-  Products
-</Link>
+                   href="/products"
+                   className="text-gray-600 hover:text-green-600 font-medium transition-colors">
+                       Products
+                     </Link>
 
 
 
