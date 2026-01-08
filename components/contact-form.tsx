@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from "react"
@@ -6,12 +7,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useRouter } from "next/navigation"
 
 export default function ContactForm() {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+  const [selectedService, setSelectedService] = useState("")
 
   async function handleSubmit(formData: FormData) {
     setIsSubmitting(true)
@@ -52,6 +55,7 @@ export default function ContactForm() {
         // Reset form
         const form = document.getElementById("contact-form") as HTMLFormElement
         form?.reset()
+        setSelectedService("")
         router.push("/thank-you")
       } else {
         setSubmitStatus("error")
@@ -124,18 +128,40 @@ export default function ContactForm() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Service Interested In *</label>
-            <select
-              name="service"
-              className="w-full p-3 border border-gray-300 rounded-md focus:border-green-500 focus:ring-green-500"
-              required
-            >
-              <option value="">Select a service</option>
-              <option value="WhatsApp Automation">WhatsApp business Api number</option>
-              <option value="CRM Integration">Website development </option>
-              <option value="WhatsApp Marketing">WhatsApp automation</option>
-              <option value="Chatbot Development">Ai agent</option>
-            </select>
+            <Select name="service" value={selectedService} onValueChange={setSelectedService} required>
+              <SelectTrigger className="w-full p-3 border border-gray-300 rounded-md focus:border-green-500 focus:ring-green-500">
+                <SelectValue placeholder="Select a service" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="WhatsApp Automation">WhatsApp business Api number</SelectItem>
+                <SelectItem value="CRM Integration">Website development</SelectItem>
+                <SelectItem value="WhatsApp Marketing">WhatsApp automation</SelectItem>
+                <SelectItem value="Chatbot Development">Ai agent</SelectItem>
+                <SelectItem value="Products">Products</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
+
+          {selectedService === "Products" && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Select Product *</label>
+              <Select name="product">
+                <SelectTrigger className="w-full p-3 border border-gray-300 rounded-md focus:border-green-500 focus:ring-green-500">
+                  <SelectValue placeholder="Select a product" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="PDF Editor pro">PDF Editor pro</SelectItem>
+                  <SelectItem value="SEO score checker">SEO score checker</SelectItem>
+                  <SelectItem value="Image Optimizer">Image Optimizer</SelectItem>
+                  <SelectItem value="File converter">File converter</SelectItem>
+                  <SelectItem value="Color palette Generator">Color Palette Generator</SelectItem>
+                  <SelectItem value="Color palette Generator">QR Code Generator</SelectItem>
+                  {/* <SelectItem value="Color palette Generator">Lead Managment (CRM)</SelectItem> */}
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Describe Your Needs *</label>
             <Textarea
