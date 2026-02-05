@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -72,7 +71,7 @@ const HeroSection = () => (
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
-            <Link href="/contact">
+            <Link href="#tools">
               <Button
                 size="lg"
                 className="gradient-primary border-0 text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105"
@@ -262,6 +261,34 @@ const tools = [
     image:
       "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=250&fit=crop",
     moreText: "+1 more plan",
+    href: "/tools/pdf-editor",
+  },
+  // {
+  //   title: "PDF Extractor",
+  //   description: "Extract tables and key data from invoices in seconds",
+  //   features: ["Multi-page support", "Excel export", "Password-protected PDFs"],
+  //   price: "₹0",
+  //   unit: "/7-day trial",
+  //   badge: "New",
+  //   badgeColor: "bg-emerald-500",
+  //   image:
+  //     "https://images.unsplash.com/photo-1523287562758-66c7fc58967a?w=400&h=250&fit=crop",
+  //   moreText: "Includes 7-day free trial",
+  //   href: "/tools/pdf-extractor", // signup + redirect flow will live here
+  // },
+   {
+    title: "PDF Extractor",
+    description: "Extract tables and key data from invoices in seconds",
+    features: ["Multi-page support", "Excel export", "Password-protected PDFs"],
+    price: "₹0",
+    unit: "/7-day trial",
+    badge: "New",
+    badgeColor: "bg-emerald-500",
+    image:
+      // "https://images.unsplash.com/photo-1523287562758-66c7fc58967a?w=400&h=250&fit=crop",
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=250&fit=crop&q=80",
+    moreText: "Includes 7-day free trial",
+    href: "/tools/pdf-extractor", // important
   },
   {
     title: "SEO Score Checker",
@@ -274,6 +301,7 @@ const tools = [
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
     moreText: "+1 more plan",
+    href: "/contact",
   },
   {
     title: "Image Optimizer",
@@ -286,6 +314,7 @@ const tools = [
     image:
       "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=250&fit=crop",
     moreText: "+1 more plan",
+    href: "/contact",
   },
   {
     title: "QR Code Generator",
@@ -298,6 +327,7 @@ const tools = [
     image:
       "https://images.unsplash.com/photo-1595079676339-1534801ad6cf?w=400&h=250&fit=crop",
     moreText: "+1 more plan",
+    href: "/contact",
   },
   {
     title: "File Converter",
@@ -310,6 +340,7 @@ const tools = [
     image:
       "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=400&h=250&fit=crop",
     moreText: "+1 more plan",
+    href: "/contact",
   },
   {
     title: "Color Palette Generator",
@@ -322,20 +353,8 @@ const tools = [
     image:
       "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&h=250&fit=crop",
     moreText: "+1 more plan",
+    href: "/contact",
   },
-  // ✅ NEW: Lead Management CRM Card
-  // {
-  //   title: "Lead CRM",
-  //   description: "Manage leads and convert more customers",
-  //   features: ["Unlimited leads", "Pipeline tracking", "WhatsApp integration"],
-  //   price: "₹1499",
-  //   unit: "/month",
-  //   badge: "Popular",
-  //   badgeColor: "bg-purple-500",
-  //   image:
-  //     "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop",
-  //   moreText: "+2 more plans",
-  // },
 ];
 
 const ToolsGrid = () => (
@@ -404,9 +423,9 @@ const ToolsGrid = () => (
                     </div>
                     <span className="text-xs text-gray-500">{tool.moreText}</span>
                   </div>
-                  <Link href="/contact">
+                  <Link href={tool.href}>
                     <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-sm font-medium group/btn">
-                      Explore Now
+                      {tool.title === "PDF Extractor" ? "Start Free Trial" : "Explore Now"}
                       <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
