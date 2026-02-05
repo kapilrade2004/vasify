@@ -1,5 +1,6 @@
 "use client"
 
+
 import { Bot, IndianRupee, User } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -44,9 +45,6 @@ const Navbar = () => {
                    className="text-gray-600 hover:text-green-600 font-medium transition-colors">
                        Products
                      </Link>
-
-
-
                     <Link href="/free-whatsapp-business-guide" className="text-green-600 font-medium transition-colors">
                         Free Guide
                     </Link>
