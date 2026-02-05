@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState } from "react"
@@ -15,16 +14,26 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [selectedService, setSelectedService] = useState("")
+  const [selectedProduct, setSelectedProduct] = useState("")
 
   async function handleSubmit(formData: FormData) {
     setIsSubmitting(true)
     setSubmitStatus("idle")
 
     try {
+      // Ensure service and product are present in FormData
+      if (selectedService) {
+        formData.set("service", selectedService)
+      }
+      if (selectedService === "Products" && selectedProduct) {
+        formData.set("product", selectedProduct)
+      }
+
       const data: { [key: string]: any } = {}
       formData.forEach((value, key) => {
         data[key] = value
       })
+
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
       if (!emailRegex.test(data.email)) {
         setSubmitStatus("error")
@@ -33,29 +42,46 @@ export default function ContactForm() {
         return
       }
 
-      // --- Phone validation ---
-      // Accepts +countrycode or plain digits, 10–15 total
-      const phoneRegex = /^[0-9]{10}$/;
+      const phoneRegex = /^[0-9]{10}$/
       if (!phoneRegex.test(data.phone)) {
-        setSubmitStatus("error");
-        alert("Please enter a valid 10-digit phone number.");
-        setIsSubmitting(false);
-        return;
+        setSubmitStatus("error")
+        alert("Please enter a valid 10-digit phone number.")
+        setIsSubmitting(false)
+        return
       }
+
+      if (!data.service) {
+        setSubmitStatus("error")
+        alert("Please select a service.")
+        setIsSubmitting(false)
+        return
+      }
+
+      if (data.service === "Products" && !data.product) {
+        setSubmitStatus("error")
+        alert("Please select a product.")
+        setIsSubmitting(false)
+        return
+      }
+
       const response = await fetch("https://backend.vasifytech.com/api/contact", {
+      // const response = await fetch("http://localhost:3001/api/contact", {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       })
+
       const result = await response.json()
+
       if (result.success) {
         setSubmitStatus("success")
-        // Reset form
         const form = document.getElementById("contact-form") as HTMLFormElement
         form?.reset()
         setSelectedService("")
+        setSelectedProduct("")
         router.push("/thank-you")
       } else {
         setSubmitStatus("error")
@@ -126,9 +152,16 @@ export default function ContactForm() {
             />
           </div>
 
+          {/* Service Select */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Service Interested In *</label>
-            <Select name="service" value={selectedService} onValueChange={setSelectedService} required>
+            {/* Hidden input to ensure value is included in FormData */}
+            <input type="hidden" name="service" value={selectedService} />
+            <Select
+              value={selectedService}
+              onValueChange={setSelectedService}
+              required
+            >
               <SelectTrigger className="w-full p-3 border border-gray-300 rounded-md focus:border-green-500 focus:ring-green-500">
                 <SelectValue placeholder="Select a service" />
               </SelectTrigger>
@@ -142,10 +175,17 @@ export default function ContactForm() {
             </Select>
           </div>
 
+          {/* Product Select when Products is chosen */}
           {selectedService === "Products" && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Select Product *</label>
-              <Select name="product">
+              {/* Hidden input to ensure value is included in FormData */}
+              <input type="hidden" name="product" value={selectedProduct} />
+              <Select
+                value={selectedProduct}
+                onValueChange={setSelectedProduct}
+                required
+              >
                 <SelectTrigger className="w-full p-3 border border-gray-300 rounded-md focus:border-green-500 focus:ring-green-500">
                   <SelectValue placeholder="Select a product" />
                 </SelectTrigger>
@@ -156,8 +196,8 @@ export default function ContactForm() {
                   <SelectItem value="Image Optimizer">Image Optimizer</SelectItem>
                   <SelectItem value="File converter">File converter</SelectItem>
                   <SelectItem value="Color palette Generator">Color Palette Generator</SelectItem>
-                  <SelectItem value="Color palette Generator">QR Code Generator</SelectItem>
-                  {/* <SelectItem value="Color palette Generator">Lead Managment (CRM)</SelectItem> */}
+                  <SelectItem value="QR Code Generator">QR Code Generator</SelectItem>
+                  {/* <SelectItem value="Lead Management (CRM)">Lead Management (CRM)</SelectItem> */}
                 </SelectContent>
               </Select>
             </div>

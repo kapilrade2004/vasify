@@ -61,7 +61,8 @@ export default function MobileNav() {
                    href="/products"
                    className="text-gray-600 hover:text-green-600 font-medium transition-colors">
                        Products
-                     </Link>
+                     </Link>               
+             
                 <Link href="/free-whatsapp-business-guide" className="text-green-600 font-medium text-xl transition-colors">
                   Free Guide
                 </Link>
