@@ -96,7 +96,7 @@
 //testing
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, Suspense } from "react"
 import { Bot, IndianRupee, User, ChevronDown, Globe, MessageCircle } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -222,7 +222,9 @@ const Navbar = () => {
 
                 {/* Mobile Navigation */}
                 <div className="md:hidden flex-shrink-0">
-                    <MobileNav />
+                    <Suspense fallback={null}>
+                        <MobileNav />
+                    </Suspense>
                 </div>
             </div>
         </nav>
