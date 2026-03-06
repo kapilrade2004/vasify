@@ -245,12 +245,11 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="py-20 bg-white mt-20">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">Simple, Transparent Pricing</h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-Explore simple, transparent pricing for WhatsApp services, AI agents, and website development. Choose the perfect VasifyTech plan with no hidden fees.
-
+      <section className="pt-36 md:pt-40 pb-8 bg-white">
+        <div className="container mx-auto px-6 text-center flex flex-col items-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Simple, Transparent Pricing</h1>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            Explore simple, transparent pricing for WhatsApp services, AI agents, and website development. Choose the perfect VasifyTech plan with no hidden fees.
           </p>
         </div>
       </section>
@@ -495,15 +494,15 @@ Explore simple, transparent pricing for WhatsApp services, AI agents, and websit
                 Start Free Now
               </Button>
             </Link>
-              <Link href="/contact">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-medium w-full sm:w-auto bg-transparent"
-                >
-                  Schedule Demo
-                </Button>
-              </Link>
+            <Link href="/contact">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-medium w-full sm:w-auto bg-transparent"
+              >
+                Schedule Demo
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

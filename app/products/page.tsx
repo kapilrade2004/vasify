@@ -43,7 +43,7 @@ const heroTools = [
 ];
 
 const HeroSection = () => (
-  <section className="relative pt-32 lg:pt-40 pb-16 lg:pb-24 overflow-hidden gradient-hero">
+  <section className="relative pt-36 md:pt-40 lg:pt-48 pb-16 lg:pb-24 overflow-hidden gradient-hero">
     <div className="absolute inset-0 overflow-hidden">
       <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
@@ -276,7 +276,7 @@ const tools = [
   //   moreText: "Includes 7-day free trial",
   //   href: "/tools/pdf-extractor", // signup + redirect flow will live here
   // },
-   {
+  {
     title: "PDF Extractor",
     description: "Extract tables and key data from invoices in seconds",
     features: ["Multi-page support", "Excel export", "Password-protected PDFs"],

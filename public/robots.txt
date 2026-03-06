@@ -1,3 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*?*
+
+# Explicitly allow major crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +17,4 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+Sitemap: https://www.vasifytech.com/sitemap.xml

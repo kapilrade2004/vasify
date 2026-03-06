@@ -2,7 +2,6 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import WhatsAppButton from "@/components/whatsapp-button"
-import WhatsAppQRFloating from "@/components/whatsapp-qr-floating"
 import { Inter } from "next/font/google"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
@@ -109,6 +108,31 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
+
+        {/* --- Global Organization Schema --- */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "VasifyTech PVT LTD",
+              "url": "https://vasifytech.com",
+              "logo": "https://vasifytech.com/logo.jpg",
+              "sameAs": [
+                "https://www.facebook.com/",
+                "https://www.instagram.com/vasifytech"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-9769754446",
+                "contactType": "customer service",
+                "areaServed": "IN",
+                "availableLanguage": ["English", "Hindi"]
+              }
+            })
+          }}
+        />
       </head>
 
       <body className={inter.className}>
@@ -116,9 +140,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsAppButton />
-        <WhatsAppQRFloating />
       </body>
     </html>
-
   )
 }

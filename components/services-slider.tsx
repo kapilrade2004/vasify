@@ -13,8 +13,8 @@ const services = [
     description:
       "Deploy AI-powered chatbots that understand context, speak 50+ languages, and handle unlimited conversations simultaneously. Boost engagement by 300%.",
     href: "/ai-agent",
-    gradient: "from-blue-500 via-purple-500 to-indigo-600",
-    accentColor: "bg-blue-500",
+    gradient: "from-green-500 via-emerald-500 to-teal-600",
+    accentColor: "bg-green-500",
     image: "/ai-chatbot-interface-with-conversation-bubbles-and.jpg",
   },
   {
@@ -33,8 +33,8 @@ const services = [
     description:
       "Build stunning websites and mobile apps with cutting-edge technology. From e-commerce platforms to custom software, we bring your vision to life.",
     href: "/website-development",
-    gradient: "from-orange-500 via-red-500 to-pink-600",
-    accentColor: "bg-orange-500",
+    gradient: "from-green-500 via-emerald-500 to-teal-600",
+    accentColor: "bg-green-500",
     image: "/modern-website-and-mobile-app-development-with-res.jpg",
   },
   {
@@ -43,8 +43,8 @@ const services = [
     description:
       "Complete digital transformation solutions: Deploy intelligent AI chatbots, automate WhatsApp engagement, and build custom websites & apps. Power your growth with VasifyTech.",
     href: "/",
-    gradient: "from-emerald-500 via-green-500 to-teal-600",
-    accentColor: "bg-emerald-500",
+    gradient: "from-green-500 via-emerald-500 to-teal-600",
+    accentColor: "bg-green-500",
     image: "/slider1.png",
     isHeroStyle: true,
   },
@@ -102,9 +102,8 @@ export default function ServicesSlider() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-10 items-center w-full">
             {/* Left Content */}
             <div
-              className={`space-y-3 sm:space-y-4 md:space-y-5 transition-all duration-500 w-full order-2 lg:order-1 ${
-                isTransitioning ? "opacity-0 -translate-x-5" : "opacity-100 translate-x-0"
-              }`}
+              className={`space-y-3 sm:space-y-4 md:space-y-5 transition-all duration-500 w-full order-2 lg:order-1 ${isTransitioning ? "opacity-0 -translate-x-5" : "opacity-100 translate-x-0"
+                }`}
             >
               <div className="w-full">
                 <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-gray-300 mb-1 sm:mb-2 uppercase tracking-wide">
@@ -144,9 +143,8 @@ export default function ServicesSlider() {
 
             {/* Right Image/Content */}
             <div
-              className={`relative transition-all duration-500 w-full order-1 lg:order-2 ${
-                isTransitioning ? "opacity-0 translate-x-5 scale-95" : "opacity-100 translate-x-0 scale-100"
-              }`}
+              className={`relative transition-all duration-500 w-full order-1 lg:order-2 ${isTransitioning ? "opacity-0 translate-x-5 scale-95" : "opacity-100 translate-x-0 scale-100"
+                }`}
             >
               <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] md:aspect-[16/10] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
                 <img
@@ -203,11 +201,10 @@ export default function ServicesSlider() {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`transition-all duration-300 rounded-full ${
-              currentSlide === index
-                ? "w-5 sm:w-7 md:w-10 h-1.5 sm:h-2 md:h-2.5 bg-primary"
-                : "w-1.5 sm:w-2 md:w-2.5 h-1.5 sm:h-2 md:h-2.5 bg-gray-300 hover:bg-gray-400"
-            }`}
+            className={`transition-all duration-300 rounded-full ${currentSlide === index
+              ? "w-5 sm:w-7 md:w-10 h-1.5 sm:h-2 md:h-2.5 bg-primary"
+              : "w-1.5 sm:w-2 md:w-2.5 h-1.5 sm:h-2 md:h-2.5 bg-gray-300 hover:bg-gray-400"
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

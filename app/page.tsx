@@ -223,8 +223,49 @@ export default function HomePage() {
     },
   ]
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "VasifyTech PVT LTD",
+    "image": "https://vasifytech.com/logo.jpg",
+    "@id": "https://vasifytech.com",
+    "url": "https://vasifytech.com",
+    "telephone": "+919769754446",
+    "email": "sushil@vasifytech.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Dani Sanjay Apartment, 102, near Datta Mandir Road, Kandivali West",
+      "addressLocality": "Mumbai",
+      "addressRegion": "Maharashtra",
+      "postalCode": "400067",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.2102987,
+      "longitude": 72.8343825
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section with Slider */}
       <section className="pt-20 md:pt-24 pb-8 md:pb-12 px-2 sm:px-4">
         <div className="container mx-auto px-0 sm:px-2 md:px-4 lg:px-6 max-w-7xl">
@@ -242,7 +283,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-8 md:mb-12">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
-             WhatsApp Business API Platform for Automated Engagement
+              WhatsApp Business API Platform for Automated Engagement
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               Everything you need to automate customer engagement, scale operations, and drive business growth

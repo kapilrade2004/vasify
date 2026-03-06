@@ -7,7 +7,7 @@ import {
   Database,
   Shield,
   Workflow,
-  Building2, 
+  Building2,
   Brain,
   Languages,
   Smartphone,
@@ -141,7 +141,7 @@ export default function AIAgentPage() {
   ]
 
   const industries = [
-    { name: "E-commerce & Retail", icon: "🛒", description: "Product recommendations, order tracking, customer support", chat_agent_key: "e-com-retail", status: false},
+    { name: "E-commerce & Retail", icon: "🛒", description: "Product recommendations, order tracking, customer support", chat_agent_key: "e-com-retail", status: false },
     { name: "Healthcare", icon: "🏥", description: "Appointment booking, symptom checking, patient support", chat_agent_key: "healthcare", status: true },
     { name: "Education", icon: "🎓", description: "Course enrollment, student queries, learning assistance", chat_agent_key: "education", status: true },
     { name: "Banking & Finance", icon: "🏦", description: "Account queries, loan assistance, financial guidance", chat_agent_key: "bfsi", status: true },
@@ -182,7 +182,7 @@ export default function AIAgentPage() {
                 The most advanced conversational AI that understands every language, handles complex conversations, and
                 integrates seamlessly with your business ecosystem.
               </p>
- {/* testing */}
+              {/* testing */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact">
                   <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
@@ -283,13 +283,13 @@ export default function AIAgentPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {industries.map((industry, index) => (
               <IndustryCard
-                  key={index}
-                  icon={industry.icon}
-                  name={industry.name}
-                  description={industry.description}
-                  chatAgentKey={industry.chat_agent_key}
-                  status={industry.status}
-                />
+                key={index}
+                icon={industry.icon}
+                name={industry.name}
+                description={industry.description}
+                chatAgentKey={industry.chat_agent_key}
+                status={industry.status}
+              />
             ))}
           </div>
         </div>

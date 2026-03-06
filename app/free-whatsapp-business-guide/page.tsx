@@ -73,7 +73,7 @@ export default function FreeGuidePage() {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/free-guides/${guide.id}/download`, {
         method: "POST",
       })
-     
+
     } catch (err) {
       console.error("[v0] Error incrementing download count:", err)
     }
@@ -84,7 +84,7 @@ export default function FreeGuidePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-green-50 to-blue-50 py-28">
+      <section className="bg-gradient-to-br from-green-50 to-blue-50 pt-36 md:pt-40 pb-8 md:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6">
             <h1 className="text-4xl lg:text-6xl font-bold text-gray-900">

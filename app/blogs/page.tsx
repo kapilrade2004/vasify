@@ -137,7 +137,7 @@ export default function BlogsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
       {/* Hero Section */}
-      <section className="pt-32 pb-12 px-6">
+      <section className="pt-36 md:pt-40 pb-12 px-6">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             Latest Guide<span className="text-green-500"> Guides </span> on WhatsApp Business, AI & Digital Growth.
