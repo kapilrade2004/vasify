@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { MapPin, Phone, Mail, Star, Factory, Shield } from "lucide-react"
-import { FaWhatsapp, FaInstagram, FaFacebook } from "react-icons/fa"
+import { FaWhatsapp, FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa"
 
 const Footer = () => {
   return (
@@ -159,6 +159,15 @@ const Footer = () => {
                   bgColor: "bg-blue-600/20",
                   iconColor: "text-blue-400",
                   description: "Follow our page"
+                },
+                {
+                  href: "https://www.linkedin.com/company/vasifytech/",
+                  icon: FaLinkedin,
+                  label: "LinkedIn",
+                  color: "hover:text-blue-500",
+                  bgColor: "bg-blue-700/20",
+                  iconColor: "text-blue-500",
+                  description: "Connect with VasifyTech"
                 }
               ].map((link, index) => (
                 <a
