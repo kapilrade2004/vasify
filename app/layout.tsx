@@ -145,11 +145,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             })
           }}
         />
+        {/* --- Google Ads Tag (gtag.js) --- */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17525688605"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-17525688605');
+            `,
+          }}
+        />
       </head>
 
       <body className={inter.className}>
         {/* --- Google Tag Manager (noscript) --- */}
         <noscript>
+
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MRTJ72DT"
             height="0"
