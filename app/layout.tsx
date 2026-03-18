@@ -5,14 +5,12 @@ import WhatsAppButton from "@/components/whatsapp-button"
 import { Inter } from "next/font/google"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  // SEO CHANGE: Title is now more specific and keyword-focused.
   title: "WhatsApp Business API Platform for Automated Engagement",
-
-  // SEO CHANGE: Description now includes primary and secondary keywords naturally.
   description:
     "Supercharge customer engagement with VasifyTech's automated WhatsApp Business API platform. Our services help you connect, sell, and support with ease.",
   keywords:
@@ -21,8 +19,6 @@ export const metadata: Metadata = {
   creator: "VasifyTech",
   publisher: "VasifyTech",
   robots: "index, follow",
-
-  // SEO CHANGE: OpenGraph data now matches the new, improved title and description.
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -32,17 +28,15 @@ export const metadata: Metadata = {
       "Supercharge customer engagement with VasifyTech's automated WhatsApp Business API platform. Our services help you connect, sell, and support with ease.",
     siteName: "VasifyTech",
   },
-
-  // SEO CHANGE: Twitter card data also updated for consistency.
   twitter: {
     card: "summary_large_image",
     title: "WhatsApp Business API Platform for Automated Engagement | VasifyTech",
     description:
       "Supercharge customer engagement with VasifyTech's automated WhatsApp Business API platform.",
-    creator: "@vasifytech", // Make sure this is your correct Twitter handle
+    creator: "@vasifytech",
   },
   verification: {
-    google: "your-google-verification-code", // Don't forget to add your code here
+    google: "your-google-verification-code",
   }
 }
 
@@ -54,7 +48,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* --- Google Tag Manager --- */}
+
+        {/* ❌ Google Tag Manager (DISABLED - causes conflict) */}
+        {/*
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -64,9 +60,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MRTJ72DT');`,
           }}
         />
-        {/* --- End Google Tag Manager --- */}
+        */}
 
-        {/* --- Google Analytics (NEW TAG ONLY) --- */}
+        {/* ❌ Google Analytics (DISABLED - duplicate gtag) */}
+        {/*
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-BDJFSL31B4"></script>
         <script
           dangerouslySetInnerHTML={{
@@ -78,6 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         `,
           }}
         />
+        */}
 
         {/* --- Favicon & Canonical --- */}
         <link rel="icon" href="/logo.jpg" />
@@ -87,7 +85,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#10b981" />
         <meta name="google-site-verification" content="V_86hNVYNxpJT3WQCeTce5f3wdyJQ6GNXjwet7ypGwQ" />
-
         <meta
           name="google-site-verification"
           content="jg7XctR-_q90gexoVYGhKaZ1j1v0nVDRPO4b2cVIyWw"
@@ -121,7 +118,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
 
-        {/* --- Global Organization Schema --- */}
+        {/* --- Schema --- */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -145,9 +142,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             })
           }}
         />
-        {/* --- Google Ads Tag (gtag.js) --- */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17525688605"></script>
-        <script
+
+        {/* ✅ Google Ads Tag (ACTIVE) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17525688605"
+          strategy="afterInteractive"
+        />
+
+        <Script
+          id="google-ads-gtag"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -160,9 +164,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </head>
 
       <body className={inter.className}>
-        {/* --- Google Tag Manager (noscript) --- */}
-        <noscript>
 
+        {/* ❌ GTM Noscript (DISABLED) */}
+        {/*
+        <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-MRTJ72DT"
             height="0"
@@ -170,7 +175,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        {/* --- End Google Tag Manager (noscript) --- */}
+        */}
 
         <Navbar />
         {children}
