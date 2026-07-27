@@ -19,7 +19,7 @@ import {
   Crown,
   Rocket
 } from "lucide-react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -206,7 +206,7 @@ export default function WebsiteDevelopmentPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 relative overflow-hidden">
+      <section className="py-12 md:py-20 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-white"></div>
         <div className="container mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -231,7 +231,7 @@ export default function WebsiteDevelopmentPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact" className="flex-1 sm:flex-initial">
+                <Link to="/contact" className="flex-1 sm:flex-initial">
                   <Button
                     size="lg"
                     className="w-full sm:w-auto bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-8 py-6 rounded-xl text-lg font-semibold shadow-2xl hover:shadow-green-500/50 transition-all transform hover:-translate-y-1"
@@ -240,7 +240,7 @@ export default function WebsiteDevelopmentPage() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <Link href="/contact" className="flex-1 sm:flex-initial">
+                <Link to="/contact" className="flex-1 sm:flex-initial">
                   <Button
                     size="lg"
                     variant="outline"
@@ -507,7 +507,7 @@ export default function WebsiteDevelopmentPage() {
                   <CardDescription className="mt-4 text-gray-600">{plan.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Link href="/contact">
+                  <Link to="/contact">
                     <Button
                       className={`w-full mb-6 ${plan.popular ? "bg-green-500 hover:bg-green-600" : "bg-gray-900 hover:bg-gray-800"} text-white`}
                     >
@@ -547,7 +547,7 @@ export default function WebsiteDevelopmentPage() {
               a free consultation today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   className="bg-white text-green-600 hover:bg-gray-100 px-10 py-6 rounded-xl text-lg font-bold shadow-2xl hover:shadow-white/50 transition-all transform hover:-translate-y-1"
@@ -556,7 +556,7 @@ export default function WebsiteDevelopmentPage() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   variant="outline"

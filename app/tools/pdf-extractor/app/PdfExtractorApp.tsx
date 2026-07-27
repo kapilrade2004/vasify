@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useRef, useEffect } from "react";
 import {
   Upload,
@@ -16,9 +14,9 @@ import {
   Lock,
   X,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3001";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
 
 type SimpleResult = {
   pages: {
@@ -118,7 +116,7 @@ const checkIfPasswordProtected = async (_file: File) => false;
 const unlockPDF = async (file: File, _password: string) => file;
 
 const PdfExtractorApp: React.FC = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [state, setState] = useState<AppState>({
     file: null,
@@ -337,7 +335,7 @@ const PdfExtractorApp: React.FC = () => {
   };
 
   const handleGoToSignup = () => {
-    router.push("/tools/pdf-extractor");
+    navigate("/tools/pdf-extractor");
   };
 
   const handlePayNow = () => {
