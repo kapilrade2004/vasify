@@ -1,5 +1,3 @@
-"use client"
-
 import { useEffect, useState } from "react"
 import {
   Loader2,
@@ -16,7 +14,7 @@ import {
   Calendar,
   ArrowRight,
 } from "lucide-react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import WhatsAppButton from "@/components/whatsapp-button"
@@ -41,6 +39,7 @@ interface Blog {
   published_at: string
   created_at: string
   author_name: string
+  author_email?: string
   category_name: string
   category_slug: string
   meta_title?: string
@@ -67,6 +66,50 @@ const colorSchemes: Record<string, any> = {
   "hospitality-travel": { from: "from-gray-500", to: "to-gray-600", bg: "bg-gray-50", icon: "text-gray-600" },
 }
 
+const FALLBACK_CATEGORIES: Category[] = [
+  { id: "1", name: "E-Commerce & D2C", slug: "ecommerce-d2c", description: "Automate cart recovery, order updates, and product recommendations on WhatsApp." },
+  { id: "2", name: "Real Estate", slug: "real-estate", description: "Qualify leads, schedule property viewings, and send instant brochures on chat." },
+  { id: "3", name: "BFSI & Fintech", slug: "bfsi-fintech", description: "Secure account alerts, loan application tracking, and automated document collection." },
+  { id: "4", name: "Education & Coaching", slug: "education-coaching", description: "Automate student admissions, course counseling, and fee payment reminders." },
+  { id: "5", name: "Healthcare & Wellness", slug: "healthcare-wellness", description: "Appointment booking, automated prescription reminders, and patient check-ins." },
+  { id: "6", name: "Retail & FMCG", slug: "retail-fmcg", description: "Drive store footfall, loyalty reward alerts, and automated customer feedback." },
+]
+
+const FALLBACK_FEATURED_BLOGS: Blog[] = [
+  {
+    id: "1",
+    title: "10 Proven WhatsApp Business Automation Strategies for 2026",
+    slug: "whatsapp-business-automation-strategies",
+    content: "Learn how leading brands use AI agents and automated broadcast campaigns to drive 10x ROI on WhatsApp...",
+    excerpt: "Discover step-by-step strategies for setting up AI chatbots, broadcast workflows, and CRM integrations on WhatsApp.",
+    featured_image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=600&auto=format&fit=crop&q=80",
+    status: "published",
+    is_featured: true,
+    published_at: new Date().toISOString(),
+    created_at: new Date().toISOString(),
+    author_name: "VasifyTech Team",
+    author_email: "team@vasifytech.com",
+    category_name: "E-Commerce & D2C",
+    category_slug: "ecommerce-d2c",
+  },
+  {
+    id: "2",
+    title: "How Real Estate Agencies Generate 5x Leads via WhatsApp Chatbots",
+    slug: "real-estate-whatsapp-chatbots",
+    content: "Real estate agents spend hours manually answering property inquiries. Automate lead qualification, schedule property visits...",
+    excerpt: "Automate lead qualification, schedule property visits, and send instant property brochures directly on WhatsApp.",
+    featured_image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&auto=format&fit=crop&q=80",
+    status: "published",
+    is_featured: true,
+    published_at: new Date().toISOString(),
+    created_at: new Date().toISOString(),
+    author_name: "VasifyTech Team",
+    author_email: "team@vasifytech.com",
+    category_name: "Real Estate",
+    category_slug: "real-estate",
+  },
+]
+
 export default function BlogsPage() {
   const [categories, setCategories] = useState<Category[]>([])
   const [loading, setLoading] = useState(true)
@@ -79,17 +122,21 @@ export default function BlogsPage() {
       setLoading(true)
       setError(null)
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories?isActive=true&limit=20`)
-      const data = await response.json()
-      console.log("Fetched categories:", data)
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com"
+      const response = await fetch(`${apiBaseUrl}/api/categories?isActive=true&limit=20`)
       if (!response.ok) {
         throw new Error("Failed to fetch categories")
       }
-
-      setCategories(data.data.categories)
+      const data = await response.json()
+      if (data.success && data.data?.categories && data.data.categories.length > 0) {
+        setCategories(data.data.categories)
+      } else {
+        setCategories(FALLBACK_CATEGORIES)
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong")
-      setCategories([])
+      console.warn("[BlogsPage] Network error fetching categories, using fallbacks:", err)
+      setCategories(FALLBACK_CATEGORIES)
+      setError(null)
     } finally {
       setLoading(false)
     }
@@ -104,14 +151,19 @@ export default function BlogsPage() {
         limit: "3",
       })
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs?${params.toString()}`)
-      const data = await response.json()
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com"
+      const response = await fetch(`${apiBaseUrl}/api/blogs?${params.toString()}`)
+      if (!response.ok) throw new Error("Failed to fetch blogs")
 
-      if (response.ok) {
+      const data = await response.json()
+      if (data.success && data.data?.blogs && data.data.blogs.length > 0) {
         setFeaturedBlogs(data.data.blogs)
+      } else {
+        setFeaturedBlogs(FALLBACK_FEATURED_BLOGS)
       }
     } catch (err) {
-      console.error("Error fetching featured blogs:", err)
+      console.warn("[BlogsPage] Error fetching featured blogs, using fallbacks:", err)
+      setFeaturedBlogs(FALLBACK_FEATURED_BLOGS)
     } finally {
       setBlogsLoading(false)
     }
@@ -137,7 +189,7 @@ export default function BlogsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
       {/* Hero Section */}
-      <section className="pt-36 md:pt-40 pb-12 px-6">
+      <section className="pt-10 md:pt-14 pb-12 px-6">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             Latest Guide<span className="text-green-500"> Guides </span> on WhatsApp Business, AI & Digital Growth.
@@ -248,7 +300,7 @@ export default function BlogsPage() {
                   const colors = staticColors[index % staticColors.length]
 
                   return (
-                    <Link key={category.id} href={`/blogs/${category.slug}`}>
+                    <Link key={category.id} to={`/blogs/${category.slug}`}>
                       <Card className={`h-full bg-white rounded-2xl shadow-lg ${colors.shadow} hover:shadow-2xl active:shadow-2xl transition-all duration-500 hover:-translate-y-2 active:-translate-y-2 cursor-pointer group overflow-hidden flex flex-col`}>
                         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -352,7 +404,7 @@ export default function BlogsPage() {
                       </div>
                     </div>
 
-                    <Link href={`/blogs/${blog.category_slug}/${blog.slug}`}>
+                    <Link to={`/blogs/${blog.category_slug}/${blog.slug}`}>
                       <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium">
                         Read Article
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -373,7 +425,7 @@ export default function BlogsPage() {
           <p className="text-xl mb-8 text-green-100 max-w-2xl mx-auto">
             Get personalized WhatsApp solutions for your industry. Book a free consultation with our experts.
           </p>
-          <Link href="/contact">
+          <Link to="/contact">
             <Button
               size="lg"
               className="bg-white text-green-600 hover:bg-gray-100 active:bg-gray-100 text-lg px-8 py-4 rounded-lg font-semibold"
