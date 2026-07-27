@@ -1,4 +1,4 @@
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import { MapPin, Phone, Mail, Star, Factory, Shield } from "lucide-react"
 import { FaWhatsapp, FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa"
 
@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <Link href="/" className="flex-shrink-0">
+              <Link to="/" className="flex-shrink-0">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-lg flex items-center justify-center overflow-hidden">
                   <img
                     src="/logo.jpg"
@@ -70,7 +70,7 @@ const Footer = () => {
               ].map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  to={link.href}
                   className="text-gray-300 hover:text-blue-400 transition-colors text-xs sm:text-sm p-1 sm:p-2 rounded-md hover:bg-gray-800/60 flex items-center gap-2 group"
                 >
                   <span className="w-1 h-1 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-all"></span>
@@ -237,7 +237,7 @@ const Footer = () => {
       {/* Footer Bottom Bar */}
       <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400">
         <p>&copy; 2025 VasifyTech | All rights reserved.</p>
-        <Link href="/privacy-policy" className="hover:text-gray-200 transition-colors">
+        <Link to="/privacy-policy" className="hover:text-gray-200 transition-colors">
           Privacy Policy
         </Link>
       </div>
