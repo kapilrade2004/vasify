@@ -1,13 +1,14 @@
-"use client";
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Lock, Mail, ArrowRight, AlertCircle, CheckCircle } from 'lucide-react';
-import Image from 'next/image';
+
 const AdminLoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState({ email: '', password: '' });
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const [message, setMessage] = useState({ type: '', text: '' });
 
   const handleSubmit = async () => {
@@ -15,7 +16,7 @@ const AdminLoginPage = () => {
     setMessage({ type: '', text: '' });
 
     // Client-side validation
-    const newErrors = {};
+    const newErrors: { email?: string; password?: string } = {};
     if (!email) newErrors.email = 'Email is required';
     if (!password) newErrors.password = 'Password is required';
 
@@ -27,7 +28,8 @@ const AdminLoginPage = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/signin`, {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
+      const response = await fetch(`${apiBaseUrl}/api/auth/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +45,7 @@ const AdminLoginPage = () => {
         setMessage({ type: 'success', text: 'Login successful! Redirecting...' });
         // Redirect after 1 second
         setTimeout(() => {
-          window.location.href = '/admin/admin-home-page';
+          navigate('/admin/admin-home-page');
         }, 1000);
       } else {
         // Handle validation errors
@@ -60,7 +62,7 @@ const AdminLoginPage = () => {
     }
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !isLoading) {
       handleSubmit();
     }
@@ -91,11 +93,12 @@ const AdminLoginPage = () => {
             <div className="relative z-10 bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/20">
               <div className="flex items-center justify-center h-48 bg-white/20 rounded-xl">
                 <p className="text-white text-center text-sm">
-                  <Image
+                  <img
                     src="/logo.jpg"
                     alt="VasifyTech"
                     width={120}
                     height={120}
+                    className="max-h-24 w-auto object-contain"
                   />
                 </p>
               </div>

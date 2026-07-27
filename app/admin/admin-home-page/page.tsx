@@ -1,5 +1,4 @@
-"use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import {
   Plus,
   Edit2,
@@ -8,39 +7,60 @@ import {
   BookOpen,
   FolderOpen,
   FileText,
-  Loader2,
+  ArrowUpRight,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import BlogForm from "./components/blogform";
 import CategoryForm from "./components/categoryform";
 import GuideForm from "./components/guideform";
-import ProfileDropdown from "./components/profile-dropdown";
 import UpdateProfileModal from "./components/update-profile-modal";
 
-export default function BlogDashboard() {
-  const router = useRouter();
-  const [activeTab, setActiveTab] = useState("overview");
+import { DashboardHeader } from "@/components/dashboard-header";
+import { DashboardSidebar } from "@/components/dashboard-sidebar";
+import { MobileBottomNav } from "@/components/mobile-bottom-nav";
+import { StatCard } from "@/components/dashboard/stat-card";
+import { DashboardSkeleton } from "@/components/ui/skeleton-loader";
+import { EmptyState } from "@/components/ui/empty-state";
+import { Button } from "@/components/ui/button";
+
+const DashboardCharts = React.lazy(() =>
+  import("@/components/dashboard/dashboard-charts").then((m) => ({ default: m.DashboardCharts }))
+);
+
+const AISuggestionsWidget = React.lazy(() =>
+  import("@/components/dashboard/ai-suggestions-widget").then((m) => ({ default: m.AISuggestionsWidget }))
+);
+
+const CommandPalette = React.lazy(() =>
+  import("@/components/command-palette").then((m) => ({ default: m.CommandPalette }))
+);
+
+function BlogDashboardContent() {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const initialTab = searchParams.get("tab") || "overview";
+
+  const [activeTab, setActiveTab] = useState(initialTab);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [guideSearchTerm, setGuideSearchTerm] = useState("");
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
 
-  const [user, setUser] = useState<{ name: string; email: string } | null>(
-    null
-  );
+  const [user, setUser] = useState<{ name: string; email: string } | null>(null);
   const [showUpdateProfile, setShowUpdateProfile] = useState(false);
 
-  const [blogs, setBlogs] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [guides, setGuides] = useState([]);
+  const [blogs, setBlogs] = useState<any[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [guides, setGuides] = useState<any[]>([]);
 
-  const [blogsPagination, setBlogsPagination] = useState(null);
-  const [categoriesPagination, setCategoriesPagination] = useState(null);
-  const [guidesPagination, setGuidesPagination] = useState(null);
+  const [blogsPagination, setBlogsPagination] = useState<any>(null);
+  const [categoriesPagination, setCategoriesPagination] = useState<any>(null);
+  const [guidesPagination, setGuidesPagination] = useState<any>(null);
 
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState("");
-  const [editingItem, setEditingItem] = useState(null);
+  const [editingItem, setEditingItem] = useState<any>(null);
 
   useEffect(() => {
     checkAuth();
@@ -48,26 +68,23 @@ export default function BlogDashboard() {
 
   const checkAuth = async () => {
     try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/me`,
-        {
-          credentials: "include",
-        }
+        `${apiBaseUrl}/api/auth/me`,
+        { credentials: "include" }
       );
 
       if (!response.ok) {
-        router.push("/admin/login");
+        navigate("/admin/login");
         return;
       }
 
       const data = await response.json();
       setUser({ name: data.data.name, email: data.data.email });
-
       fetchAllData();
     } catch (err) {
       console.error("Auth check failed:", err);
-
-      router.push("/admin/login");
+      navigate("/admin/login");
     }
   };
 
@@ -86,6 +103,7 @@ export default function BlogDashboard() {
 
   const fetchBlogs = async (page = 1, search = "") => {
     try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
       const params = new URLSearchParams({
         page: page.toString(),
         limit: "10",
@@ -93,7 +111,7 @@ export default function BlogDashboard() {
       });
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs?${params}`
+        `${apiBaseUrl}/api/blogs?${params}`
       );
       if (!response.ok) throw new Error("Failed to fetch blogs");
 
@@ -108,13 +126,14 @@ export default function BlogDashboard() {
 
   const fetchCategories = async (page = 1) => {
     try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
       const params = new URLSearchParams({
         page: page.toString(),
         limit: "20",
       });
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories?${params}`
+        `${apiBaseUrl}/api/categories?${params}`
       );
       if (!response.ok) throw new Error("Failed to fetch categories");
 
@@ -127,110 +146,93 @@ export default function BlogDashboard() {
     }
   };
 
-const fetchGuides = async (page = 1, search = "") => {
-  try {
-    const params = new URLSearchParams({
-      page: page.toString(),
-      limit: "10",
-      ...(search && { search }),
-    });
-
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/free-guides?${params}`
-    );
-    if (!response.ok) throw new Error("Failed to fetch guides");
-
-    const data = await response.json();
-    const rawGuides = data.data?.guides || [];
-    
-    console.log("📊 First guide from API:", rawGuides[0]);
-    console.log("📊 Available fields:", Object.keys(rawGuides[0] || {}));
-    
-    // Process guides - use the flat category_name field from backend
-    const processedGuides = rawGuides.map((guide) => {
-      // The backend returns category_name, category_slug directly
-      const categoryName = guide.category_name || "N/A";
-      const categorySlug = guide.category_slug;
-      const categoryId = guide.category_id; // This is from the JOIN, might be duplicate
-      
-      console.log(`Guide "${guide.title}":`, {
-        category_name: guide.category_name,
-        category_slug: guide.category_slug,
-        category_id: guide.category_id,
-        has_category_object: !!guide.category
+  const fetchGuides = async (page = 1, search = "") => {
+    try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
+      const params = new URLSearchParams({
+        page: page.toString(),
+        limit: "10",
+        ...(search && { search }),
       });
-      
-      return {
+
+      const response = await fetch(
+        `${apiBaseUrl}/api/free-guides?${params}`
+      );
+      if (!response.ok) throw new Error("Failed to fetch guides");
+
+      const data = await response.json();
+      const rawGuides = data.data?.guides || [];
+      const processedGuides = rawGuides.map((guide: any) => ({
         ...guide,
-        category_name: categoryName,
-        category_slug: categorySlug,
-        category_id: categoryId,
-      };
-    });
-    
-    console.log("📊 Processed guides:", processedGuides);
-    
-    setGuides(processedGuides);
-    setGuidesPagination(data.data?.pagination || null);
-  } catch (err) {
-    console.error("Error fetching guides:", err);
-    throw err;
-  }
-};
+        category_name: guide.category_name || guide.category?.name || "Uncategorized",
+      }));
+
+      setGuides(processedGuides);
+      setGuidesPagination(data.data?.pagination || null);
+    } catch (err) {
+      console.error("Error fetching guides:", err);
+      throw err;
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
+      await fetch(`${apiBaseUrl}/api/auth/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
+      navigate("/admin/login");
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
+
+  const openModal = (type: string, item: any = null) => {
+    setModalType(type);
+    setEditingItem(item);
+    setShowModal(true);
+  };
 
   const closeModal = () => {
     setShowModal(false);
-    setEditingItem(null);
     setModalType("");
+    setEditingItem(null);
   };
 
-  const handleDelete = async (type, id) => {
-    if (!window.confirm("Are you sure you want to delete this item?")) return;
+  const handleDelete = async (type: string, id: number) => {
+    if (!confirm(`Are you sure you want to delete this ${type}?`)) return;
 
     try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
       let endpoint = "";
-      if (type === "blog")
-        endpoint = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs/${id}`;
-      if (type === "category")
-        endpoint = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories/${id}`;
-      if (type === "guide")
-        endpoint = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/free-guides/${id}`;
+      if (type === "blog") endpoint = `${apiBaseUrl}/api/blogs/${id}`;
+      else if (type === "category") endpoint = `${apiBaseUrl}/api/categories/${id}`;
+      else if (type === "guide") endpoint = `${apiBaseUrl}/api/free-guides/${id}`;
 
       const response = await fetch(endpoint, {
         method: "DELETE",
         credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
       });
 
-      console.log("Delete response:", response);
+      if (!response.ok) throw new Error(`Failed to delete ${type}`);
 
-      // Parse the body safely
-      const result = await response.json().catch(() => null);
-
-      // IF API returns 400
-      if (response.status === 400 && type === "category") {
-        alert(
-          result?.message || "Cannot delete category with associated blogs."
-        );
-        return;
-      }
-
-      // Any other error (404, 500, etc)
-      if (!response.ok) {
-        alert(result?.message || "Failed to delete item.");
-        throw new Error(result?.message || "Failed to delete");
-      }
-
-      // SUCCESS — refresh lists
-      if (type === "blog") await fetchBlogs();
-      if (type === "category") await fetchCategories();
-      if (type === "guide") await fetchGuides();
+      if (type === "blog") fetchBlogs(blogsPagination?.page || 1, searchTerm);
+      else if (type === "category") fetchCategories(categoriesPagination?.page || 1);
+      else if (type === "guide") fetchGuides(guidesPagination?.page || 1, guideSearchTerm);
     } catch (err) {
-      alert("Failed to delete item. Please try again.");
-      console.error("Error deleting:", err);
+      console.error(`Error deleting ${type}:`, err);
+      alert(`Failed to delete ${type}. Please try again.`);
     }
+  };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    fetchBlogs(1, searchTerm);
+  };
+
+  const handleProfileUpdateSuccess = (updatedUser: { name: string; email: string }) => {
+    setUser(updatedUser);
   };
 
   const handleCategorySubmit = async () => {
@@ -241,590 +243,428 @@ const fetchGuides = async (page = 1, search = "") => {
     await fetchGuides();
   };
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    if (activeTab === "blogs") {
-      await fetchBlogs(1, searchTerm);
-    }
+  const getUserFirstName = () => {
+    if (!user?.name) return "Mohish";
+    return user.name.split(" ")[0];
   };
 
-  const openModal = (type, item = null) => {
-    setModalType(type);
-    setEditingItem(item);
-    setShowModal(true);
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good Morning";
+    if (hour < 17) return "Good Afternoon";
+    return "Good Evening";
   };
-
-  const handleLogout = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/logout`,
-        {
-          method: "POST",
-          credentials: "include",
-        }
-      );
-
-      if (response.ok) {
-        router.push("/admin/login");
-      }
-    } catch (err) {
-      console.error("Logout failed:", err);
-      alert("Failed to logout. Please try again.");
-    }
-  };
-
-  const handleProfileUpdateSuccess = (updatedUser: {
-    name: string;
-    email: string;
-  }) => {
-    setUser(updatedUser);
-  };
-
-  const StatCard = ({ title, value, icon: Icon, color }) => (
-    <div
-      className="bg-white rounded-lg shadow p-6 border-l-4"
-      style={{ borderColor: color }}
-    >
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-gray-600 text-sm">{title}</p>
-          <p className="text-3xl font-bold mt-2">{value}</p>
-        </div>
-        <Icon className="w-12 h-12 opacity-20" style={{ color }} />
-      </div>
-    </div>
-  );
-
-  if (loading || !user) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin text-blue-600 mx-auto mb-4" />
-          <p className="text-gray-600">Loading dashboard...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-600 mb-4">{error}</p>
-          <button
-            onClick={fetchAllData}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-          >
-            Retry
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm border-b mt-24">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-gray-900">
-              Blog Management Dashboard
-            </h1>
-            <ProfileDropdown
-              user={user}
-              onUpdateProfile={() => setShowUpdateProfile(true)}
-              onLogout={handleLogout}
-            />
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col font-sans">
+      <DashboardHeader
+        user={user}
+        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
+        onUpdateProfile={() => setShowUpdateProfile(true)}
+        onLogout={handleLogout}
+      />
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="flex space-x-4 mb-8 border-b">
-          {["overview", "blogs", "categories", "guides"].map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 font-medium capitalize transition-colors ${
-                activeTab === tab
-                  ? "text-blue-600 border-b-2 border-blue-600"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
+      <div className="flex-1 flex max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 gap-6">
+        <DashboardSidebar
+          activeTab={activeTab}
+          onSelectTab={(tab) => {
+            if (tab === "settings") {
+              navigate("/admin/settings");
+            } else {
+              setActiveTab(tab);
+            }
+          }}
+        />
 
-        {activeTab === "overview" && (
-          <div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <StatCard
-                title="Total Blogs"
-                value={blogsPagination?.total || 0}
-                icon={BookOpen}
-                color="#3b82f6"
-              />
-              <StatCard
-                title="Categories"
-                value={categoriesPagination?.total || 0}
-                icon={FolderOpen}
-                color="#8b5cf6"
-              />
-              <StatCard
-                title="Total Guides"
-                value={guidesPagination?.total || 0}
-                icon={FileText}
-                color="#10b981"
-              />
+        <main className="flex-1 min-w-0 pb-20 md:pb-6">
+          {/* Personalized Dashboard Greeting Header */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h1 className="heading-1 text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                {getGreeting()}, {getUserFirstName()} <span className="animate-bounce">👋</span>
+              </h1>
+              <p className="caption-text text-slate-500 dark:text-slate-400 mt-1">
+                Here is your AI-powered performance & content metrics breakdown for today.
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="bg-white rounded-lg shadow p-6">
-                <h3 className="text-lg font-semibold mb-4">Recent Blogs</h3>
-                {blogs.length === 0 ? (
-                  <p className="text-gray-500 text-center py-4">No blogs yet</p>
-                ) : (
-                  blogs.slice(0, 3).map((blog) => (
-                    <div
-                      key={blog.id}
-                      className="flex justify-between items-center py-3 border-b last:border-0"
-                    >
-                      <div>
-                        <p className="font-medium">{blog.title}</p>
-                        <p className="text-sm text-gray-500">
-                          {blog.category_name || "Uncategorized"}
-                        </p>
-                      </div>
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs ${
-                          blog.status === "published"
-                            ? "bg-green-100 text-green-800"
-                            : "bg-yellow-100 text-yellow-800"
-                        }`}
-                      >
-                        {blog.status}
-                      </span>
-                    </div>
-                  ))
-                )}
-              </div>
-
-              <div className="bg-white rounded-lg shadow p-6">
-                <h3 className="text-lg font-semibold mb-4">Categories</h3>
-                {categories.length === 0 ? (
-                  <p className="text-gray-500 text-center py-4">
-                    No categories yet
-                  </p>
-                ) : (
-                  categories.slice(0, 5).map((cat) => (
-                    <div
-                      key={cat.id}
-                      className="flex items-center justify-between py-3 border-b last:border-0"
-                    >
-                      <div className="flex items-center">
-                        <div className="w-3 h-3 rounded-full mr-3 bg-blue-500"></div>
-                        <span className="font-medium">{cat.name}</span>
-                      </div>
-                      <span
-                        className={`px-2 py-1 rounded text-xs ${
-                          cat.is_active
-                            ? "bg-green-100 text-green-800"
-                            : "bg-gray-100 text-gray-600"
-                        }`}
-                      >
-                        {cat.is_active ? "Active" : "Inactive"}
-                      </span>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === "blogs" && (
-          <div>
-            <div className="flex justify-between items-center mb-6">
-              <form
-                onSubmit={handleSearch}
-                className="relative flex-1 max-w-md"
-              >
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search blogs..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </form>
-              <button
+            <div className="flex items-center gap-3">
+              <Button
                 onClick={() => openModal("blog")}
-                className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors ml-4"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl px-4 py-2 flex items-center gap-2 shadow-md"
               >
-                <Plus className="w-5 h-5 mr-2" />
-                New Blog
-              </button>
-            </div>
-
-            <div className="bg-white rounded-lg shadow overflow-hidden">
-              {blogs.length === 0 ? (
-                <div className="text-center py-12">
-                  <p className="text-gray-500">No blogs found</p>
-                </div>
-              ) : (
-                <>
-                  <table className="w-full">
-                    <thead className="bg-gray-50 border-b">
-                      <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                          Title
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                          Category
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                          Status
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                          Author
-                        </th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
-                          Actions
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y">
-                      {blogs.map((blog) => (
-                        <tr key={blog.id} className="hover:bg-gray-50">
-                          <td className="px-6 py-4 font-medium">
-                            {blog.title}
-                          </td>
-                          <td className="px-6 py-4 text-gray-600">
-                            {blog.category_name || "N/A"}
-                          </td>
-                          <td className="px-6 py-4">
-                            <span
-                              className={`px-3 py-1 rounded-full text-xs ${
-                                blog.status === "published"
-                                  ? "bg-green-100 text-green-800"
-                                  : "bg-yellow-100 text-yellow-800"
-                              }`}
-                            >
-                              {blog.status}
-                            </span>
-                          </td>
-                          <td className="px-6 py-4 text-gray-600">
-                            {blog.author_name || "N/A"}
-                          </td>
-                          <td className="px-6 py-4 text-right">
-                            <button
-                              onClick={() => openModal("blog", blog)}
-                              className="text-blue-600 hover:text-blue-800 mr-3"
-                            >
-                              <Edit2 className="w-5 h-5" />
-                            </button>
-                            <button
-                              onClick={() => handleDelete("blog", blog.id)}
-                              className="text-red-600 hover:text-red-800"
-                            >
-                              <Trash2 className="w-5 h-5" />
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-
-                  {blogsPagination && blogsPagination.totalPages > 1 && (
-                    <div className="px-6 py-4 border-t flex items-center justify-between">
-                      <p className="text-sm text-gray-600">
-                        Showing{" "}
-                        {(blogsPagination.page - 1) * blogsPagination.limit + 1}{" "}
-                        to{" "}
-                        {Math.min(
-                          blogsPagination.page * blogsPagination.limit,
-                          blogsPagination.total
-                        )}{" "}
-                        of {blogsPagination.total} results
-                      </p>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() =>
-                            fetchBlogs(blogsPagination.page - 1, searchTerm)
-                          }
-                          disabled={blogsPagination.page === 1}
-                          className="px-3 py-1 border rounded hover:bg-gray-50 disabled:opacity-50"
-                        >
-                          Previous
-                        </button>
-                        <button
-                          onClick={() =>
-                            fetchBlogs(blogsPagination.page + 1, searchTerm)
-                          }
-                          disabled={
-                            blogsPagination.page >= blogsPagination.totalPages
-                          }
-                          className="px-3 py-1 border rounded hover:bg-gray-50 disabled:opacity-50"
-                        >
-                          Next
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </>
-              )}
+                <Plus className="w-4 h-4" /> New Article
+              </Button>
             </div>
           </div>
-        )}
 
-        {activeTab === "categories" && (
-          <div>
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-semibold">Manage Categories</h2>
-              <button
-                onClick={() => openModal("category")}
-                className="flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
-              >
-                <Plus className="w-5 h-5 mr-2" />
-                New Category
-              </button>
+          {loading ? (
+            <DashboardSkeleton />
+          ) : error ? (
+            <div className="p-6 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 text-rose-600 text-center font-medium">
+              {error}
             </div>
-
-            {categories.length === 0 ? (
-              <div className="bg-white rounded-lg shadow p-12 text-center">
-                <p className="text-gray-500">
-                  No categories yet. Create your first category!
-                </p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {categories.map((cat) => (
-                  <div
-                    key={cat.id}
-                    className="bg-white rounded-lg shadow p-6 border-l-4 border-purple-500"
-                  >
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h3 className="text-lg font-semibold">{cat.name}</h3>
-                        <p className="text-sm text-gray-500 mt-1">{cat.slug}</p>
-                      </div>
-                      <div className="flex space-x-2">
-                        <button
-                          onClick={() => openModal("category", cat)}
-                          className="text-gray-600 hover:text-blue-600"
-                        >
-                          <Edit2 className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => handleDelete("category", cat.id)}
-                          className="text-gray-600 hover:text-red-600"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
-                    <span
-                      className={`inline-block px-3 py-1 rounded-full text-xs ${
-                        cat.is_active
-                          ? "bg-green-100 text-green-800"
-                          : "bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      {cat.is_active ? "Active" : "Inactive"}
-                    </span>
+          ) : (
+            <>
+              {/* Overview Tab View */}
+              {(activeTab === "overview" || activeTab === "ai-workspace") && (
+                <div className="space-y-6">
+                  {/* Layered Metric Cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <StatCard
+                      title="Total Published Blogs"
+                      value={blogsPagination?.total || blogs.length}
+                      trend="14.2%"
+                      isPositive={true}
+                      comparisonText="Compared to last month"
+                      icon={BookOpen}
+                      color="#10b981"
+                      sparklineData={[{ val: 10 }, { val: 15 }, { val: 14 }, { val: 22 }, { val: 28 }, { val: 32 }]}
+                    />
+                    <StatCard
+                      title="Active Categories"
+                      value={categoriesPagination?.total || categories.length}
+                      trend="8.1%"
+                      isPositive={true}
+                      comparisonText="Compared to last month"
+                      icon={FolderOpen}
+                      color="#3b82f6"
+                      sparklineData={[{ val: 5 }, { val: 7 }, { val: 6 }, { val: 10 }, { val: 12 }, { val: 15 }]}
+                    />
+                    <StatCard
+                      title="Free Guide Downloads"
+                      value={guidesPagination?.total || guides.length}
+                      trend="24.5%"
+                      isPositive={true}
+                      comparisonText="Compared to yesterday"
+                      icon={FileText}
+                      color="#a855f7"
+                      sparklineData={[{ val: 20 }, { val: 28 }, { val: 35 }, { val: 42 }, { val: 50 }, { val: 68 }]}
+                    />
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
 
-        {activeTab === "guides" && (
-          <div>
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-semibold">Manage Free Guides</h2>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  fetchGuides(1, searchTerm);
-                }}
-                className="relative flex-1 max-w-md"
-              >
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search guides..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </form>
-              <button
-                onClick={() => openModal("guide")}
-                className="flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-              >
-                <Plus className="w-5 h-5 mr-2" />
-                New Guide
-              </button>
-            </div>
+                  {/* Recharts Data Visualizations */}
+                  <DashboardCharts />
 
-            <div className="bg-white rounded-lg shadow overflow-hidden">
-              {guides.length === 0 ? (
-                <div className="text-center py-12">
-                  <p className="text-gray-500">
-                    No guides found. Create your first guide!
-                  </p>
-                </div>
-              ) : (
-                <>
-                  <table className="w-full">
-                    <thead className="bg-gray-50 border-b">
-                      <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                          Title
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                          Category
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                          Status
-                        </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                          Downloads
-                        </th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
-                          Actions
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y">
-                      {guides.map((guide) => {
-                        // DEBUG: Log each guide to see its structure
-                        console.log("Guide data:", guide);
+                  {/* AI Suggestions Widget */}
+                  <AISuggestionsWidget />
 
-                        return (
-                          <tr key={guide.id} className="hover:bg-gray-50">
-                            <td className="px-6 py-4 font-medium">
-                              {guide.title}
-                            </td>
-                            <td className="px-6 py-4 text-gray-600">
-                              {guide.category_name || // Check for our new field
-                                guide.category?.name || // Check for nested category
-                                "N/A"}
-                            </td>
-                            <td className="px-6 py-4">
-                              <span
-                                className={`px-3 py-1 rounded-full text-xs ${
-                                  guide.status === "published"
-                                    ? "bg-green-100 text-green-800"
-                                    : "bg-yellow-100 text-yellow-800"
-                                }`}
-                              >
-                                {guide.status}
-                              </span>
-                            </td>
-                            <td className="px-6 py-4 text-gray-600">
-                              {guide.download_count || 0}
-                            </td>
-                            <td className="px-6 py-4 text-right">
-                              <button
-                                onClick={() => openModal("guide", guide)}
-                                className="text-blue-600 hover:text-blue-800 mr-3"
-                              >
-                                <Edit2 className="w-5 h-5" />
-                              </button>
-                              <button
-                                onClick={() => handleDelete("guide", guide.id)}
-                                className="text-red-600 hover:text-red-800"
-                              >
-                                <Trash2 className="w-5 h-5" />
-                              </button>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
+                  {/* Recent Articles Section */}
+                  <div className="layered-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800">
+                    <div className="flex items-center justify-between mb-4">
+                      <h3 className="heading-card text-slate-900 dark:text-slate-100">
+                        Recent Articles
+                      </h3>
+                      <button
+                        onClick={() => setActiveTab("blogs")}
+                        className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1"
+                      >
+                        View All <ArrowUpRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
 
-                  {/* Add pagination for guides too */}
-                  {guidesPagination && guidesPagination.totalPages > 1 && (
-                    <div className="px-6 py-4 border-t flex items-center justify-between">
-                      <p className="text-sm text-gray-600">
-                        Showing{" "}
-                        {(guidesPagination.page - 1) * guidesPagination.limit +
-                          1}{" "}
-                        to{" "}
-                        {Math.min(
-                          guidesPagination.page * guidesPagination.limit,
-                          guidesPagination.total
-                        )}{" "}
-                        of {guidesPagination.total} results
-                      </p>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() =>
-                            fetchGuides(guidesPagination.page - 1, searchTerm)
-                          }
-                          disabled={guidesPagination.page === 1}
-                          className="px-3 py-1 border rounded hover:bg-gray-50 disabled:opacity-50"
-                        >
-                          Previous
-                        </button>
-                        <button
-                          onClick={() =>
-                            fetchGuides(guidesPagination.page + 1, searchTerm)
-                          }
-                          disabled={
-                            guidesPagination.page >= guidesPagination.totalPages
-                          }
-                          className="px-3 py-1 border rounded hover:bg-gray-50 disabled:opacity-50"
-                        >
-                          Next
-                        </button>
+                    {blogs.length === 0 ? (
+                      <EmptyState
+                        title="No articles published yet"
+                        description="Start publishing AI-optimized articles to attract organic leads."
+                        actionLabel="Create First Article"
+                        onAction={() => openModal("blog")}
+                      />
+                    ) : (
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-left text-sm text-slate-600 dark:text-slate-300">
+                          <thead className="text-xs uppercase bg-slate-100/70 dark:bg-slate-800/70 text-slate-400 font-semibold border-b border-slate-200 dark:border-slate-800">
+                            <tr>
+                              <th className="px-4 py-3 rounded-l-xl">Article Title</th>
+                              <th className="px-4 py-3">Category</th>
+                              <th className="px-4 py-3">Status</th>
+                              <th className="px-4 py-3">Author</th>
+                              <th className="px-4 py-3 text-right rounded-r-xl">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">
+                            {blogs.slice(0, 5).map((blog) => (
+                              <tr key={blog.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors">
+                                <td className="px-4 py-3.5 font-semibold text-slate-900 dark:text-slate-100">
+                                  {blog.title}
+                                </td>
+                                <td className="px-4 py-3.5 text-slate-500">
+                                  {blog.category_name || "Uncategorized"}
+                                </td>
+                                <td className="px-4 py-3.5">
+                                  <span
+                                    className={`px-2.5 py-1 rounded-full text-[11px] font-bold ${
+                                      blog.status === "published"
+                                        ? "bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400"
+                                        : "bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400"
+                                    }`}
+                                  >
+                                    {blog.status}
+                                  </span>
+                                </td>
+                                <td className="px-4 py-3.5 text-slate-500">
+                                  {blog.author_name || "Admin"}
+                                </td>
+                                <td className="px-4 py-3.5 text-right space-x-2">
+                                  <button
+                                    onClick={() => openModal("blog", blog)}
+                                    title="Edit article"
+                                    aria-label="Edit article"
+                                    className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-blue-600 transition-colors"
+                                  >
+                                    <Edit2 className="w-4 h-4" />
+                                  </button>
+                                  <button
+                                    onClick={() => handleDelete("blog", blog.id)}
+                                    title="Delete article"
+                                    aria-label="Delete article"
+                                    className="p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-rose-600 transition-colors"
+                                  >
+                                    <Trash2 className="w-4 h-4" />
+                                  </button>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
                       </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Blogs Tab View */}
+              {activeTab === "blogs" && (
+                <div className="space-y-6">
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <form onSubmit={handleSearch} className="flex gap-2 w-full sm:w-auto">
+                      <div className="relative flex-1 sm:w-72">
+                        <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                        <input
+                          type="text"
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                          placeholder="Search articles..."
+                          className="w-full pl-9 pr-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        />
+                      </div>
+                      <Button type="submit" variant="secondary" className="rounded-xl">Search</Button>
+                    </form>
+
+                    <Button
+                      onClick={() => openModal("blog")}
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl px-4 py-2 flex items-center gap-2 w-full sm:w-auto justify-center"
+                    >
+                      <Plus className="w-4 h-4" /> New Article
+                    </Button>
+                  </div>
+
+                  <div className="layered-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 overflow-x-auto">
+                    {blogs.length === 0 ? (
+                      <EmptyState
+                        title="No matching articles found"
+                        description="Try adjusting your search criteria or create a new blog article."
+                        actionLabel="Create New Article"
+                        onAction={() => openModal("blog")}
+                      />
+                    ) : (
+                      <table className="w-full text-left text-sm text-slate-600 dark:text-slate-300">
+                        <thead className="text-xs uppercase bg-slate-100/70 dark:bg-slate-800/70 text-slate-400 font-semibold border-b border-slate-200 dark:border-slate-800">
+                          <tr>
+                            <th className="px-4 py-3 rounded-l-xl">Title</th>
+                            <th className="px-4 py-3">Category</th>
+                            <th className="px-4 py-3">Status</th>
+                            <th className="px-4 py-3">Author</th>
+                            <th className="px-4 py-3 text-right rounded-r-xl">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">
+                          {blogs.map((blog) => (
+                            <tr key={blog.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors">
+                              <td className="px-4 py-3.5 font-semibold text-slate-900 dark:text-slate-100">
+                                {blog.title}
+                              </td>
+                              <td className="px-4 py-3.5 text-slate-500">{blog.category_name || "N/A"}</td>
+                              <td className="px-4 py-3.5">
+                                <span className={`px-2.5 py-1 rounded-full text-[11px] font-bold ${
+                                  blog.status === "published" ? "bg-emerald-100 text-emerald-600" : "bg-amber-100 text-amber-600"
+                                }`}>
+                                  {blog.status}
+                                </span>
+                              </td>
+                              <td className="px-4 py-3.5 text-slate-500">{blog.author_name || "N/A"}</td>
+                              <td className="px-4 py-3.5 text-right space-x-2">
+                                <button onClick={() => openModal("blog", blog)} title="Edit article" aria-label="Edit article" className="p-1 text-blue-600 hover:text-blue-800">
+                                  <Edit2 className="w-4 h-4" />
+                                </button>
+                                <button onClick={() => handleDelete("blog", blog.id)} title="Delete article" aria-label="Delete article" className="p-1 text-rose-600 hover:text-rose-800">
+                                  <Trash2 className="w-4 h-4" />
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Categories Tab View */}
+              {activeTab === "categories" && (
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h2 className="heading-section text-slate-900 dark:text-slate-100">Categories</h2>
+                    <Button
+                      onClick={() => openModal("category")}
+                      className="bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl px-4 py-2 flex items-center gap-2"
+                    >
+                      <Plus className="w-4 h-4" /> New Category
+                    </Button>
+                  </div>
+
+                  {categories.length === 0 ? (
+                    <EmptyState
+                      icon={FolderOpen}
+                      title="No categories created"
+                      description="Organize your blog topics by creating your first category."
+                      actionLabel="Add Category"
+                      onAction={() => openModal("category")}
+                    />
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {categories.map((cat) => (
+                        <div key={cat.id} className="layered-card rounded-2xl p-5 border-l-4 border-purple-500 space-y-3">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-base">{cat.name}</h3>
+                              <p className="text-xs text-slate-400 font-mono mt-0.5">{cat.slug}</p>
+                            </div>
+                            <div className="flex gap-1">
+                              <button onClick={() => openModal("category", cat)} title="Edit category" aria-label="Edit category" className="p-1 text-slate-400 hover:text-blue-600">
+                                <Edit2 className="w-4 h-4" />
+                              </button>
+                              <button onClick={() => handleDelete("category", cat.id)} title="Delete category" aria-label="Delete category" className="p-1 text-slate-400 hover:text-rose-600">
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </div>
+                          <span className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
+                            cat.is_active ? "bg-emerald-100 text-emerald-700" : "bg-slate-100 text-slate-500"
+                          }`}>
+                            {cat.is_active ? "Active" : "Inactive"}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   )}
-                </>
+                </div>
               )}
-            </div>
-          </div>
-        )}
+
+              {/* Guides Tab View */}
+              {activeTab === "guides" && (
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center">
+                    <h2 className="heading-section text-slate-900 dark:text-slate-100">Free Guides</h2>
+                    <Button
+                      onClick={() => openModal("guide")}
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl px-4 py-2 flex items-center gap-2"
+                    >
+                      <Plus className="w-4 h-4" /> New Free Guide
+                    </Button>
+                  </div>
+
+                  {guides.length === 0 ? (
+                    <EmptyState
+                      icon={FileText}
+                      title="No free guides created"
+                      description="Create downloadable PDF guides to generate high-intent WhatsApp leads."
+                      actionLabel="Create Free Guide"
+                      onAction={() => openModal("guide")}
+                    />
+                  ) : (
+                    <div className="layered-card rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 overflow-x-auto">
+                      <table className="w-full text-left text-sm text-slate-600 dark:text-slate-300">
+                        <thead className="text-xs uppercase bg-slate-100/70 dark:bg-slate-800/70 text-slate-400 font-semibold border-b border-slate-200 dark:border-slate-800">
+                          <tr>
+                            <th className="px-4 py-3 rounded-l-xl">Guide Title</th>
+                            <th className="px-4 py-3">Category</th>
+                            <th className="px-4 py-3">Status</th>
+                            <th className="px-4 py-3">Downloads</th>
+                            <th className="px-4 py-3 text-right rounded-r-xl">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">
+                          {guides.map((guide) => (
+                            <tr key={guide.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors">
+                              <td className="px-4 py-3.5 font-semibold text-slate-900 dark:text-slate-100">{guide.title}</td>
+                              <td className="px-4 py-3.5 text-slate-500">{guide.category_name || "N/A"}</td>
+                              <td className="px-4 py-3.5">
+                                <span className={`px-2.5 py-1 rounded-full text-[11px] font-bold ${
+                                  guide.status === "published" ? "bg-emerald-100 text-emerald-600" : "bg-amber-100 text-amber-600"
+                                }`}>
+                                  {guide.status}
+                                </span>
+                              </td>
+                              <td className="px-4 py-3.5 font-semibold text-slate-700 dark:text-slate-300">
+                                {guide.download_count || 0}
+                              </td>
+                              <td className="px-4 py-3.5 text-right space-x-2">
+                                <button onClick={() => openModal("guide", guide)} title="Edit guide" aria-label="Edit guide" className="p-1 text-blue-600 hover:text-blue-800">
+                                  <Edit2 className="w-4 h-4" />
+                                </button>
+                                <button onClick={() => handleDelete("guide", guide.id)} title="Delete guide" aria-label="Delete guide" className="p-1 text-rose-600 hover:text-rose-800">
+                                  <Trash2 className="w-4 h-4" />
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              )}
+            </>
+          )}
+        </main>
       </div>
 
       {showModal && modalType === "blog" && (
-        <BlogForm
-          editingItem={editingItem}
-          categories={categories}
-          onClose={closeModal}
-          onSubmit={fetchBlogs}
-        />
+        <BlogForm editingItem={editingItem} categories={categories} onClose={closeModal} onSubmit={fetchBlogs} />
       )}
-
       {showModal && modalType === "category" && (
-        <CategoryForm
-          editingItem={editingItem}
-          onClose={closeModal}
-          onSubmit={handleCategorySubmit}
-        />
+        <CategoryForm editingItem={editingItem} onClose={closeModal} onSubmit={handleCategorySubmit} />
       )}
-
       {showModal && modalType === "guide" && (
-        <GuideForm
-          editingItem={editingItem}
-          categories={categories}
-          onClose={closeModal}
-          onSubmit={handleGuideSubmit}
+        <GuideForm editingItem={editingItem} categories={categories} onClose={closeModal} onSubmit={handleGuideSubmit} />
+      )}
+
+      {showUpdateProfile && user && (
+        <UpdateProfileModal
+          isOpen={showUpdateProfile}
+          onClose={() => setShowUpdateProfile(false)}
+          currentUser={user}
+          onSuccess={handleProfileUpdateSuccess}
         />
       )}
 
-      <UpdateProfileModal
-        isOpen={showUpdateProfile}
-        onClose={() => setShowUpdateProfile(false)}
-        currentUser={user}
-        onSuccess={handleProfileUpdateSuccess}
-      />
+      {isCommandPaletteOpen && (
+        <CommandPalette
+          isOpen={isCommandPaletteOpen}
+          onClose={() => setIsCommandPaletteOpen(false)}
+        />
+      )}
+
+      <MobileBottomNav />
     </div>
+  );
+}
+
+export default function BlogDashboard() {
+  return (
+    <Suspense fallback={<DashboardSkeleton />}>
+      <BlogDashboardContent />
+    </Suspense>
   );
 }

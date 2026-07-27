@@ -1,4 +1,3 @@
-"use client"
 import { LogOut, Settings } from "lucide-react"
 import {
   DropdownMenu,
@@ -14,13 +13,14 @@ interface ProfileDropdownProps {
   user: {
     name: string
     email: string
-  }
+  } | null
   onUpdateProfile: () => void
   onLogout: () => void
 }
 
 export default function ProfileDropdown({ user, onUpdateProfile, onLogout }: ProfileDropdownProps) {
-  const getInitials = (name: string) => {
+  const getInitials = (name?: string) => {
+    if (!name) return "U"
     return name
       .split(" ")
       .map((n) => n[0])
@@ -34,15 +34,15 @@ export default function ProfileDropdown({ user, onUpdateProfile, onLogout }: Pro
       <DropdownMenuTrigger asChild>
         <button className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
           <Avatar className="h-9 w-9 cursor-pointer">
-            <AvatarFallback className="bg-blue-600 text-white">{getInitials(user.name)}</AvatarFallback>
+            <AvatarFallback className="bg-blue-600 text-white">{getInitials(user?.name)}</AvatarFallback>
           </Avatar>
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel>
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium">{user.name}</p>
-            <p className="text-xs text-gray-500">{user.email}</p>
+            <p className="text-sm font-medium">{user?.name || "Admin User"}</p>
+            <p className="text-xs text-gray-500">{user?.email || ""}</p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />

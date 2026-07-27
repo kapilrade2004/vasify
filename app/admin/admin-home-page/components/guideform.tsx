@@ -1,10 +1,20 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { X, Loader2, ImageIcon, FileText, Upload } from "lucide-react"
 
-export default function GuideForm({ editingItem, categories, onClose, onSubmit }) {
-  const [formData, setFormData] = useState({
+export default function GuideForm({ editingItem, categories = [], onClose, onSubmit }: { editingItem?: any; categories?: any[]; onClose: () => void; onSubmit: (data?: any) => void }) {
+  const [formData, setFormData] = useState<{
+    title: string;
+    description: string;
+    content: string;
+    thumbnailImage: string;
+    pdfUrl: string;
+    categoryId: string;
+    status: string;
+    metaTitle: string;
+    metaDescription: string;
+    isFeatured: boolean;
+    tags: string[];
+  }>({
     title: "",
     description: "",
     content: "",
@@ -21,8 +31,8 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
   const [formSubmitting, setFormSubmitting] = useState(false);
   const [thumbnailPreview, setThumbnailPreview] = useState("");
   const [thumbnailError, setThumbnailError] = useState(false);
-  const [thumbnailFile, setThumbnailFile] = useState(null);
-  const [pdfFile, setPdfFile] = useState(null);
+  const [thumbnailFile, setThumbnailFile] = useState<File | null>(null);
+  const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [pdfFileName, setPdfFileName] = useState("");
   const [existingThumbnailName, setExistingThumbnailName] = useState("");
   const [existingPdfName, setExistingPdfName] = useState("");
@@ -41,18 +51,16 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
         metaTitle: editingItem.meta_title || "",
         metaDescription: editingItem.meta_description || "",
         isFeatured: editingItem.is_featured || false,
-        tags: Array.isArray(editingItem.tags) ? editingItem.tags.map((t) => (typeof t === "string" ? t : t.name)) : [],
+        tags: Array.isArray(editingItem.tags) ? editingItem.tags.map((t: any) => (typeof t === "string" ? t : t.name)) : [],
       })
       
       if (editingItem.thumbnail_image) {
         setThumbnailPreview(editingItem.thumbnail_image)
-        // Extract filename from URL
         const thumbnailFilename = extractFilenameFromUrl(editingItem.thumbnail_image)
         setExistingThumbnailName(thumbnailFilename)
       }
       
       if (editingItem.pdf_url) {
-        // Extract filename from URL
         const pdfFilename = extractFilenameFromUrl(editingItem.pdf_url)
         setExistingPdfName(pdfFilename)
         setPdfFileName(pdfFilename)
@@ -60,23 +68,18 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
     }
   }, [editingItem])
 
-  // Helper function to extract filename from URL
-  const extractFilenameFromUrl = (url) => {
+  const extractFilenameFromUrl = (url: string) => {
     if (!url) return "";
     try {
-      // Remove query parameters if any
       const urlWithoutQuery = url.split('?')[0];
-      // Get the last part of the URL
       const parts = urlWithoutQuery.split('/');
       const filenameWithTimestamp = parts[parts.length - 1];
       
-      // Remove timestamp prefix (format: timestamp-filename.ext)
       const timestampRegex = /^\d+-/;
       if (timestampRegex.test(filenameWithTimestamp)) {
         return filenameWithTimestamp.replace(timestampRegex, '');
       }
       
-      // Try UUID pattern removal (format: uuid-filename.ext)
       const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}-/i;
       if (uuidRegex.test(filenameWithTimestamp)) {
         return filenameWithTimestamp.replace(uuidRegex, '');
@@ -89,15 +92,16 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
     }
   }
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target
+    const checked = (e.target as HTMLInputElement).checked
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }))
   }
 
-  const handleThumbnailUpload = (e) => {
+  const handleThumbnailUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     if (file.size > 10 * 1024 * 1024) {
@@ -108,11 +112,10 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
     setThumbnailPreview(URL.createObjectURL(file));
     setThumbnailError(false);
     setFormData(prev => ({ ...prev, thumbnailImage: '' }));
-    // Clear existing thumbnail name when uploading new file
     setExistingThumbnailName("");
   };
 
-  const handlePdfUpload = (e) => {
+  const handlePdfUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     if (file.size > 50 * 1024 * 1024) {
@@ -122,7 +125,6 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
     setPdfFile(file);
     setPdfFileName(file.name);
     setFormData(prev => ({ ...prev, pdfUrl: '' }));
-    // Clear existing PDF name when uploading new file
     setExistingPdfName("");
   };
 
@@ -131,7 +133,6 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
     setThumbnailError(false);
     setThumbnailFile(null);
     setFormData((prev) => ({ ...prev, thumbnailImage: "" }));
-    // Also clear the existing thumbnail name
     setExistingThumbnailName("");
   };
 
@@ -139,7 +140,6 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
     setPdfFileName("");
     setPdfFile(null);
     setFormData((prev) => ({ ...prev, pdfUrl: "" }));
-    // Also clear the existing PDF name
     setExistingPdfName("");
   };
 
@@ -153,7 +153,7 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
     }
   };
 
-  const removeTag = (tagToRemove) => {
+  const removeTag = (tagToRemove: string) => {
     setFormData((prev) => ({
       ...prev,
       tags: prev.tags.filter((tag) => tag !== tagToRemove),
@@ -169,9 +169,10 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
     setFormSubmitting(true);
 
     try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
       const endpoint = editingItem
-    ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/free-guides/${editingItem.id}`
-    : `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/free-guides`;
+    ? `${apiBaseUrl}/api/free-guides/${editingItem.id}`
+    : `${apiBaseUrl}/api/free-guides`;
 
       const method = editingItem ? "PUT" : "POST";
 
@@ -216,7 +217,7 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
       await onSubmit();
       alert(`Guide ${editingItem ? "updated" : "created"} successfully!`);
       onClose();
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error saving guide:", err);
       alert(err.message || "Failed to save guide. Please try again.");
     } finally {
@@ -445,7 +446,7 @@ export default function GuideForm({ editingItem, categories, onClose, onSubmit }
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               >
                 <option value="">Select Category (Optional)</option>
-                {categories.map((cat) => (
+                {categories.map((cat: any) => (
                   <option key={cat.id} value={cat.id}>
                     {cat.name}
                   </option>

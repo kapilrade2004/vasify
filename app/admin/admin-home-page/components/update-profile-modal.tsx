@@ -1,4 +1,3 @@
-"use client"
 import type React from "react"
 import { useState, useEffect } from "react"
 import { Loader2 } from "lucide-react"
@@ -35,7 +34,8 @@ export default function UpdateProfileModal({ isOpen, onClose, currentUser, onSuc
     setLoading(true)
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/update-profile`, {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
+      const response = await fetch(`${apiBaseUrl}/api/auth/update-profile`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
