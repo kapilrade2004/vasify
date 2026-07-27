@@ -81,12 +81,12 @@ function createSummarySheet(wb: XLSX.WorkBook, data: ExtractionResult): void {
     ['Page', 'Field Name', 'Value']
   ];
 
-  data.pages.forEach(page => {
-    page.fields.forEach(field => {
+  data.pages.forEach((page: any) => {
+    page.fields.forEach((field: any) => {
       summaryData.push([
         page.pageNumber,
         sanitizeText(field.label),
-        formatValuePreserveDecimals(sanitizeText(field.value))  // ✅ FIXED
+        formatValuePreserveDecimals(sanitizeText(field.value))
       ]);
     });
   });
@@ -106,16 +106,16 @@ function createSummarySheet(wb: XLSX.WorkBook, data: ExtractionResult): void {
 function createTableSheets(wb: XLSX.WorkBook, data: ExtractionResult): void {
   const seenNames = new Set<string>();
   
-  data.pages.forEach(page => {
-    page.tables.forEach((table, idx) => {
+  data.pages.forEach((page: any) => {
+    page.tables.forEach((table: any, idx: number) => {
       const tableData: any[][] = [];
       
-      const headers = table.headers.map(h => sanitizeText(h));
+      const headers = table.headers.map((h: any) => sanitizeText(h));
       tableData.push(headers);
       
-      table.rows.forEach(row => {
-        const formattedRow = row.map(cell => 
-          formatValuePreserveDecimals(sanitizeText(cell))  // ✅ FIXED
+      table.rows.forEach((row: any[]) => {
+        const formattedRow = row.map((cell: any) => 
+          formatValuePreserveDecimals(sanitizeText(cell))
         );
         tableData.push(formattedRow);
       });
