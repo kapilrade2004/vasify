@@ -1,6 +1,5 @@
-"use client"
 import { ArrowRight, MessageCircle, Star, Quote, TrendingUp, Users, Zap } from "lucide-react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import WhatsAppButton from "@/components/whatsapp-button"
@@ -120,7 +119,7 @@ export default function TestimonialsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
+      <section className="py-12 md:py-20 px-6">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             What Our <span className="text-green-500">Clients Say</span>
@@ -129,7 +128,7 @@ export default function TestimonialsPage() {
             Don't just take our word for it. See how VasifyTech has transformed businesses across industries with our
             WhatsApp automation solutions.
           </p>
-          <Link href="/contact">
+          <Link to="/contact">
             <Button
               size="lg"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-medium"
@@ -237,7 +236,7 @@ export default function TestimonialsPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((video, index) => (
-              <Link key={index} href="/contact">
+              <Link key={index} to="/contact">
                 <Card className="bg-white border-0 shadow-sm hover:shadow-lg transition-shadow duration-300 cursor-pointer">
                   <div className="aspect-video bg-green-500 rounded-t-lg flex items-center justify-center">
                     <div className="text-center text-white">
@@ -271,7 +270,7 @@ export default function TestimonialsPage() {
               results with VasifyTech.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   className="bg-white text-green-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-medium"
@@ -280,7 +279,7 @@ export default function TestimonialsPage() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   variant="outline"

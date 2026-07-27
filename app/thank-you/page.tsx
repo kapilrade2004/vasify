@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { NextPage } from 'next';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ThankYouPage: NextPage = () => {
+const ThankYouPage: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-green-50 p-6">
       <div className="bg-white rounded-xl shadow-lg p-8 max-w-md text-center">
@@ -10,7 +10,7 @@ const ThankYouPage: NextPage = () => {
           Your message has been sent successfully.<br/>
           We'll get back to you shortly.
         </p>
-        <Link href="/" className="text-green-600 hover:underline">
+        <Link to="/" className="text-green-600 hover:underline font-medium">
           Go back to Home
         </Link>
       </div>
