@@ -1,7 +1,5 @@
-"use client";
-
 import * as React from "react";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
@@ -43,7 +41,7 @@ const heroTools = [
 ];
 
 const HeroSection = () => (
-  <section className="relative pt-36 md:pt-40 lg:pt-48 pb-16 lg:pb-24 overflow-hidden gradient-hero">
+  <section className="relative pt-10 md:pt-14 lg:pt-16 pb-16 lg:pb-24 overflow-hidden gradient-hero">
     <div className="absolute inset-0 overflow-hidden">
       <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
@@ -71,7 +69,7 @@ const HeroSection = () => (
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
-            <Link href="#tools">
+            <Link to="#tools">
               <Button
                 size="lg"
                 className="gradient-primary border-0 text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all hover:scale-105"
@@ -120,15 +118,20 @@ const HeroSection = () => (
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    className={`bg-gradient-to-br ${tool.gradient} rounded-2xl p-3 flex flex-col items-center justify-center aspect-square cursor-pointer border border-border/50 hover:border-primary/30 transition-all hover:shadow-lg`}
+                    whileHover={{
+                      scale: 1.06,
+                      y: -6,
+                      transition: { type: "spring", stiffness: 350, damping: 20 },
+                    }}
+                    whileTap={{ scale: 0.97 }}
+                    className={`group bg-gradient-to-br ${tool.gradient} rounded-2xl p-3 flex flex-col items-center justify-center aspect-square cursor-pointer border border-border/50 hover:border-primary/40 shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-colors duration-300`}
                   >
                     <img
                       src={tool.image || "/placeholder.svg"}
                       alt={tool.label}
-                      className="w-3/4 h-3/4 object-contain mb-2"
+                      className="w-3/4 h-3/4 object-contain mb-2 group-hover:scale-110 transition-transform duration-300 ease-out"
                     />
-                    <span className="text-sm font-semibold text-foreground">
+                    <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                       {tool.label}
                     </span>
                   </motion.div>
@@ -192,8 +195,8 @@ const steps = [
 ];
 
 const HowItWorks = () => (
-  <section id="how-it-works" className="py-20 lg:py-28 bg-muted/30">
-    <div className="container mx-auto px-4 lg:px-8">
+  <section id="how-it-works" className="py-20 lg:py-24 bg-slate-50/70 border-t border-slate-200/60">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -201,18 +204,21 @@ const HowItWorks = () => (
         transition={{ duration: 0.5 }}
         className="text-center mb-16"
       >
-        <span className="inline-block px-4 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-4">
+        <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-sm font-semibold mb-4">
           Simple Process
         </span>
-        <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-4">
-          How It <span className="text-gradient">Works</span>
+        <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 mb-4">
+          How It <span className="text-emerald-600">Works</span>
         </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
           Get your tasks done in four simple steps. No learning curve, no complexity.
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="relative grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        {/* Connecting line running from Step 1 center (12.5%) to Step 4 center (87.5%) */}
+        <div className="hidden lg:block absolute top-[40px] left-[12.5%] right-[12.5%] h-[3px] bg-emerald-500 rounded-full z-0" />
+
         {steps.map((step, index) => (
           <motion.div
             key={step.title}
@@ -220,27 +226,23 @@ const HowItWorks = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
-            className="relative"
+            className="relative z-10 flex flex-col items-center text-center group"
           >
-            {index < steps.length - 1 && (
-              <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-primary/50 to-transparent -translate-x-8 z-0" />
-            )}
-
-            <div className="relative z-10 text-center lg:text-left">
-              <div className="inline-flex flex-col items-center lg:items-start mb-6">
-                <div className="relative">
-                  <div className="w-20 h-20 rounded-2xl gradient-primary flex items-center justify-center shadow-lg shadow-primary/20">
-                    <step.icon className="w-8 h-8 text-primary-foreground" />
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center text-sm font-bold">
-                    {index + 1}
-                  </div>
-                </div>
+            <div className="mb-6 relative">
+              {/* High-contrast theme box */}
+              <div className="w-20 h-20 rounded-2xl bg-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-600/25 border border-emerald-500/30 group-hover:scale-105 transition-all duration-300">
+                <step.icon className="w-9 h-9 text-white stroke-[2.2] group-hover:scale-110 transition-transform duration-300" />
               </div>
-
-              <h3 className="text-xl font-bold text-foreground mb-2">{step.title}</h3>
-              <p className="text-muted-foreground">{step.description}</p>
+              {/* Step number badge */}
+              <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-slate-900 text-white border-2 border-white flex items-center justify-center text-sm font-bold shadow-md">
+                {index + 1}
+              </div>
             </div>
+
+            <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
+              {step.title}
+            </h3>
+            <p className="text-slate-600 text-sm leading-relaxed max-w-xs">{step.description}</p>
           </motion.div>
         ))}
       </div>
@@ -383,14 +385,18 @@ const ToolsGrid = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group"
+            whileHover={{
+              y: -8,
+              transition: { type: "spring", stiffness: 300, damping: 22 },
+            }}
+            className="group cursor-pointer"
           >
-            <div className="bg-[#1e293b] rounded-2xl overflow-hidden border border-gray-700/50 hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 h-full flex flex-col">
+            <div className="bg-[#1e293b] rounded-2xl overflow-hidden border border-gray-700/50 hover:border-primary/50 transition-colors duration-300 shadow-lg hover:shadow-2xl hover:shadow-primary/20 h-full flex flex-col">
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={tool.image}
                   alt={tool.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1e293b] via-transparent to-transparent" />
                 {tool.badge && (
@@ -423,7 +429,7 @@ const ToolsGrid = () => (
                     </div>
                     <span className="text-xs text-gray-500">{tool.moreText}</span>
                   </div>
-                  <Link href={tool.href}>
+                  <Link to={tool.href}>
                     <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 text-sm font-medium group/btn">
                       {tool.title === "PDF Extractor" ? "Start Free Trial" : "Explore Now"}
                       <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
