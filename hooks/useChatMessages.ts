@@ -1,7 +1,6 @@
-"use client";
-
 import { useState } from "react";
 import { ChatMessage } from "@/lib/types";
+import { sendMessageToN8n } from "@/services/chatService";
 
 export function useChatMessages() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -18,25 +17,13 @@ export function useChatMessages() {
     setIsLoading(true);
     
     try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ 
-          message: content,
-          chatAgentKey: chatAgentKey,
-          userName: userName,
-          userMobile: userMobile,
-          history: messages
-        }),
+      const data = await sendMessageToN8n({
+        message: content,
+        chatAgentKey: chatAgentKey,
+        userName: userName,
+        userMobile: userMobile,
+        history: messages
       });
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      
-      const data = await response.json();
       
       // Add AI response to messages
       setMessages((prev) => [...prev, { role: "assistant", content: data.response }]);

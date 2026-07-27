@@ -1,7 +1,5 @@
-"use client"
-
 import { ArrowRight, MessageCircle, Phone, Mail, MapPin, Clock, CheckCircle, Facebook, Instagram } from "lucide-react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import WhatsAppButton from "@/components/whatsapp-button"
@@ -57,21 +55,9 @@ export default function ContactPage() {
     window.open(whatsappUrl, "_blank")
   }
 
-  // Auto-scroll to form section when page loads
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const formSection = document.getElementById("contact-form-section")
-      if (formSection) {
-        formSection.scrollIntoView({ behavior: "smooth", block: "start" })
-      }
-    }, 500)
-
-    return () => clearTimeout(timer)
-  }, [])
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
-      <section id="contact-form-section" className="mt-16 md:mt-20 py-12 md:py-20 px-4 sm:px-6 bg-gray-50">
+      <section id="contact-form-section" className="py-10 md:py-16 px-4 sm:px-6 bg-gray-50">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">

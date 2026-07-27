@@ -20,13 +20,12 @@ import {
   Crown,
   Rocket
 } from "lucide-react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { ClipboardList, Phone } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import WhatsAppButton from "@/components/whatsapp-button"
-import Image from "next/image"
 
 export const metadata = {
   title: "WhatsApp Business Platform Services | VasifyTech",
@@ -234,7 +233,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
       {/* Hero Section */}
-      <section className="pt-16 pb-10 px-2 sm:pt-24 sm:pb-14 md:pt-32 md:pb-20 md:px-6">
+      <section className="py-12 md:py-20 px-4 sm:px-6">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div className="space-y-8">
@@ -256,7 +255,7 @@ export default function HomePage() {
                     <div className="text-gray-600 text-xs">Business Partner</div>
                   </div>
                 </div>
-                <Link href="/contact">
+                <Link to="/contact">
                   <Button
                     size="lg"
                     className="bg-green-500 hover:bg-green-600 text-white px-4 sm:px-8 py-2 sm:py-4 rounded-lg text-base sm:text-lg font-medium"
@@ -274,13 +273,12 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="block relative rounded-xl md:rounded-3xl overflow-hidden shadow-2xl group cursor-pointer"
               >
-                <Image
+                <img
                   src="/whatsapphero.jpg"
                   alt="VasifyTech WhatsApp Business Platform Demo Video"
                   width={600}
                   height={350}
                   className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                  priority
                 />
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
                   <div className="w-12 h-12 sm:w-20 sm:h-20 bg-red-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
@@ -329,7 +327,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="text-center mt-6 sm:mt-12">
-            <Link href="/services">
+            <Link to="/services">
               <Button
                 size="lg"
                 className="bg-green-500 hover:bg-green-600 text-white px-4 sm:px-8 py-2 sm:py-4 rounded-lg text-base sm:text-lg font-medium"
@@ -369,7 +367,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="text-center mt-6 sm:mt-12">
-            <Link href="/features">
+            <Link to="/features">
               <Button
                 size="lg"
                 variant="outline"
@@ -451,7 +449,7 @@ export default function HomePage() {
                   <CardDescription className="mt-2 sm:mt-4 text-gray-600">{plan.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Link href="/contact">
+                  <Link to="/contact">
                     <Button
                       className={`w-full mb-4 sm:mb-6 ${plan.popular ? "bg-green-500 hover:bg-green-600" : "bg-gray-900 hover:bg-gray-800"} text-white`}
                     >
@@ -587,7 +585,7 @@ export default function HomePage() {
               Join thousands of businesses already using VasifyTech to engage customers and drive growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   className="bg-white text-green-600 hover:bg-gray-100 px-4 sm:px-8 py-2 sm:py-4 rounded-lg text-base sm:text-lg font-medium"
@@ -596,7 +594,7 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   variant="outline"
