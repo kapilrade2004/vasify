@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import IndustryChatbotModal from "@/components/industry-chatbot-modal"
 

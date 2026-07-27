@@ -1,5 +1,3 @@
-"use client"
-
 import {
   ArrowRight,
   MessageCircle,
@@ -20,7 +18,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import WhatsAppButton from "@/components/whatsapp-button"
@@ -137,7 +135,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
+      <section className="py-12 md:py-20 px-6">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             <span className="text-green-500">WhatsApp Business</span> Solutions & More
@@ -146,7 +144,7 @@ export default function ServicesPage() {
             From WhatsApp automation to custom software development, we provide end-to-end solutions to help your
             business thrive in the digital age.
           </p>
-          <Link href="/contact">
+          <Link to="/contact">
             <Button
               size="lg"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-medium"
@@ -192,7 +190,7 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/contact">
+                  <Link to="/contact">
                     <Button className="w-full bg-green-500 hover:bg-green-600 text-white">
                       Get Quote
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -260,7 +258,7 @@ export default function ServicesPage() {
                         </li>
                       ))}
                     </ul>
-                    <Link href="/contact">
+                    <Link to="/contact">
                       <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white">
                         Get Quote
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -318,7 +316,7 @@ export default function ServicesPage() {
               Let's discuss your project and create a custom solution that fits your business needs perfectly.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   className="bg-white text-green-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-medium"
@@ -327,7 +325,7 @@ export default function ServicesPage() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   variant="outline"

@@ -1,7 +1,5 @@
-"use client"
-
 import { ArrowRight, MessageCircle, Plus, Minus, Search } from "lucide-react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -202,7 +200,7 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
+      <section className="py-12 md:py-20 px-6">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             Frequently Asked <span className="text-green-500">Questions</span>
@@ -292,7 +290,7 @@ export default function FAQPage() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Live Chat</h3>
                 <p className="text-gray-600 mb-4">Get instant answers from our support team</p>
-                <Link href="/contact">
+                <Link to="/contact">
                   <Button className="bg-green-500 hover:bg-green-600 text-white">Start Chat</Button>
                 </Link>
               </CardContent>
@@ -305,7 +303,7 @@ export default function FAQPage() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Knowledge Base</h3>
                 <p className="text-gray-600 mb-4">Browse our comprehensive help articles</p>
-                <Link href="/contact">
+                <Link to="/contact">
                   <Button variant="outline" className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50">
                     Browse Articles
                   </Button>
@@ -320,7 +318,7 @@ export default function FAQPage() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Schedule Demo</h3>
                 <p className="text-gray-600 mb-4">Book a personalized demo with our experts</p>
-                <Link href="/contact">
+                <Link to="/contact">
                   <Button variant="outline" className="border-2 border-purple-500 text-purple-600 hover:bg-purple-50">
                     Book Demo
                   </Button>
@@ -341,7 +339,7 @@ export default function FAQPage() {
               automation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   className="bg-white text-green-600 hover:bg-gray-100 px-8 py-4 rounded-lg text-lg font-medium"
@@ -350,7 +348,7 @@ export default function FAQPage() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   variant="outline"

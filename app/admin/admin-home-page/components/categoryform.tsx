@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react"; 
 import { X, Loader2, ImageIcon } from "lucide-react";
 
-export default function CategoryForm({ editingItem, onClose, onSubmit }) {
+export default function CategoryForm({
+  editingItem,
+  onClose,
+  onSubmit,
+}: {
+  editingItem?: any;
+  onClose: () => void;
+  onSubmit: (data?: any) => void;
+}) {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -12,7 +20,7 @@ export default function CategoryForm({ editingItem, onClose, onSubmit }) {
   const [formSubmitting, setFormSubmitting] = useState(false);
   const [imagePreview, setImagePreview] = useState("");
   const [imageError, setImageError] = useState(false);
-  const [imageFile, setImageFile] = useState(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   // Update form when editingItem changes
   useEffect(() => {
@@ -21,15 +29,13 @@ export default function CategoryForm({ editingItem, onClose, onSubmit }) {
         name: editingItem.name || "",
         description: editingItem.description || "",
         imageUrl: editingItem.image_url || "",
-        isActive: editingItem.is_active === true, // ✅ Fixed: Use strict comparison
+        isActive: editingItem.is_active === true,
       });
-      // Set preview for existing image
       if (editingItem.image_url) {
         setImagePreview(editingItem.image_url);
         setImageError(false);
       }
     } else {
-      // ✅ Fixed: Reset form when creating new category
       setFormData({
         name: "",
         description: "",
@@ -42,17 +48,16 @@ export default function CategoryForm({ editingItem, onClose, onSubmit }) {
     }
   }, [editingItem]);
 
-  // Handle input changes
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
   };
 
-  // Handle image URL change
-  const handleImageUrlChange = (e) => {
+  const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const url = e.target.value;
     setFormData((prev) => ({ ...prev, imageUrl: url }));
 
@@ -84,9 +89,10 @@ export default function CategoryForm({ editingItem, onClose, onSubmit }) {
     setFormSubmitting(true);
 
     try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
       const endpoint = editingItem
-        ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories/${editingItem.id}`
-        : `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories`;
+        ? `${apiBaseUrl}/api/categories/${editingItem.id}`
+        : `${apiBaseUrl}/api/categories`;
 
       const method = editingItem ? "PUT" : "POST";
 
@@ -114,7 +120,7 @@ export default function CategoryForm({ editingItem, onClose, onSubmit }) {
       await onSubmit();
       alert(`Category ${editingItem ? "updated" : "created"} successfully!`);
       onClose();
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error saving category:", err);
       alert(err.message || "Failed to save category. Please try again.");
     } finally {
@@ -183,7 +189,7 @@ export default function CategoryForm({ editingItem, onClose, onSubmit }) {
               type="file"
               accept="image/*"
               onChange={(e) => {
-                const file = e.target.files[0];
+                const file = e.target.files?.[0];
                 if (file) {
                   setImageFile(file);
                   setImagePreview(URL.createObjectURL(file));

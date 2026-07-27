@@ -2,7 +2,7 @@ import { Check, Star, Zap, Crown, Rocket, Bot, Code } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 
 export const metadata = {
   title: "VasifyTech Pricing | WhatsApp, AI Agent & Website Plans",
@@ -245,7 +245,7 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="pt-36 md:pt-40 pb-8 bg-white">
+      <section className="pt-10 md:pt-14 pb-8 bg-white">
         <div className="container mx-auto px-6 text-center flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Simple, Transparent Pricing</h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -286,7 +286,7 @@ export default function PricingPage() {
                   <CardDescription className="mt-4 text-gray-600">{plan.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Link href="/contact">
+                  <Link to="/contact">
                     <Button
                       className={`w-full mb-6 ${plan.popular ? "bg-green-500 hover:bg-green-600" : "bg-gray-900 hover:bg-gray-800"} text-white`}
                     >
@@ -343,7 +343,7 @@ export default function PricingPage() {
                   <CardDescription className="mt-4 text-gray-600">{plan.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Link href="/contact">
+                  <Link to="/contact">
                     <Button
                       className={`w-full mb-6 ${plan.popular ? "bg-blue-500 hover:bg-blue-600" : "bg-gray-900 hover:bg-gray-800"} text-white`}
                     >
@@ -400,7 +400,7 @@ export default function PricingPage() {
                   <CardDescription className="mt-4 text-gray-600">{plan.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Link href="/contact">
+                  <Link to="/contact">
                     <Button
                       className={`w-full mb-6 ${plan.popular ? "bg-green-500 hover:bg-green-600" : "bg-gray-900 hover:bg-gray-800"} text-white`}
                     >
@@ -489,12 +489,12 @@ export default function PricingPage() {
             Start with our Free plan and scale as you grow. No credit card required to get started.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
+            <Link to="/contact">
               <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold">
                 Start Free Now
               </Button>
             </Link>
-            <Link href="/contact">
+            <Link to="/contact">
               <Button
                 size="lg"
                 variant="outline"

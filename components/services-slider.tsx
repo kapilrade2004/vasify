@@ -1,7 +1,5 @@
-"use client"
-
 import { useState, useEffect } from "react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -123,7 +121,7 @@ export default function ServicesSlider() {
                   className={`${currentService.accentColor} hover:opacity-90 text-white group w-full sm:w-auto text-xs sm:text-sm md:text-base px-4 py-2 sm:px-5 sm:py-2.5 h-9 sm:h-10 md:h-11`}
                   asChild
                 >
-                  <Link href={currentService.href}>
+                  <Link to={currentService.href}>
                     {currentService.isHeroStyle ? "Start Free Trial" : `Explore ${currentService.title}`}
                     <ArrowRight className="ml-1.5 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
@@ -135,7 +133,7 @@ export default function ServicesSlider() {
                     className="bg-white/10 hover:bg-white/20 text-white border-white/20 w-full sm:w-auto text-xs sm:text-sm md:text-base px-4 py-2 sm:px-5 sm:py-2.5 h-9 sm:h-10 md:h-11"
                     asChild
                   >
-                    <Link href="/ai-agent">Talk to AI Agent</Link>
+                    <Link to="/ai-agent">Talk to AI Agent</Link>
                   </Button>
                 )}
               </div>

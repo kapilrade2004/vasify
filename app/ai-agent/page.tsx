@@ -1,5 +1,4 @@
-import type { Metadata } from "next"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import {
   Bot,
   MessageSquare,
@@ -25,7 +24,7 @@ import { Badge } from "@/components/ui/badge"
 import IndustryCard from "@/components/IndustryCard";
 
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "AI Agent - Intelligent Conversational AI for Business | VasifyTech",
   description:
     "Revolutionary AI Agent that handles unstructured conversations in all Indian languages. Easy WhatsApp, mobile & web integration with smart CRM connectivity and industry-specific automation flows.",
@@ -161,7 +160,7 @@ export default function AIAgentPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white mt-24">
+      <section className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white py-12 md:py-20">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative container mx-auto px-6 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -184,7 +183,7 @@ export default function AIAgentPage() {
               </p>
               {/* testing */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact">
+                <Link to="/contact">
                   <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
                     Start Free Trial
                   </button>
@@ -478,7 +477,7 @@ export default function AIAgentPage() {
                   <CardDescription className="mt-4 text-gray-600">{plan.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Link href="/contact">
+                  <Link to="/contact">
                     <Button
                       className={`w-full mb-6 ${plan.popular ? "bg-blue-500 hover:bg-blue-600" : "bg-gray-900 hover:bg-gray-800"} text-white`}
                     >
@@ -513,13 +512,13 @@ export default function AIAgentPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
+            <Link to="/contact">
               <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center gap-2">
                 Get Started Today
                 <ArrowRight className="h-5 w-5" />
               </button>
             </Link>
-            <Link href="/pricing">
+            <Link to="/pricing">
               <button className="border-2 border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
                 View Pricing
               </button>

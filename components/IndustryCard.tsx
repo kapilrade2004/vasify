@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react";
 import { create } from 'zustand'
 import ChatInterface from "./chat/ChatInterface";

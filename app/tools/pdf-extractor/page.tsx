@@ -1,19 +1,17 @@
-"use client";
-
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2, Lock, FileSearch, LogIn } from "lucide-react";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3001";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
 
 type Mode = "signup" | "login";
 
 export default function PdfExtractorAuthPage() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const [mode, setMode] = useState<Mode>("signup");
 
   const [name, setName] = useState("");
@@ -67,7 +65,7 @@ export default function PdfExtractorAuthPage() {
         localStorage.setItem("pdf_auth_token", data.token);
       }
 
-      router.push("/tools/pdf-extractor/app");
+      navigate("/tools/pdf-extractor/app");
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     } finally {

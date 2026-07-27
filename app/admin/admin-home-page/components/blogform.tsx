@@ -3,11 +3,30 @@ import { X, Clock, Loader2, Image as ImageIcon } from "lucide-react";
 
 export default function BlogForm({
   editingItem,
-  categories,
+  categories = [],
   onClose,
   onSubmit,
+}: {
+  editingItem?: any;
+  categories?: any[];
+  onClose: () => void;
+  onSubmit: (data?: any) => void;
 }) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    title: string;
+    slug: string;
+    content: string;
+    excerpt: string;
+    featuredImage: string;
+    categoryId: string;
+    status: string;
+    metaTitle: string;
+    metaDescription: string;
+    isFeatured: boolean;
+    tags: string[];
+    publishedAt: string;
+    authorName: string;
+  }>({
     title: "",
     slug: "",
     content: "",
@@ -34,7 +53,7 @@ export default function BlogForm({
     if (editingItem) {
       setFormData({
         title: editingItem.title || "",
-        slug: editingItem.slug || "", // ✅ NEW
+        slug: editingItem.slug || "",
         content: editingItem.content || "",
         excerpt: editingItem.excerpt || "",
         featuredImage: editingItem.featured_image || "",
@@ -44,7 +63,7 @@ export default function BlogForm({
         metaDescription: editingItem.meta_description || "",
         isFeatured: editingItem.is_featured || false,
         tags: Array.isArray(editingItem.tags)
-          ? editingItem.tags.map((t) => (typeof t === "string" ? t : t.name))
+          ? editingItem.tags.map((t: any) => (typeof t === "string" ? t : t.name))
           : [],
         publishedAt: editingItem.published_at
           ? editingItem.published_at.split("T")[0]
@@ -58,25 +77,22 @@ export default function BlogForm({
     }
   }, [editingItem]);
 
-
-  // Calculate read time
-  const calculateReadTime = (content) => {
+  const calculateReadTime = (content: string) => {
     if (!content) return 0;
     const words = content.trim().split(/\s+/).length;
     return Math.ceil(words / 200);
   };
 
-  // Handle input changes
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
   };
 
-  // Handle image URL change
-  const handleImageUrlChange = (e) => {
+  const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const url = e.target.value;
     setFormData((prev) => ({ ...prev, featuredImage: url }));
 
@@ -89,14 +105,12 @@ export default function BlogForm({
     }
   };
 
-  // Remove image
   const removeImage = () => {
     setImagePreview("");
     setImageError(false);
     setFormData((prev) => ({ ...prev, featuredImage: "" }));
   };
 
-  // Add tag
   const addTag = () => {
     if (tagInput.trim() && !formData.tags.includes(tagInput.trim())) {
       setFormData((prev) => ({
@@ -107,8 +121,7 @@ export default function BlogForm({
     }
   };
 
-  // Remove tag
-  const removeTag = (tagToRemove) => {
+  const removeTag = (tagToRemove: string) => {
     setFormData((prev) => ({
       ...prev,
       tags: prev.tags.filter((tag) => tag !== tagToRemove),
@@ -156,14 +169,15 @@ export default function BlogForm({
     setFormSubmitting(true);
 
     try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
       const endpoint = editingItem
-        ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs/${editingItem.id}`
-        : `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs`;
+        ? `${apiBaseUrl}/api/blogs/${editingItem.id}`
+        : `${apiBaseUrl}/api/blogs`;
 
       const method = editingItem ? "PUT" : "POST";
 
-      let body;
-      let headers = {};
+      let body: any;
+      let headers: Record<string, string> = {};
 
       // Use FormData if a file is selected, otherwise JSON
       if (featuredImageFile) {
@@ -381,7 +395,7 @@ export default function BlogForm({
                 required
               >
                 <option value="">Select Category</option>
-                {categories.map((cat) => (
+                {categories.map((cat: any) => (
                   <option key={cat.id} value={cat.id}>
                     {cat.name}
                   </option>

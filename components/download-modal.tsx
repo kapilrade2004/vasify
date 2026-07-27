@@ -1,5 +1,3 @@
-"use client"
-
 import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -111,8 +109,9 @@ export function DownloadModal({ guide, isOpen, onClose }: DownloadModalProps) {
         guidePdfUrl: guide.pdfUrl,
       }
 
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com"
       const response = await fetch(
-        "https://backend.vasifytech.com/api/guide-download",
+        `${apiBaseUrl}/api/guide-download`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

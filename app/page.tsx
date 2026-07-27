@@ -1,4 +1,3 @@
-"use client"
 import {
   ArrowRight,
   Star,
@@ -20,7 +19,7 @@ import {
   Home,
   //  Megaphone,
 } from "lucide-react"
-import Link from "next/link"
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import WhatsAppButton from "@/components/whatsapp-button"
@@ -268,7 +267,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* Hero Section with Slider */}
-      <section className="pt-20 md:pt-24 pb-8 md:pb-12 px-2 sm:px-4">
+      <section className="pt-6 md:pt-8 pb-8 md:pb-12 px-2 sm:px-4">
         <div className="container mx-auto px-0 sm:px-2 md:px-4 lg:px-6 max-w-7xl">
           <ServicesSlider />
         </div>
@@ -319,7 +318,7 @@ export default function HomePage() {
                   </ul>
 
                   <Button className="w-full group mt-auto" asChild>
-                    <Link href={service.href}>
+                    <Link to={service.href}>
                       {service.cta}
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
@@ -457,7 +456,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center mt-8 md:mt-12">
-            <Link href="/testimonials">
+            <Link to="/testimonials">
               <Button
                 size="lg"
                 variant="outline"
@@ -482,7 +481,7 @@ export default function HomePage() {
               Join thousands of businesses already using VasifyTech to engage customers and drive growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   className="bg-white text-green-600 hover:bg-gray-100 px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-medium w-full sm:w-auto"
@@ -491,7 +490,7 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link to="/contact">
                 <Button
                   size="lg"
                   variant="outline"

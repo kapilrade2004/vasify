@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -7,10 +5,10 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { useRouter } from "next/navigation"
+import { useNavigate } from "react-router-dom"
 
 export default function ContactForm() {
-  const router = useRouter()
+  const navigate = useNavigate()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [selectedService, setSelectedService] = useState("")
@@ -64,8 +62,8 @@ export default function ContactForm() {
         return
       }
 
-      const response = await fetch("https://backend.vasifytech.com/api/contact", {
-        // const response = await fetch("http://localhost:3001/api/contact", {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "https://backend.vasifytech.com";
+      const response = await fetch(`${apiBaseUrl}/api/contact`, {
 
         method: "POST",
         headers: {
@@ -82,7 +80,7 @@ export default function ContactForm() {
         form?.reset()
         setSelectedService("")
         setSelectedProduct("")
-        router.push("/thank-you")
+        navigate("/thank-you")
       } else {
         setSubmitStatus("error")
       }
@@ -100,7 +98,7 @@ export default function ContactForm() {
         <p className="text-base md:text-lg text-gray-600 mt-2">Fill out the form and we'll get back to you within 2 hours</p>
       </CardHeader>
       <CardContent className="p-6 md:p-8 pt-0">
-        <form id="contact-form" action={handleSubmit} className="space-y-5 md:space-y-6">
+        <form id="contact-form" onSubmit={(e) => { e.preventDefault(); handleSubmit(new FormData(e.currentTarget)); }} className="space-y-5 md:space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-4">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1.5">First Name *</label>

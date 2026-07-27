@@ -71,8 +71,9 @@ export async function unlockPDF(file: File, password: string): Promise<File> {
       // Render page to canvas
       await page.render({
         canvasContext: context,
-        viewport: viewport
-      }).promise;
+        viewport: viewport,
+        canvas: canvas,
+      } as any).promise;
 
       // Convert canvas to image
       const imageData = canvas.toDataURL('image/png');
