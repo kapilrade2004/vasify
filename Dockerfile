@@ -1,3 +1,4 @@
+
 FROM node:22-alpine
 
 RUN npm install -g pnpm@latest
@@ -5,7 +6,8 @@ RUN npm install -g pnpm@latest
 WORKDIR /app
 
 COPY package.json /app
-COPY pnpm-lock.yaml /app
+
+COPY package-lock.json /app
 
 RUN pnpm install
 
@@ -13,6 +15,10 @@ COPY . /app
 
 RUN pnpm build
 
-EXPOSE 3000
+EXPOSE 8024
 
-CMD ["pnpm", "start"]
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s \
+  CMD wget -q --spider http://localhost:8024/ || exit 1
+
+CMD ["npm", "run", "dev"]
+
