@@ -14,21 +14,21 @@ const Footer = () => {
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <Link to="/" className="flex-shrink-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-lg flex items-center justify-center overflow-hidden">
+                <div className="bg-white rounded-lg flex items-center justify-center px-2 py-1.5 shadow-sm border border-slate-700/50 overflow-hidden max-w-[95px]">
                   <img
-                    src="/logo.jpg"
+                    src="/vasifytech-logo-v2.png"
                     alt="VasifyTech Logo"
-                    className="h-full w-full object-fill"
+                    className="h-6 sm:h-7 w-auto max-w-[85px] object-contain"
                   />
                 </div>
               </Link>
-              <div className="flex-grow">
-                <div className="text-base sm:text-lg font-bold text-white">
+              <div className="flex-grow min-w-0">
+                <div className="text-sm sm:text-base font-bold text-white whitespace-nowrap">
                   VasifyTech PVT LTD
                 </div>
                 <div className="text-blue-300 text-xs sm:text-sm flex items-center gap-1">
-                  <Factory className="h-3 w-3" />
-                  Since 2024 • Mumbai
+                  <Factory className="h-3 w-3 flex-shrink-0" />
+                  <span>Since 2024 • Mumbai</span>
                 </div>
               </div>
               <div className="bg-green-500 text-white ml-2 p-1 rounded-full">

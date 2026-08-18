@@ -151,7 +151,7 @@ const HeroSection = () => (
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="absolute -bottom-6 -left-6 bg-card rounded-2xl p-4 shadow-lg border border-border"
+              className="absolute -bottom-14 -left-6 bg-card rounded-2xl p-4 shadow-lg border border-border"
             >
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center">

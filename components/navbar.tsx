@@ -28,11 +28,11 @@ const Navbar = () => {
             <div className="container mx-auto px-4 lg:px-6 py-3 flex items-center justify-between gap-4">
                 <Link to="/" className="flex items-center flex-shrink-0">
                     <img
-                        src="/logo.jpg"
-                        alt="VasifyTech Logo"
+                        src="/vasifytech-logo-v2.png"
+                        alt="VasifyTech"
                         width={200}
-                        height={150}
-                        className="rounded-full max-h-12 w-auto object-contain"
+                        height={53}
+                        className="h-8 sm:h-9 md:h-10 w-auto object-contain"
                     />
                 </Link>
 

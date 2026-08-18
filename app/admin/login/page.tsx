@@ -78,8 +78,12 @@ const AdminLoginPage = () => {
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full -ml-48 -mb-48"></div>
 
             <div className="relative z-10">
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6">
-                <Lock className="w-8 h-8 text-green-600" />
+              <div className="bg-white/95 rounded-2xl inline-flex items-center justify-center mb-6 px-4 py-2.5 shadow-md">
+                <img
+                  src="/vasifytech-logo-v2.png"
+                  alt="VasifyTech"
+                  className="h-10 w-auto object-contain"
+                />
               </div>
               <h2 className="text-4xl font-bold text-white mb-4">
                 Welcome to<br />VasifyTech Admin
@@ -89,18 +93,16 @@ const AdminLoginPage = () => {
               </p>
             </div>
 
-            {/* Company Image Placeholder */}
+            {/* Company Image Card */}
             <div className="relative z-10 bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/20">
-              <div className="flex items-center justify-center h-48 bg-white/20 rounded-xl">
-                <p className="text-white text-center text-sm">
-                  <img
-                    src="/logo.jpg"
-                    alt="VasifyTech"
-                    width={120}
-                    height={120}
-                    className="max-h-24 w-auto object-contain"
-                  />
-                </p>
+              <div className="flex items-center justify-center h-48 bg-white/95 rounded-xl p-6 shadow-inner">
+                <img
+                  src="/vasifytech-logo-v2.png"
+                  alt="VasifyTech"
+                  width={400}
+                  height={105}
+                  className="max-h-28 w-auto object-contain"
+                />
               </div>
             </div>
           </div>

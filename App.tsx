@@ -28,6 +28,7 @@ import PdfExtractorAppPage from "@/app/tools/pdf-extractor/app/page";
 import AdminLoginPage from "@/app/admin/login/page";
 import AdminHomePage from "@/app/admin/admin-home-page/page";
 import SettingsPage from "@/app/admin/settings/page";
+import AccountLoginPage from "@/app/account/login/page";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -67,6 +68,10 @@ export default function App() {
           <Route path="/tools/pdf-extractor/app" element={<PdfExtractorAppPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
+
+        {/* Account login pages */}
+        <Route path="/account/login" element={<AccountLoginPage />} />
+        <Route path="/login" element={<AccountLoginPage />} />
 
         {/* Admin pages without public Navbar/Footer */}
         <Route path="/admin/login" element={<AdminLoginPage />} />

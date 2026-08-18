@@ -308,7 +308,7 @@ export default function DigitalMarketingPage() {
                 </div>
 
                 {/* Floating Element */}
-                <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-200">
+                <div className="absolute -bottom-14 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-200">
                   <div className="flex items-center space-x-3">
                     <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
                       <TrendingUp className="h-6 w-6 text-white" />
